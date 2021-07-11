@@ -25,6 +25,7 @@ if (isset($_SESSION['ses_username']) == "") {
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="assets/css/bootstrap.css">
 
   <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
@@ -230,6 +231,10 @@ if (isset($_SESSION['ses_username']) == "") {
             case 'try' :
               include "c.php";
               break;
+
+            case 'd' :
+              include "d.php";
+              break;
             
             case 'prog' :
               include "program/tampil.php";
@@ -341,6 +346,15 @@ if (isset($_SESSION['ses_username']) == "") {
         <script src="assets/vendors/apexcharts/apexcharts.js"></script>
         <script src="assets/js/pages/dashboard.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
 </body>
 
 </html>
