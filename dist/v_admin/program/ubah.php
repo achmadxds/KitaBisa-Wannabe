@@ -6,23 +6,26 @@ include_once("../koneksi.php");
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
 ?>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Ubah Data Program</h3>
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-box-tool" data-widget="collapse">
-							<i class="fa fa-minus"></i>
-						</button>
-						<button type="button" class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-remove"></i>
-						</button>
-					</div>
-				</div>
-<form class="form-horizontal" action="?page=progAksi" method="post" enctype="multipart/form-data">
+
+<div id="main">
+  <header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+      <i class="bi bi-justify fs-3"></i>
+    </a>
+  </header>
+  <div class="page-content">
+    <section class>
+    
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          Master Jenis
+        </div>
+        <div class="card-body">
+        <form class="form-horizontal" action="?page=progAksi" method="post" enctype="multipart/form-data">
     <div class="box-body">
 
         <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
@@ -81,5 +84,11 @@ include_once("../koneksi.php");
         </div>
         </div>
 </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 </section>
+</div>

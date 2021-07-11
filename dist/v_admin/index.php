@@ -203,7 +203,7 @@ if (isset($_SESSION['ses_username']) == "") {
                           ?>
                 <li class="sidebar-item "
                   style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
-                  <a href="/login.html" class='sidebar-link'>
+                  <a href="../../loginAdmin.php" class='sidebar-link'>
                     <i style="color: white;" class="bi bi-box-arrow-right"></i>
                     <span style="color: white;">Logout</span>
                   </a>

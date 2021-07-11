@@ -1,5 +1,5 @@
 <?php
-include_once("../koneksi.php");
+include_once("koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
 $carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
@@ -14,9 +14,7 @@ if ($datakode) {
   $kode = (int) $nilaikode;
   // setiap $kode di tambah 1
   $kode = $kode + 1;
-  // hasil untuk menambahkan kode 
-  // angka 3 untuk menambahkan tiga angka setelah B dan angka 0 angka yang berada di tengah
-  // atau angka sebelum $kode
+  
   $hasilkode = "PLDN" . str_pad($kode, 2, "0", STR_PAD_LEFT);
 } else {
   $hasilkode = "PLDN01";

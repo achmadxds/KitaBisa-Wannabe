@@ -1,5 +1,5 @@
 <?php
-include_once("../koneksi.php");
+include_once("koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
 $carikode = mysqli_query($con, "SELECT MAX(kdLembaga) FROM lembaga");
@@ -22,29 +22,27 @@ if ($datakode) {
 }
 // KODE OTOMATIS
 ?>
+<div id="main">
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
 
-<!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
-<div class="form-group">
-
-	<br>
-	<div class="card mb-3">
-		<div class="card-header">
-			<a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm">Tambah Data Lembaga</a>
-		</div>
-		<br>
-		<div class="box box-primary">
-			<div class="box-header with-border">
-				<h3 class="box-title">Lembaga</h3>
-
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-					</button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-				</div>
-			</div>
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
+    
+    <div class="page-content">
+        <section class>
+        <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Jenis</a> </div>
+        <br>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Master Jenis
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                            <thead>
 						<center>
 							<tr>
 								<th>No</th>
@@ -87,8 +85,16 @@ if ($datakode) {
 
 						?>
 					</tbody>
-				</table>
-				<div id="myModal" class="modal fade">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    </section>
+</div>
+<div id="myModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -148,3 +154,4 @@ if ($datakode) {
 									</div>
 								</form>
 							</div>
+

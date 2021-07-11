@@ -1,4 +1,5 @@
 <?php
+include_once("koneksi.php");
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM perseorangan WHERE id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
@@ -7,27 +8,31 @@
 ?>
 
 
-    <section class="content-header">
-      <h1>
-        Detail <small><?php echo $data_cek['nama']?></small>
-      </h1>
-      
-    </section>
+<div id="main">
+	<header class="mb-3">
+		<a href="#" class="burger-btn d-block d-xl-none">
+			<i class="bi bi-justify fs-3"></i>
+		</a>
+	</header>
 
-					<!-- Main content -->
-					<section class="content">
-						<div class="card-body">
-							<div class="box box-primary">
-								<div class="box-header">
-									<div class="panel-body">
 
-										<div class="tabs">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h6>
+						Detail <small><?php echo $data_cek['nama']?></small>
+					</h6>
+				</div>
+				<div class="card-body">
+					<div class="panel-body">
+					<div class="tabs">
 											<ul class="nav nav-tabs nav-justified">
 												<li class="active">
-													<a href="#popular10" data-toggle="tab" class="text-center"><i class="fa fa-tags"></i> Detail Surat</a>
+													<a href="#popular10"data-bs-toggle="tab" class="text-center"><i class="fa fa-tags"></i> Detail Surat</a>
 												</li>
 												<li>
-													<a href="#recent10" data-toggle="tab" class="text-center"><i class="fa fa-envelope"></i> File Surat</a>
+													<a href="#recent10" data-bs-toggle="tab" class="text-center"><i class="fa fa-envelope"></i> File Berkas</a>
 												</li>
 											</ul>
 										</div>
@@ -115,4 +120,10 @@
 												</section>
 											</div>
 											</form>
-					</section>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

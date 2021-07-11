@@ -15,7 +15,7 @@ if (isset($_GET['kode'])) {
 
   <div class="page-content">
     <section class>
-      <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Jenis</a>
+    
   </div>
   <br>
   <div class="row">
@@ -25,39 +25,38 @@ if (isset($_GET['kode'])) {
           Master Jenis
         </div>
         <div class="card-body">
-          <table class="table table-striped" id="table1">
-            <thead>
-              <center>
-                <tr>
-                  <th>No</th>
-                  <th>Jenis</th>
-                  <th></th>
-                </tr>
-              </center>
-            </thead>
-            <tbody>
+        <form class="form-horizontal" action="#" method="post" enctype="multipart/form-data">
+					<div class="box-body">
+          <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            value="<?php echo $data_cek['id']; ?>" required="">
 
-              <?php
-              $sql_tampil = "SELECT * FROM mst_jenis";
-              $query_tampil = mysqli_query($con, $sql_tampil);
-              $no = 1;
-              while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-              ?>
-                <tr>
-                  <td><?php echo $no; ?></td>
-                  <td><?php echo $data['nama']; ?></td>
-                  <td>
-                    <a href="?page=jnsUbah&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
-                    <a href="?page=jnsAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Hapus Jenis ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
-                  </td>
-                </tr>
-              <?php
-                $no++;
-              }
+              <div class="form-group">
+              <label class="col-sm-2 control-label">Nama Anggota</label>
+              <div class="col-sm-5">
+                <input class="form-control" name="txtNama" value="<?php echo $data_cek['nama']; ?>"
+                  />
+              </div>
+              </div>
 
-              ?>
-            </tbody>
-          </table>
+                 <div class="form-group">
+                  <label class="col-sm-2 control-label"> Jenis </label>
+                  <div class="col-sm-8">
+                      <select name="txtJenis" class="form-control" required>
+                      <option value="<?php echo $data_cek['jenis']; ?>"> - Jenis -</option>
+                      <option value="1">Lembaga</option>
+                      <option value="0">Perseorangan</option>
+                      </select>
+                      </div>
+                  </div>
+
+                </div>
+                <input type="hidden" name="txtid" value="<?php echo $$data_cek['id']; ?>" readonly/>
+						<div class="box-footer">
+							<!-- <input type="submit" name="btnSimpan" value="Balas" class="btn btn-success"> -->
+              <button type="submit" class="btn btn-primary" name="Ubah">Balas</button>
+							<a href="?page=jenis" title="Kembali" class="btn btn-warning">Batal</a>
+						</div>
+				</form>
         </div>
       </div>
     </div>

@@ -1,26 +1,22 @@
-<?php 
-     include_once("../koneksi.php");
-    ?>
-<!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
-<div class="form-group">
+<?php
+include_once("koneksi.php");
+?>
+<div id="main">
+	<header class="mb-3">
+		<a href="#" class="burger-btn d-block d-xl-none">
+			<i class="bi bi-justify fs-3"></i>
+		</a>
+	</header>
 
-<br>
-<div class="card mb-3">
-<div class="card-header">
-<br>
-<div class="box box-primary">
-<div class="box-header with-border">
-  <h3 class="box-title">Donasi Perseorangan</h3>
-
-  <div class="box-tools pull-right">
-    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-    </button>
-    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-  </div>
-</div>
-<div class="box-body">
-<table id="example1" class="table table-bordered table-striped">
-<thead>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					Donasi Perseorangan
+				</div>
+				<div class="card-body">
+					<table class="table table-striped" id="table1">
+					<thead>
     <center>
       <tr>
         <th>No</th>
@@ -74,5 +70,15 @@
         
         ?>
     </tbody>
-  </table>
-  
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
+</div>
+
+
+
