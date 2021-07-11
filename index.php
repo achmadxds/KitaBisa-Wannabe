@@ -22,16 +22,16 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+      <a class="navbar-brand" href="#page-top">Donasi-Ku</a>
       <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Program</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Masuk</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li>
         </ul>
       </div>
     </div>
@@ -42,7 +42,8 @@
       <!-- Masthead Avatar Image-->
       <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
       <!-- Masthead Heading-->
-      <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+      <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang</h1>
+      <h1 class="masthead-heading text-uppercase mb-0">Portal Donasi Yayasan Kabupaten Kudus</h1>
       <!-- Icon Divider-->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
@@ -50,7 +51,7 @@
         <div class="divider-custom-line"></div>
       </div>
       <!-- Masthead Subheading-->
-      <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+      <p class="masthead-subheading font-weight-light mb-0">Bantu Saudara Kita untuk meringankan beban mereka</p>
     </div>
   </header>
   <!-- Portfolio Section-->
@@ -127,7 +128,7 @@
   <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
       <!-- About Section Heading-->
-      <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-white">Syarat & Ketentuan</h2>
       <!-- Icon Divider-->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
@@ -448,6 +449,32 @@
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row justify-content-center text-center">
+            <!-- Portfolio Item 1-->
+            <div class="col-md-6 col-lg-7 mb-2 mt-3">
+              <div class="portfolio-item mx-auto">
+                <a href="javascript:void(0)" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="LEMBAGA" />
+                </a>
+                <h4>LEMBAGA</h4>
+                <br>
+                <a href="javascript:void(0)" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="LEMBAGA" />
+                </a>
+                <h4>PERSEORANGAN</h4>
               </div>
             </div>
           </div>
