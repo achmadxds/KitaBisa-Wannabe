@@ -55,7 +55,7 @@ if (isset($_SESSION['ses_username']) == "") {
             <li class="sidebar-title">Menu</li>
 
             <li class="sidebar-item active ">
-              <a href="?page=try" class='sidebar-link'>
+              <a href="?page=beranda" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
               </a>
@@ -330,7 +330,7 @@ if (isset($_SESSION['ses_username']) == "") {
             
           }
         } else {
-          // include "#";
+          include "beranda.php";
         }
         ?>
           </div>
