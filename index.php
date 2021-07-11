@@ -18,8 +18,17 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
+<style>
+  #aaooo {
+  margin: 20px;
+  width: 400px;
+  height: 8px;
+  position: relative;
+}
+</style>
+
 <body id="page-top">
-  <!-- Navigation-->
+  <div id="aaooo">  </div>
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#page-top">Donasi-Ku</a>
@@ -70,8 +79,12 @@
         <!-- Portfolio Item 1-->
         <div class="col-md-6 col-lg-4 mb-5">
           <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" style="background-color: white;">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" style="background-color: gray;">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <p>KAGET</p>
+                <!-- <div id="chartContainer"></div> -->
+              </div>
+              <!-- <i class="fas fa-plus fa-3x"></i> -->
             </div>
             <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
           </div>
@@ -140,38 +153,38 @@
         <div class="col-lg-4 ms-auto">
           <p class="lead">
           <h3><b>Donasi Individu</b></h3>
-              <ul>
-                <li></i> KTP</li>
-                <li></i> NPWP (Bila ada)</li>
-                <li></i> Nomor Rekening Penerima</li>
-                <li></i> Akte Kelahiran / Kartu Keluarga (apabila penerima manfaat adalah anak)</li>
-                <li></i> Rekam Medis (dibutuhkan apabila penggalangan dana kesehatan)</li>
-                <li></i> Nomor Telepon selular aktif</li>
-                <li></i> Foto diri sambil memegang KTP</li>
-              </ul>
+          <ul>
+            <li></i> KTP</li>
+            <li></i> NPWP (Bila ada)</li>
+            <li></i> Nomor Rekening Penerima</li>
+            <li></i> Akte Kelahiran / Kartu Keluarga (apabila penerima manfaat adalah anak)</li>
+            <li></i> Rekam Medis (dibutuhkan apabila penggalangan dana kesehatan)</li>
+            <li></i> Nomor Telepon selular aktif</li>
+            <li></i> Foto diri sambil memegang KTP</li>
+          </ul>
           </p>
         </div>
         <div class="col-lg-4 me-auto">
           <p class="lead">
-            <h3><b>Donasi Lembaga</b></h3>
-              <ul>
-                <li></i> Akta Pendirian Organisasi</li>
-                <li></i> SK Kemenkumham</li>
-                <li></i> NPWP Badan</li>
-                <li></i> KTP Penanggung Jawab</li>
-                <li></i> Nomor Rekening atas nama badan</li>
-                <li></i> Tanda Daftar Yayasan</li>
-                <li></i> Surat Keterangan Domisili</li>
-                <li></i> Struktur Organisasi</li>
-                <li></i> Izin Khusus (Bila Ada)</li>
-                <li></i> Foto diri penanggung jawab dengan memegang KTP</li>
-                <li></i> Surat Kuasa (apabila penanggung jawab bukan ketua Yayasan)</li>
-              </ul>
+          <h3><b>Donasi Lembaga</b></h3>
+          <ul>
+            <li></i> Akta Pendirian Organisasi</li>
+            <li></i> SK Kemenkumham</li>
+            <li></i> NPWP Badan</li>
+            <li></i> KTP Penanggung Jawab</li>
+            <li></i> Nomor Rekening atas nama badan</li>
+            <li></i> Tanda Daftar Yayasan</li>
+            <li></i> Surat Keterangan Domisili</li>
+            <li></i> Struktur Organisasi</li>
+            <li></i> Izin Khusus (Bila Ada)</li>
+            <li></i> Foto diri penanggung jawab dengan memegang KTP</li>
+            <li></i> Surat Kuasa (apabila penanggung jawab bukan ketua Yayasan)</li>
+          </ul>
           </p>
         </div>
       </div>
       <!-- About Section Button-->
-     
+
     </div>
   </section>
   <!-- Portfolio Modals-->
@@ -405,3 +418,11 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+  var ProgressBar = require('progressbar.js')
+  var line = new ProgressBar.Line('#aaooo')
+
+  alert('AAA')
+  alert(line)
+</script>
