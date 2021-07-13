@@ -111,7 +111,7 @@
                                                     }
                                                     ?>
                                                 </h6>
-                                                <a href="?prog=prsg" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                                                <a href="?page=prsg" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>

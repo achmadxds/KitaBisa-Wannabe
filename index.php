@@ -41,6 +41,7 @@
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Program</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Masuk</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.php">Masuk</a></li>
         </ul>
       </div>
     </div>
@@ -390,13 +391,13 @@
             <!-- Portfolio Item 1-->
             <div class="col-md-6 col-lg-7 mb-2 mt-3">
               <div class="portfolio-item mx-auto">
-                <a href="javascript:void(0)" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="LEMBAGA" />
+                <a href="register.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="Donatur" />
                 </a>
-                <h4>LEMBAGA</h4>
+                <h4>Donatur</h4>
                 <br>
-                <a href="javascript:void(0)" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="LEMBAGA" />
+                <a href="perseorangan.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="Perseorangan" />
                 </a>
                 <h4>PERSEORANGAN</h4>
               </div>

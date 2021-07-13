@@ -57,7 +57,7 @@
               } else {
                 ?>
                 <a href="?page=konfirmed&kode=<?php echo $data['id']; ?>"onclick="return confirm('Aktifkan User ini ?')" class='btn btn-success btn-sm'><i class="fa fa-check"></i></a>
-                <a href="?page=usrUbah&kode=<?php echo $data['id']; ?>"class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
+                <a href="?page=usrPrgUbah&kode=<?php echo $data['id']; ?>"class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
                 <?php
               }
               ?>

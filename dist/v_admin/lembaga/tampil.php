@@ -32,13 +32,13 @@ if ($datakode) {
     
     <div class="page-content">
         <section class>
-        <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Jenis</a> </div>
+        <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Lembaga</a> </div>
         <br>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Master Jenis
+                            Lembaga Terdaftar
                         </div>
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
@@ -60,7 +60,7 @@ if ($datakode) {
 
 						<?php
 
-						$sql_tampil = "SELECT * FROM lembaga a, mst_jenis b WHERE a.idJenis=b.id";
+						$sql_tampil = "SELECT a.id, a.kdLembaga, a.nmLembaga, b.nama, a.alamat, a.nmPimpinan, a.no_rek FROM lembaga a, mst_jenis b WHERE a.idJenis=b.id AND b.jenis='1'";
 						$query_tampil = mysqli_query($con, $sql_tampil);
 						$no = 1;
 						while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {

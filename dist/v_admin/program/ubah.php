@@ -1,5 +1,5 @@
 <?php
-include_once("../koneksi.php");
+include_once("koneksi.php");
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM program WHERE id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
@@ -22,7 +22,7 @@ include_once("../koneksi.php");
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          Master Jenis
+         Ubah Data Program
         </div>
         <div class="card-body">
         <form class="form-horizontal" action="?page=progAksi" method="post" enctype="multipart/form-data">

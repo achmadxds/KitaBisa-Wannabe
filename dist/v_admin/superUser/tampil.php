@@ -61,7 +61,17 @@
             <?php
               }
               ?>
-            <td><?php echo $data['level']; ?></td>
+            <td>
+            <?php
+            if($data['level'] == '0'){ 
+            ?> Admin Sistem
+            <?php
+            }elseif ($data['level'] =='1'){
+            ?> Kabid
+            <?php
+            }else {
+            ?>Seksie <?php } ?>
+            </td>
             <td><?php echo $data['status']; ?></td>
           
             <td>

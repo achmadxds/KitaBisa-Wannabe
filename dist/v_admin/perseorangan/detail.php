@@ -1,7 +1,7 @@
 <?php
 include_once("koneksi.php");
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM perseorangan WHERE id='".$_GET['kode']."'";
+        $sql_cek = "SELECT * FROM perseorangan a, user b WHERE b.kdUser=a.kdPerseorangan AND a.id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -29,8 +29,8 @@ include_once("koneksi.php");
 					<div class="tabs">
 											<ul class="nav nav-tabs nav-justified">
 												<li class="active">
-													<a href="#popular10"data-bs-toggle="tab" class="text-center"><i class="fa fa-tags"></i> Detail Surat</a>
-												</li>
+													<a href="#popular10" data-bs-toggle="tab" class="text-center"><i class="fa fa-tags"></i> Detail Surat</a>
+												</li>&nbsp;
 												<li>
 													<a href="#recent10" data-bs-toggle="tab" class="text-center"><i class="fa fa-envelope"></i> File Berkas</a>
 												</li>
@@ -97,6 +97,19 @@ include_once("koneksi.php");
 																			
 															</tbody>
 														</table>
+														<tr>
+														<?php
+														if($data_cek['status'] == 'Aktif'){
+														?>
+														<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"><?php echo $data_cek['status'] ?></button>
+														<?php
+														}else{
+														?>
+														<button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo"><?php echo $data_cek['status'] ?></button>
+														<?php
+														}
+														?>
+														</tr>
 												</section>
 											</div>
 											</form>

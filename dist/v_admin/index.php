@@ -44,7 +44,8 @@ if (isset($_SESSION['ses_username']) == "") {
           <div class="d-flex justify-content-between">
             <div class="logo">
               <span><img src="./assets/images/logo/dash-1.ico" alt=""></span>
-              <a href="index.html"><img src="assets/images/logo/zen.png" alt="Logo" srcset=""></a>
+              <a href="index.php">
+              Donasi-Ku</a>
             </div>
             <div class="toggler">
               <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -72,6 +73,13 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
 
             <li class="sidebar-item ">
+              <a href="?page=donatur" class='sidebar-link'>
+                <i class="bi bi-steam-fill"></i>
+                <span>Kelola Donatur</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item ">
               <a href="?page=progAcc" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
                 <span>Kelola Data Program</span>
@@ -88,7 +96,7 @@ if (isset($_SESSION['ses_username']) == "") {
             <li class="sidebar-item ">
               <a href="?page=prsg" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
-                <span>Data Perseorangan</span>
+                <span> Data Perseorangan</span>
               </a>
             </li>
 
@@ -106,6 +114,11 @@ if (isset($_SESSION['ses_username']) == "") {
                 <li class="submenu-item ">
                   <a href="?page=usrPrg">Perseorangan</a>
                 </li>
+                <li class="submenu-item ">
+              <a href="?page=user">
+                <span>Data User Donatur
+              </a>
+            </li>
               </ul>
               <?php
           }elseif ($data_status=="1"){
@@ -117,14 +130,15 @@ if (isset($_SESSION['ses_username']) == "") {
               </a>
             </li>
 
+            
+            <li class="sidebar-title">Menu Master</li>
+
             <li class="sidebar-item ">
-              <a href="?page=donatur" class='sidebar-link'>
+              <a href="?page=#" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
-                <span>Kelola Donatur</span>
+                <span>Administrasi Donasi</span>
               </a>
             </li>
-
-            <li class="sidebar-title">Menu Master</li>
 
             <li class="sidebar-item ">
               <a href="?page=#" class='sidebar-link'>
@@ -133,19 +147,7 @@ if (isset($_SESSION['ses_username']) == "") {
               </a>
             </li>
 
-            <li class="sidebar-item  has-sub">
-              <a href="#" class='sidebar-link'>
-                <i class="bi bi-stack"></i>
-                <span>Laporan Administrasi</span>
-              </a>
-              <ul class="submenu ">
-                <li class="submenu-item ">
-                  <a href="?page=super">Dana</a>
-                </li>
-                <li class="submenu-item ">
-                  <a href="?page=usrPrg">Data Donatur</a>
-                </li>
-              </ul>
+            
               <?php
           }elseif ($data_status=="2"){
             ?>
@@ -164,27 +166,14 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
 
             <li class="sidebar-item ">
-              <a href="?page=donatur" class='sidebar-link'>
-                <i class="bi bi-steam-fill"></i>
-                <span>Data Donatur</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item ">
               <a href="?page=#" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
                 <span>Kelola Dana</span>
               </a>
             </li>
 
-            <li class="sidebar-item ">
-              <a href="?page=user" class='sidebar-link'>
-                <i class="bi bi-steam-fill"></i>
-                <span>Data User Donatur</span>
-              </a>
-            </li>
 
-            <li class="sidebar-title">Menu Master</li>
+            <li class="sidebar-title">Menu Lain</li>
 
             <li class="sidebar-item  has-sub">
               <a href="#" class='sidebar-link'>
@@ -193,23 +182,31 @@ if (isset($_SESSION['ses_username']) == "") {
               </a>
               <ul class="submenu ">
                 <li class="submenu-item ">
-                  <a href="?page=#">Dana</a>
+                  <a href="?page=#">Rekap Administrasi Donasi</a>
                 </li>
                 <li class="submenu-item ">
-                  <a href="?page=#">Data Donatur</a>
+                  <a href="?page=#">Laporan Donasi</a>
                 </li>
+              </ul>
+            </li>
+
                 <?php
                           }
                           ?>
+
                 <li class="sidebar-item "
                   style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
-                  <a href="../../loginAdmin.php" class='sidebar-link'>
+                  <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i style="color: white;" class="bi bi-box-arrow-right"></i>
                     <span style="color: white;">Logout</span>
                   </a>
                 </li>
+<!-- 
+                <li>
+                  <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+                </li>
               </ul>
-        
+         -->
               </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
@@ -340,6 +337,24 @@ if (isset($_SESSION['ses_username']) == "") {
         ?>
           </div>
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Yakin Keluar?</h5>
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Pilih Log Out Jika ingin keluar.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="../../loginAdmin.php">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
 
