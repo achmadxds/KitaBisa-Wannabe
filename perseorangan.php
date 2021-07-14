@@ -91,7 +91,7 @@
 	<body>
 		<div class="container">
 			<div class="row text-center">
-				<div class="col-md-12">
+				<div class="col-md-12" style="text-align: center;">
 					<br><br>
 					<h4><b>REGISTRASI <BR>
 							OPEN DONASI PERSEORANGAN <br>
@@ -104,7 +104,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- general form elements -->
-						<div class="box box-primary">
+						<div class="card-body" style="text-align: center;">
 
 							<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 								<div class="box-body">
@@ -175,9 +175,10 @@
 											<input type="text" class="form-control" placeholder="Masukkan No Rekening" name="txtNoRek" >
 										</div>
 									</div>
+									<br><br>
 									<center>
 										<a href="index.php" class='btn btn btn-warning btn-sm'>Kembali</a>
-										<button type="submit" class="btn btn-success btn-sm" name="btnDaftarPer">Registrasi</button>
+										<button type="submit"  class="btn btn-primary btn-sm" name="btnDaftarPer">Registrasi</button>
 									</center>
 								</div>
 							</form>

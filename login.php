@@ -32,37 +32,31 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="allpackage/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="allpackage/bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="allpackage/bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="allpackage/dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="allpackage/plugins/iCheck/square/blue.css">
+  
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition login-page">
-  <div class="login-box">
+  <div class="login-box" style="text-align:center">
     <div class="login-logo">
       <img src="images/donasi.jpg" height="100px" width="100px;" />
       <a href="login2.php"><b>Donasi-Ku</b></a>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body">
+    <div class="login-box-body" style="text-align: center;">
       <p class="login-box-msg">Login untuk memulai</p>
 
       <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Username" name="txtusm" required autofocus>
+          <input type="text" class="md-8" placeholder="Username" name="txtusm" required autofocus>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="txtpassword" required>
+          <input type="password" class="md-8" placeholder="Password" name="txtpassword" required>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
@@ -78,28 +72,23 @@
             <button class="btn btn-warning btn-sm">
               <a href="index.php" class="warning">Kembali
             </button>
-          </div>
-          <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat btn-sm" name="btnLogin">Sign In</button>
           </div>
+          
           <!-- /.col -->
         </div>
       </form>
-      <!-- /.social-auth-links -->
-
+      <br><br>
+      <button class="btn btn-warning btn-sm">
       <a href="loginAdmin.php" class="text-center">Login Admin</a>
-
+      </button>
     </div>
     <!-- /.login-box-body -->
   </div>
   <!-- /.login-box -->
 
   <!-- jQuery 3 -->
-  <script src="allpackage/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="allpackage/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- iCheck -->
-  <script src="allpackage/plugins/iCheck/icheck.min.js"></script>
+  
 </body>
 
 </html>
