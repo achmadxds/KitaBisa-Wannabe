@@ -21,74 +21,66 @@
 
   // session_destroy();
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login Donatur| Portal Donasi-Ku</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="css/styles.css">
-  <!-- Font Awesome -->
-  
-
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Donatur Donasi-Ku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/v_admin/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="dist/v_admin/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="dist/v_admin/assets/css/app.css">
+    <link rel="stylesheet" href="dist/v_admin/assets/css/pages/auth.css">
 </head>
 
-<body class="hold-transition login-page">
-  <div class="login-box" style="text-align:center">
-    <div class="login-logo">
-      <img src="images/donasi.jpg" height="100px" width="100px;" />
-      <a href="login2.php"><b>Donasi-Ku</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body" style="text-align: center;">
-      <p class="login-box-msg">Login untuk memulai</p>
+<body>
+    <div id="auth">
 
-      <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group has-feedback">
-          <input type="text" class="md-8" placeholder="Username" name="txtusm" required autofocus>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="md-8" placeholder="Password" name="txtpassword" required>
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="row">
-          <div class="col-xs-5">
-            <div class="checkbox icheck">
-              <label>
+        <div class="row h-100">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <div class="auth-logo">
+                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+                    </div>
+                    <h1 class="auth-title">Log in.</h1>
+                    <p class="auth-subtitle mb-5">Silahkan login dengan akun donatur anda.</p>
 
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-xs-3">
-            <button class="btn btn-warning btn-sm">
-              <a href="index.php" class="warning">Kembali
-            </button>
-            <button type="submit" class="btn btn-primary btn-block btn-flat btn-sm" name="btnLogin">Sign In</button>
-          </div>
-          
-          <!-- /.col -->
-        </div>
-      </form>
-      <br><br>
-      <button class="btn btn-warning btn-sm">
+                    <form action="index.html">
+                        <div class="form-group position-relative has-icon-left mb-4">
+                        <i class="bi bi-person">
+                        <input type="text" class="md-8"  name="txtusm" required autofocus>
+                      </i>
+                          
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                          <i class="bi bi-shield-lock">
+                        <input type="password" class="md-8" name="txtpassword" required>
+                        </i>
+                           
+                        </div>
+                        
+                        <button type="submit"  class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                    </form>
+                    <div class="text-center mt-5 text-lg fs-4">
+                        <p class="text-gray-600">Belum Registrasi <a href="register.php"
+                                class="font-bold">Sign
+                                up</a>.</p>
+                                <button class="btn btn-warning btn-sm">
       <a href="loginAdmin.php" class="text-center">Login Admin</a>
       </button>
-    </div>
-    <!-- /.login-box-body -->
-  </div>
-  <!-- /.login-box -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 d-none d-lg-block">
+                <div id="auth-right">
 
-  <!-- jQuery 3 -->
-  
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 
 </html>
