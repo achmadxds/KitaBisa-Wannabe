@@ -1,24 +1,6 @@
 <?php
   include_once("koneksi.php");
   // session_start();
-
-  if (isset($_POST['btnLogin'])) {
-    $sql_login = "SELECT * FROM donatur WHERE status='Aktif' AND username='" . $_POST['txtusm'] . "' AND password='" . $_POST['txtpassword'] . "'";
-    $query_login = mysqli_query($con, $sql_login);
-    $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
-    $jumlah_login = mysqli_num_rows($query_login);
-
-    if ($jumlah_login >= 1) {
-      session_start();
-      $_SESSION["ses_username"] = $data_login["username"];
-      $_SESSION["ses_nama"] = $data_login["nama"];
-      // $_SESSION["ses_level"]=$data_login["level"];
-
-      echo "<script>alert('Login Berhasil')</script>";
-      echo "<meta http-equiv='refresh' content='0; url=v_user/index.php'>";
-    }
-  }
-
   // session_destroy();
 ?>
 <!DOCTYPE html>
@@ -47,7 +29,7 @@
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Silahkan login dengan akun donatur anda.</p>
 
-                    <form action="index.html">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group position-relative has-icon-left mb-4">
                         <i class="bi bi-person">
                         <input type="text" class="md-8"  name="txtusm" required autofocus>
@@ -61,7 +43,7 @@
                            
                         </div>
                         
-                        <button type="submit"  class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                        <button type="submit"  class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="btnLogin">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Belum Registrasi <a href="register.php"
@@ -84,3 +66,21 @@
 </body>
 
 </html>
+<?php
+  if (isset($_POST['btnLogin'])) {
+    $sql_login = "SELECT * FROM donatur WHERE status='Aktif' AND username='" . $_POST['txtusm'] . "' AND password='" . $_POST['txtpassword'] . "'";
+    $query_login = mysqli_query($con, $sql_login);
+    $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+    $jumlah_login = mysqli_num_rows($query_login);
+
+    if ($jumlah_login >= 1) {
+      session_start();
+      $_SESSION["ses_username"] = $data_login["username"];
+      $_SESSION["ses_nama"] = $data_login["nama"];
+      // $_SESSION["ses_level"]=$data_login["level"];
+
+      echo "<script>alert('Login Berhasil')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
+    }
+  }
+  ?>
