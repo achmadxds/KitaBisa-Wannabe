@@ -1,5 +1,5 @@
 <?php
-    include_once("../koneksi.php");
+    include_once("koneksi.php");
     session_start();
     if (isset($_SESSION['ses_username'])=="") {
         echo"<meta http-equiv='refresh' content='0;url=../../login.php'>";
@@ -78,7 +78,7 @@
               </a>
             </li>
 
-              </ul>
+              
                 <li class="sidebar-item "
                   style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
                   <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">

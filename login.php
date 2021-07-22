@@ -1,7 +1,7 @@
 <?php
   include_once("koneksi.php");
-  // session_start();
-  // session_destroy();
+  session_start();
+  session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@
                            
                         </div>
                         
-                        <button type="submit"  class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="btnLogin">Log in</button>
+                        <button type="submit" name="btnLogin" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Belum Registrasi <a href="register.php"
