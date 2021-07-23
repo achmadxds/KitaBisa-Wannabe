@@ -77,6 +77,7 @@
       session_start();
       $_SESSION["ses_username"] = $data_login["username"];
       $_SESSION["ses_nama"] = $data_login["nama"];
+      $_SESSION["ses_id"] = $data_login["id"];
       // $_SESSION["ses_level"]=$data_login["level"];
 
       echo "<script>alert('Login Berhasil')</script>";

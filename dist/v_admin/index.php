@@ -26,14 +26,14 @@ if (isset($_SESSION['ses_username']) == "") {
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-  <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+  <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
 
-  <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-  <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -94,24 +94,24 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
 
             <li class="sidebar-item ">
-              <a href="?page=prsg" class='sidebar-link'>
+                <a href="?page=prsg" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
                 <span> Data Perseorangan</span>
               </a>
             </li>
 
-            <li class="sidebar-title">Menu Master</li>
+                  <li class="sidebar-title">Menu Master</li>
 
             <li class="sidebar-item  has-sub">
               <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
-                <span>Kelola Data Pengguna</span>
+                      <span>Kelola Data Pengguna</span>
               </a>
-              <ul class="submenu ">
+                  <ul class="submenu ">
                 <li class="submenu-item ">
                   <a href="?page=super">Super User</a>
-                </li>
-                <li class="submenu-item ">
+                      </li>
+                        <li class="submenu-item ">
                   <a href="?page=usrPrg">Perseorangan</a>
                 </li>
                 <li class="submenu-item ">
@@ -355,16 +355,16 @@ if (isset($_SESSION['ses_username']) == "") {
       </div>
     </div>
 
-        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/vendors/apexcharts/apexcharts.js"></script>
-        <script src="assets/js/pages/dashboard.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
+        <script src="../assets/js/pages/dashboard.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#table1');

@@ -6,6 +6,7 @@
     }else{
         $data_username = $_SESSION["ses_username"];
         $data_nama=$_SESSION["ses_nama"];
+        $idPengguna=$_SESSION["ses_id"];
         // $data_status = $_SESSION["ses_level"];
     }
 
@@ -22,14 +23,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-  <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+  <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
 
-  <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-  <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -65,7 +66,7 @@
               </a>
             </li>
             <li class="sidebar-item ">
-              <a href="?page=jenis" class='sidebar-link'>
+              <a href="?page=prog" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
                 <span>Donasi Program</span>
               </a>
@@ -112,7 +113,7 @@
               break;
             
             case 'prog' :
-              include "program/tampil.php";
+              include "prog/view.php";
               break;
             case 'progDet' :
               include "program/detail.php";
@@ -147,16 +148,16 @@
       </div>
     </div>
 
-        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/vendors/apexcharts/apexcharts.js"></script>
-        <script src="assets/js/pages/dashboard.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
+        <script src="../assets/js/pages/dashboard.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#table1');
