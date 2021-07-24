@@ -1,6 +1,7 @@
 <?php
-include_once("koneksi.php");
+include_once("../../koneksi.php");
 ?>
+
 <div id="main">
 	<header class="mb-3">
 		<a href="#" class="burger-btn d-block d-xl-none">
@@ -11,23 +12,21 @@ include_once("koneksi.php");
 
 	<div class="page-content">
 		<section class>
-			<a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Jenis</a>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
-				<div class="card-header">
-					Master Jenis
-				</div>
 				<div class="card-body">
-					<table class="table table-striped" id="table1">
+				<a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Jenis</a>
+				<hr>
+					<table class="table table-striped" id="tables1">
 						<thead>
 							<center>
 								<tr>
 									<th>No</th>
 									<th>Jenis</th>
-									<th></th>
+									<th>Action</th>
 								</tr>
 							</center>
 						</thead>
@@ -62,6 +61,7 @@ include_once("koneksi.php");
 
 </section>
 </div>
+
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -94,3 +94,11 @@ include_once("koneksi.php");
 			</div>
 			</form>
 		</div>
+	</div>
+</div>
+
+<script>
+	$('#tables1').DataTable({
+		scrollY: 350,
+	});
+</script>
