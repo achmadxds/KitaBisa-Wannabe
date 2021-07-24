@@ -3,7 +3,7 @@
 
  	if(isset ($_POST['btnUBAH'])){
     //mulai proses ubah
-    $sql_ubah = "UPDATE donatur SET
+    $sql_ubah = "UPDATE user SET
         username='".$_POST['txtNm']."',
         password='".$_POST['txtIdLembaga']."'
         WHERE id='".$_POST['txtId']."'";

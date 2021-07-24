@@ -24,7 +24,6 @@
           <center>
       <tr>
         <th>No</th>
-        <th>Kode</th>
         <th>Nama Perseorangan</th>
         <th>Username</th>
         <th>Status</th>
@@ -36,14 +35,13 @@
     
         <?php
             
-            $sql_tampil = "SELECT a.id, a.username, a.status, b.nama, b.kdPerseorangan FROM user a, perseorangan b WHERE a.kdUser=b.kdPerseorangan";
+            $sql_tampil = "SELECT a.id, a.username, a.status, b.nama, b.kdPerseorangan FROM user a, perseorangan b WHERE a.idDaftar=b.kdPerseorangan and level ='perseorangan'";
             $query_tampil = mysqli_query($con, $sql_tampil);
             $no=1;
             while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
         ?>
         <tr>       
             <td><?php echo $no; ?></td>
-            <td><?php echo $data['kdPerseorangan']; ?></td>
             <td><?php echo $data['nama']; ?></td>
             <td><?php echo $data['username']; ?></td>
             <td><?php echo $data['status']; ?></td>

@@ -40,7 +40,7 @@
     
         <?php
             
-            $sql_tampil = "SELECT a.id, a.nama, a.username, a.idLembaga, b.nmLembaga, a.level, a.status FROM super_user a, lembaga b WHERE a.idLembaga=b.id OR a.idLembaga ='0'";
+            $sql_tampil = "SELECT a.id, a.nama, a.username, a.idDaftar, b.nmLembaga, a.level, a.status FROM user a, lembaga b WHERE a.idDaftar=b.id AND (a.level != 'donatur' AND a.level != 'perseorangan') OR a.idDaftar ='0'";
             $query_tampil = mysqli_query($con, $sql_tampil);
             $no=1;
             while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
@@ -51,7 +51,7 @@
             <td><?php echo $data['username']; ?></td>
             <td>
             <?php
-               if($data['idLembaga'] == '0'){
+               if($data['idDaftar'] == '0'){
               ?> Administrator Sistem
               <?php
               } else {
@@ -61,17 +61,7 @@
             <?php
               }
               ?>
-            <td>
-            <?php
-            if($data['level'] == '0'){ 
-            ?> Admin Sistem
-            <?php
-            }elseif ($data['level'] =='1'){
-            ?> Kabid
-            <?php
-            }else {
-            ?>Seksie <?php } ?>
-            </td>
+            <td><?php echo $data['level'];?>   </td>
             <td><?php echo $data['status']; ?></td>
           
             <td>
@@ -134,7 +124,7 @@
 
                 <div class="form-group">
 										<label>Lembaga</label>
-										<select name="txtIdLembaga" class="form-control">
+										<select name="txtIdDaftar" class="form-control">
 											<option value="">- Lembaga -</option>
 											<?php
 											$p = mysqli_query($con, "select id , nmLembaga from lembaga") or die(mysqli_error($con));
@@ -148,10 +138,10 @@
                   <label>Level</label>
                   <select name="txtLevel" class="form-control">
                     <option value="">- Level User -</option>
-                    <option value="0">Super Admin</option>
-                    <option value="1">Ketua Sie.</option>
-                    <option value="2">Sekretaris Sie.</option>
-                    <option value="3">Ketua Lembaga</option>
+                    <option value="admin">Super Admin</option>
+                    <option value="L-kasie">Ketua Sie.</option>
+                    <option value="L-seksie">Sekretaris Sie.</option>
+                    <option value="K-lembaga">Ketua Lembaga</option>
                   </select>
                 </div>
 
