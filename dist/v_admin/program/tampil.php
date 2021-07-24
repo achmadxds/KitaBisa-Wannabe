@@ -53,7 +53,7 @@ if ($datakode) {
                       $query_tampil = mysqli_query($con, $sql_tampil);
                       $no = 1;
                       while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-                        $photoDir = 'sosial/../../files/' . $data['gambar'];
+                        $photoDir = 'kitabisa-wannabe/images/files/' . $data['gambar'];
                         ?>
                           <div class="col-sm-5">
                             <div  style="width: 44rem;">

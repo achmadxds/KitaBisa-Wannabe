@@ -39,9 +39,6 @@
           echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
           break;
 
-        case 'lembaga':
-
-          break;
 
         case 'donatur':
           echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
