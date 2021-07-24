@@ -1,14 +1,14 @@
 <?php
- include_once("../koneksi.php");
+ include_once("koneksi.php");
 
  	if (isset($_POST['btnSimpan'])) {
-		$sql_insert = "INSERT INTO super_user (nama, username, password, idLembaga, level, status) VALUES (
-					'".$_POST['txtNm']."',
-					'".$_POST['txtUsername']."',
-					'".$_POST['txtPassword']."',
-					'".$_POST['txtIdLembaga']."',
-          '".$_POST['txtLevel']."',
-          '".$_POST['txtStatus']."')";
+		$sql_insert = "INSERT INTO user (nama, username, password, level, idDaftar, status) VALUES (
+            '".$_POST['txtNm']."',
+            '".$_POST['txtUsername']."',
+            '".$_POST['txtPassword']."',
+            '".$_POST['txtLevel']."',
+            '".$_POST['txtIdDaftar']."',
+            '".$_POST['txtStatus']."')";
 		$query_insert = mysqli_query($con,$sql_insert) or die (mysqli_connect_error());
 		
 		if($query_insert) {

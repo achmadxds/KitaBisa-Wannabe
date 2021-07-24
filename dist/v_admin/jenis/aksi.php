@@ -1,5 +1,5 @@
 <?php
-
+include_once("koneksi.php");
     if (isset($_POST['btnSimpan'])) {
       $sql_insert = "INSERT INTO mst_jenis (nama, jenis) VALUES (
             '".$_POST['txtJenis']."',
