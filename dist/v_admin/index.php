@@ -128,7 +128,7 @@
                   case 'L-kasie':
                     ?>
                       <li class="sidebar-item ">
-                      <a href="?page=prog" class='sidebar-link'>
+                      <a href="?page=progAcc" class='sidebar-link'>
                         <i class="bi bi-steam-fill"></i>
                         <span>Kelola Data Program</span>
                       </a>
