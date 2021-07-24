@@ -19,7 +19,7 @@
       $_SESSION["ses_username"] = $data_login["username"];
       $_SESSION["ses_nama"] = $data_login["nama"];
       $_SESSION["ses_level"] = $data_login["level"];
-      $_SESSION["ses_id"] = $data_login['id'];
+      $_SESSION["ses_id"] = $data_login['idDaftar'];
 
       echo "<script>alert('Login Berhasil')</script>";
       switch ($data_login['level']) {
@@ -32,11 +32,11 @@
           break;
 
         case 'L-kasie':
-
+          echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
           break;
 
         case 'L-seksie':
-
+          echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
           break;
 
         case 'lembaga':

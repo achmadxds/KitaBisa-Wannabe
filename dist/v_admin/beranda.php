@@ -10,6 +10,9 @@
 
             <div class="page-heading">
                 <h3>Beranda</h3>
+                <?php
+                echo $data_id;
+                ?>
             </div>
             <div class="page-content">
                 <section class="row">
@@ -104,7 +107,7 @@
                                                 <h6 class="text-muted font-semibold">Perseorangan</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                 <?php
-                                                    $sql_hitung = "SELECT COUNT(kdPerseorangan) from perseorangan a, user b where b.kdUser=a.kdPerseorangan AND b.status ='Aktif'";
+                                                    $sql_hitung = "SELECT COUNT(kdPerseorangan) from perseorangan a, user b where b.id=a.id AND b.status ='Aktif'";
                                                     $q_hit= mysqli_query($con, $sql_hitung);
                                                     while($row = mysqli_fetch_array($q_hit)) {
                                                         echo  $row[0]."";

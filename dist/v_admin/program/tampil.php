@@ -49,7 +49,7 @@ if ($datakode) {
                         
                         
                         <?php
-                      $sql_tampil = "SELECT a.id, a.kdProgram, a.gambar, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status, b.no_rek FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.idLembaga='$data_pengguna'";
+                      $sql_tampil = "SELECT a.id, a.kdProgram, a.gambar, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status, b.no_rek FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.idLembaga='$data_id'";
                       $query_tampil = mysqli_query($con, $sql_tampil);
                       $no = 1;
                       while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -107,7 +107,7 @@ if ($datakode) {
                 <select name="txtIdLembaga" class="form-control">
                   <option value="">- Lembaga -</option>
                   <?php
-                  $p = mysqli_query($con, "select id , nmLembaga from lembaga where id='$data_pengguna'") or die(mysqli_error($con));
+                  $p = mysqli_query($con, "select id , nmLembaga from lembaga where id='$data_id'") or die(mysqli_error($con));
                   while ($datap = mysqli_fetch_array($p)) {
                     echo '<option value="' . $datap['id'] . '">' . $datap['nmLembaga'] . '</option>';
                   } ?>
