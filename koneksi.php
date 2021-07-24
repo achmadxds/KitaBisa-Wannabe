@@ -36,7 +36,7 @@
           break;
 
         case 'donatur':
-
+          echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
           break;
       }
     } else {

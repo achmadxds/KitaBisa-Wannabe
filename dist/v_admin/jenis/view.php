@@ -13,7 +13,6 @@ include_once("../../koneksi.php");
 	<div class="page-content">
 		<section class>
 	</div>
-	<br>
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
