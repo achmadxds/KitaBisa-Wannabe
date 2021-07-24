@@ -124,17 +124,17 @@
                     </li>
                   <?php
                   break;
-                
-                case 'perseorangan':
-                  ?>
-                    <li class="sidebar-item ">
+
+                  case 'L-kasie':
+                    ?>
+                      <li class="sidebar-item ">
                       <a href="?page=prog" class='sidebar-link'>
                         <i class="bi bi-steam-fill"></i>
                         <span>Kelola Data Program</span>
                       </a>
                     </li>
 
-
+                    
                     <li class="sidebar-title">Menu Master</li>
 
                     <li class="sidebar-item ">
@@ -143,61 +143,42 @@
                         <span>Administrasi Donasi</span>
                       </a>
                     </li>
+                    <?php
+                    break;
+  
+                
 
-                    <li class="sidebar-item ">
-                      <a href="?page=#" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Laporan Donasi</span>
-                      </a>
-                    </li>
-                  <?php
-                  break;
-
-                case 'lembaga':
+                case 'L-seksie':
                   ?>
-                    <li class="sidebar-item ">
-                      <a href="?page=prog" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Data Program</span>
-                      </a>
-                    </li>
+                  <li class="sidebar-item ">
+              <a href="?page=prog" class='sidebar-link'>
+                <i class="bi bi-steam-fill"></i>
+                <span>Kelola Data Program</span>
+              </a>
+            </li>
 
-                    <li class="sidebar-item ">
-                      <a href="?page=progAcc" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Data Program</span>
-                      </a>
-                    </li>
+            <li class="sidebar-item ">
+              <a href="?page=progAcc" class='sidebar-link'>
+                <i class="bi bi-steam-fill"></i>
+                <span>Kelola Data Program</span>
+              </a>
+            </li>
 
-                    <li class="sidebar-item ">
-                      <a href="?page=#" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Dana</span>
-                      </a>
-                    </li>
+            <li class="sidebar-item ">
+              <a href="?page=#" class='sidebar-link'>
+                <i class="bi bi-steam-fill"></i>
+                <span>Kelola Dana</span>
+              </a>
+            </li>
 
 
-                    <li class="sidebar-title">Menu Lain</li>
+            <li class="sidebar-title">Menu Lain</li>
 
-                    <li class="sidebar-item  has-sub">
-                      <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Laporan Administrasi</span>
-                      </a>
-                      <ul class="submenu ">
-                        <li class="submenu-item ">
-                          <a href="?page=#">Rekap Administrasi Donasi</a>
-                        </li>
-                        <li class="submenu-item ">
-                          <a href="?page=#">Laporan Donasi</a>
-                        </li>
-                      </ul>
-                    </li>
-                  <?php
-                  break;
-
-                case 'donatur':
-
+            <li class="sidebar-item  has-sub">
+              <a href="#" class='sidebar-link'>
+                <i class="bi bi-stack"></i>
+                <span>Laporan Administrasi</span>
+                <?php
                   break;
               }
             ?>

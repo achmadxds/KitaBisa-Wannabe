@@ -31,6 +31,14 @@
 
           break;
 
+        case 'L-kasie':
+
+          break;
+
+        case 'L-seksie':
+
+          break;
+
         case 'lembaga':
 
           break;
