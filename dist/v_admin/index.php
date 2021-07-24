@@ -158,14 +158,14 @@
             </li>
 
             <li class="sidebar-item ">
-              <a href="?page=progAcc" class='sidebar-link'>
+              <a href="?page=transaksi" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
-                <span>Kelola Data Program</span>
+                <span>Transaksi Donasi</span>
               </a>
             </li>
-
+           
             <li class="sidebar-item ">
-              <a href="?page=#" class='sidebar-link'>
+              <a href="?page=dana" class='sidebar-link'>
                 <i class="bi bi-steam-fill"></i>
                 <span>Kelola Dana</span>
               </a>
@@ -178,16 +178,19 @@
               <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack"></i>
                 <span>Laporan Administrasi</span>
+                </li>
                 <?php
                   break;
               }
             ?>
+            
             <li class="sidebar-item " style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
               <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i style="color: white;" class="bi bi-box-arrow-right"></i>
                 <span style="color: white;">Logout</span>
               </a>
             </li>
+          </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
       </div>
@@ -268,6 +271,14 @@
               break;
             case 'konfirmed':
               include "perseorangan/acc.php";
+              break;
+
+            case 'transaksi' :
+              include "transaksi/view.php";
+              break;
+
+            case 'dana' :
+              include "dana/view.php";
               break;
 
             case 'jenis':

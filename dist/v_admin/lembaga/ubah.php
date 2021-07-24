@@ -27,7 +27,7 @@ include_once("koneksi.php");
           Master Jenis
         </div>
         <div class="card-body">
-        <form class="form-horizontal" action="?page=progAksi" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="?page=lembAksi" method="post" enctype="multipart/form-data">
     <div class="box-body">
 
         <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
@@ -82,6 +82,14 @@ include_once("koneksi.php");
             <div class="col-sm-8">
             <input type="text" class="form-control" name="txtNoHp" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['no_hp']; ?>"  required="">
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">No Rekening </label>
+            <div class="col-sm-8">
+            <input type="text" class="form-control" name="txtnoRek" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            value="<?php echo $data_cek['no_rek']; ?>"  required="">
             </div>
         </div>
 

@@ -1,5 +1,5 @@
 <?php
-     include_once("../koneksi.php");
+     include_once("koneksi.php");
     if(isset($_GET['kode'])){
     $sql_arsip = "UPDATE program SET status = 'P' where id = '".$_GET['kode']."'";
         $query_arsip = mysqli_query($con, $sql_arsip);

@@ -21,14 +21,6 @@ if ($datakode) {
 }
 ?>
 
-<style>
-  .card {
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
-    padding: 20px;
-    margin-bottom: 10px;
-  }
-</style>
 
 
 <div id="main">
@@ -41,35 +33,76 @@ if ($datakode) {
     
     <div class="page-content">
         <section class>
-        <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Tambah Data Program</a> </div>
+        <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Ajukan Program</a>
+        <br>
         <br>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        
-                        
-                        <?php
-                      $sql_tampil = "SELECT a.id, a.kdProgram, a.gambar, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status, b.no_rek FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.idLembaga='$data_id'";
-                      $query_tampil = mysqli_query($con, $sql_tampil);
-                      $no = 1;
-                      while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-                        $photoDir = 'kitabisa-wannabe/images/files/' . $data['gambar'];
+                        <div class="card-header">
+                            Program Terdaftar
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                            <thead>
+              <center>
+                <tr>
+                  <th>No</th>
+                  <th>Kode Program</th>
+                  <th>Nama Program</th>
+                  <th>Lembaga</th>
+                  <th>Donasi</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </center>
+            </thead>
+            <tbody>
+
+              <?php
+
+                $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P')";
+                $query_tampil = mysqli_query($con, $sql_tampil);
+                $no = 1;
+                while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+                ?>
+                  <tr>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $data['kdProgram']; ?> <br>
+                    
+                    </td>
+                    <td><?php echo $data['nmProgram']; ?></td>
+                    <td><?php echo $data['nmLembaga']; ?></td>
+                    <td><?php echo $data['donasi']; ?></td>
+                    <td>
+                    <?php
+                      if ($data['status']== 'P'){
+                      ?>
+                      Publish
+                      <?php 
+                      }elseif($data['status']=='A') {
+                      ?>
+                      Arsip
+                      <?php
+                      }else{
                         ?>
-                          <div class="col-sm-5">
-                            <div  style="width: 44rem;">
-                              <img src="<?php echo $photoDir ?>" width="390" height="280">
-                              <div class="card-body">
-                                <h5 class="card-title"><b><?php echo $data['nmProgram']; ?></b></h5>
-                                <p class=""><?php echo $data['keterangan']; ?></p>
-                                <a href="?page=progUbah&kode=<?php echo $data['id']; ?>" class='btn btn-warning'>Edit<i class="fa fa-edit"></i></a>
-                                <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger'>Delete<i class="fa fa-trash"></i></i></a>
-                              
-                            </div>
-                          </div>
-                        <?php
-            }
-            $no++;
-          ?>
+                      Ditangguhkan
+                      </td>
+                      <?php 
+                      }?></td>
+
+                    <td>
+                        <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                    </td>
+                  </tr>
+                <?php
+                  $no++;
+                }
+
+              ?>
+            </tbody>
+          </table>
                         </div>
                     </div>
                 </div>

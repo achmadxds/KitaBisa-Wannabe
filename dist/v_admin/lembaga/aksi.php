@@ -8,11 +8,11 @@ if (isset($_POST['btnSimpan'])) {
 					'" . $_POST['txtNmLembaga'] . "',
 					'" . $_POST['txtJenis'] . "',
 					'" . $_POST['txtAlamat'] . "',
-                    '" . $_POST['txtNmPimpinan'] . "',
-                    '".uploadFiles()."',
-                    '" . $_POST['txtNoHp'] . "',
-                    '" . $_POST['txtRekening'] . "',
-                    '$date')";
+					'" . $_POST['txtNmPimpinan'] . "',
+					'".uploadFiles()."',
+					'" . $_POST['txtNoHp'] . "',
+					'" . $_POST['txtRekening'] . "',
+					'$date')";
 	$query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
 
 	if ($query_insert) {
@@ -25,15 +25,12 @@ if (isset($_POST['btnSimpan'])) {
 } elseif (isset($_POST['btnUBAH'])) {
 	//mulai proses ubah
 	$sql_ubah = "UPDATE lembaga SET
-        kdLembaga='" . $_POST['txtKdProgram'] . "',
-        nmLembaga='" . $_POST['txtNmProgram'] . "',
-        jenis='" . $_POST['txtIdLembaga'] . "',
-        alamat='" . $_POST['txtKeterangan'] . "',
-        nmPimpinan='" . $_POST['txtDonasi'] . "',
-        berkas='" . $_POST['txtDonasi'] . "',
-        no_hp='" . $_POST['txtDonasi'] . "',
-        no_rek='" . $_POST['txtRekening'] . "',
-        tgl='" . $_POST['txtDonasi'] . "'
+        nmLembaga='" . $_POST['txtNmLembaga'] . "',
+        idJenis='" . $_POST['txtJenis'] . "',
+        alamat='" . $_POST['txtAlamat'] . "',
+        nmPimpinan='" . $_POST['txtNmPimpinan'] . "',
+        no_hp='" . $_POST['txtNoHp'] . "',
+        no_rek='" . $_POST['txtnoRek'] . "'
         WHERE id='" . $_POST['txtId'] . "'";
 	$query_ubah = mysqli_query($con, $sql_ubah);
 
