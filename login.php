@@ -36,7 +36,7 @@
 
                 <div class="card-body">
                   <center>
-                    <font face="Tahoma"><b>SELAMAT DATANG DI ABSENSI UMK</b></font><br>
+                    <font face="Tahoma"><b>SELAMAT DATANG DI PORTAL DONASI-KU</b></font><br>
                     <br><img src="dist/assets/images/logo/logo-umk.png" height="115px" width="340px" align="center">
 										<br><br>
                     <form action="" method="post">
