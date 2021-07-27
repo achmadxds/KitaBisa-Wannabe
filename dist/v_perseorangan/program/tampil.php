@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once("../koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
 $carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
@@ -66,7 +66,7 @@ if ($datakode) {
 
               <?php
 
-                $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P')";
+                $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P') AND a.idLembaga='$data_status'";
                 $query_tampil = mysqli_query($con, $sql_tampil);
                 $no = 1;
                 while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {

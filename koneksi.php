@@ -28,7 +28,7 @@
           break;
         
         case 'perseorangan':
-
+          echo "<meta http-equiv='refresh' content='0; url=dist/v_perseorangan/index.php'>";
           break;
 
         case 'L-kasie':

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jul 2021 pada 11.41
+-- Waktu pembuatan: 27 Jul 2021 pada 09.54
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -52,6 +52,13 @@ CREATE TABLE `donatur` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `donatur`
+--
+
+INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
+(1, 9999, 'Riani Widiastuti', 'P', 'Ds. Golantepus RT 01 RW 04', '08980695197', 111678, 'Aktif', '2021-07-24');
+
 -- --------------------------------------------------------
 
 --
@@ -76,7 +83,7 @@ CREATE TABLE `lembaga` (
 --
 
 INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `idJenis`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
-(1, 'LMB001', 'Yayasan Pelita Hati', 6, 'Ds. Mlati Kidul RT 01 RW 04 Kec. Kota Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '011897657', '2021-07-24');
+(1, 'LMB001', 'Yayasan Pelita Hati', 6, 'Ds. Mlati Norowito RT 01 RW 04 Kec. Kota Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '011897657', '2021-07-24');
 
 -- --------------------------------------------------------
 
@@ -135,6 +142,8 @@ CREATE TABLE `program` (
   `keterangan` varchar(200) DEFAULT NULL,
   `donasi` varchar(50) NOT NULL,
   `status` enum('T','P','A') DEFAULT NULL,
+  `tgl_masuk` date DEFAULT NULL,
+  `tgl_akhir` date DEFAULT NULL,
   `idLevel` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -142,11 +151,12 @@ CREATE TABLE `program` (
 -- Dumping data untuk tabel `program`
 --
 
-INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `gambar`, `keterangan`, `donasi`, `status`, `idLevel`) VALUES
-(8, 'PLDN01', 'Peduli Sosial', 24, 'Photo_PLDN01.jpg', 'ok', '10000000', 'A', 1),
-(10, 'PLDN09', 'KAKA MERAPI', 18, 'Photo_PLDN09.png', 'Duh', '2000000', 'P', 1),
-(11, 'PLDN11', 'MBUT TANCA', 18, 'Photo_PLDN11.jpg', 'HAH', '3000000', 'T', 1),
-(12, 'PLDN12', 'Donasi Oksigen & Masker Covid-19', 1, 'Photo_PLDN12.jpg', 'Donasi akan disalurkan kepada mereka yang membutuhkan', '500000', 'T', 1);
+INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
+(8, 'PLDN01', 'Peduli Sosial', 24, 'Photo_PLDN01.jpg', 'ok', '10000000', 'A', NULL, NULL, 1),
+(10, 'PLDN09', 'KAKA MERAPI', 18, 'Photo_PLDN09.png', 'Duh', '2000000', 'P', NULL, NULL, 1),
+(11, 'PLDN11', 'MBUT TANCA', 18, 'Photo_PLDN11.jpg', 'HAH', '3000000', 'T', NULL, NULL, 1),
+(12, 'PLDN12', 'Donasi Oksigen & Masker Covid-19', 1, 'Photo_PLDN12.jpg', 'Donasi akan disalurkan kepada mereka yang membutuhkan', '500000', 'P', NULL, NULL, 1),
+(13, 'PLDN13', 'Bagi Bagi Sembako', 1, 'Photo_PLDN13.jpg', 'Lokasi Sekitar Kudus', '600000', 'T', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -161,6 +171,13 @@ CREATE TABLE `transaksi` (
   `nominal` bigint(20) NOT NULL,
   `status` enum('K','T') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `idProgram`, `idDonatur`, `nominal`, `status`) VALUES
+(1, 13, 1, 200000, 'K');
 
 -- --------------------------------------------------------
 
@@ -186,7 +203,8 @@ INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `
 (1, 'Administator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
 (2, 'Riani', 'riani', 'riani', 'admin', 0, 'Aktif'),
 (3, 'Febrian', 'febrian', 'febrian', 'L-kasie', 1, 'Aktif'),
-(4, 'Febrian', 'rian', 'rian', 'L-seksie', 1, 'Aktif');
+(4, 'Febrian', 'rian', 'rian', 'L-seksie', 1, 'Aktif'),
+(5, 'Yudha Aris', 'yudha', 'yudha', 'perseorangan', 999, 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -254,7 +272,7 @@ ALTER TABLE `dana`
 -- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `lembaga`
@@ -278,19 +296,19 @@ ALTER TABLE `perseorangan`
 -- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

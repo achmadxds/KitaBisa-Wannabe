@@ -9,8 +9,7 @@ include_once("koneksi.php");
             <i class="bi bi-justify fs-3"></i>
         </a>
     </header>
-
-    
+        
     <div class="page-content">
         <section class>
         <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Rekap Donasi</a>
