@@ -1,7 +1,7 @@
 <?php
-		include_once("koneksi.php");
+		include_once("../koneksi.php");
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.gambar, a.keterangan, a.idLembaga,  a.donasi, a.status, b.no_rek, a.idLevel FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.id='".$_GET['kode']."'";
+        $sql_cek = "SELECT a.id, a.kdProgram, b.kdPerseorangan, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$data_id' AND a.idLevel='2') AND a.id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
 
@@ -69,7 +69,7 @@
 														<?php
 											}
 											?>
-														<?php echo $data_cek['idLembaga']; ?>
+														<?php echo $data_cek['kdPerseorangan']; ?>
 													</td>
 												</tr>
 

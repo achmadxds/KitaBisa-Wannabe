@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once("../koneksi.php");
 
 function uploadfiles()
 {
@@ -25,16 +25,17 @@ function uploadfiles()
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk) VALUES (
+	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir) VALUES (
 					'" . $_POST['txtKdProgram'] . "',
 					'" . $_POST['txtNmProgram'] . "',
 					'" . $_POST['txtIdLembaga'] . "',
 					'" . $_POST['txtketerangan'] . "',
           '" . $_POST['txtDonasi'] . "',
 					'T',
-          '1',
+          '2',
 					'" . uploadfiles() . "',
-					'" . $date . "')";
+					'" . $date . "',
+					'" . $_POST['txtAkhir'] . "')";
 	$query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
 
 	if ($query_insert) {

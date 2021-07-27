@@ -36,8 +36,7 @@
 
                 <div class="card-body">
                   <center>
-                    <font face="Tahoma"><b>SELAMAT DATANG DI PORTAL DONASI-KU</b></font><br>
-                    <br><img src="dist/assets/images/logo/logo-umk.png" height="115px" width="340px" align="center">
+                  <font face="Trebuchet MS"><b>SELAMAT DATANG DI<br> PORTAL DONASI-KU</b></font><br> 
 										<br><br>
                     <form action="" method="post">
                       <div class="form-group col-sm-7">
@@ -46,6 +45,7 @@
                       <div class="form-group col-sm-7">
                         <input type="password" class="form-control" name="txtpassword" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
                       </div>
+                      <br>
                       <div class="form-group col-sm-5">
                         <button class="form-control btn btn-primary" name="btnLogin">Login</button>
                       </div>

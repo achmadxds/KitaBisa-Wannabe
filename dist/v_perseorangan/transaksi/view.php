@@ -40,7 +40,7 @@ include_once("../koneksi.php");
            
               <?php
 
-                $sql_tampil = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_status'";
+                $sql_tampil = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idLevel='2'";
                 $query_tampil = mysqli_query($con, $sql_tampil);
                 $no = 1;
                 while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -70,11 +70,11 @@ include_once("../koneksi.php");
                     <?php
                       if ($data['status']== 'T'){
                       ?>
-                      <a href="?page=danaKonfirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                      <a href="?page=confirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
                       <?php
                       }else{
                         ?>
-                      <a href="#" class='btn btn-warning btn-sm'>Success</a>
+                      <a href="#" class='btn btn-success btn-sm'>Success</a>
                       </td>
                       <?php 
                       }?>

@@ -117,37 +117,10 @@
       <div class="content-wrapper">
         <div class="container-fluid">
         <?php
-          if(isset($data_status)) {
-            switch ($data_status) {
-              case 'donatur':
-                switch ($_GET['page']) {
-                  
-                  case 'beranda':
-                    include "beranda.php";
-                    break;
-
-                    case 'prog':
-                      include "program/tampil.php";
-                      break;
-                    case 'progUbah':
-                      include "program/ubah.php";
-                      break;
-                    case 'progAksi':
-                      include "program/aksi.php";
-                      break;
-                    case 'progDet':
-                      include "program/detail.php";
-                      break;        
-                      
-                    case 'transaksi' :
-                      include "transaksi/view.php";
-                      break;
-    
-                }
-                break;
-                case 'perseorangan':
-                  switch ($_GET['page']) {
-                  
+              if (isset($_GET['page'])) {
+                $hal = $_GET['page'];
+      
+                switch ($hal) {
                     case 'beranda':
                       include "beranda.php";
                       break;
@@ -168,47 +141,20 @@
                         case 'transaksi' :
                           include "transaksi/view.php";
                           break;
+                          
+                        case 'confirm' :
+                          include "transaksi/confirm.php";
+                          break;
 
                         case 'dana' :
                           include "dana/view.php";
                           break;
       
-                  }
-
-                  break;
-              
-              default:
-                # code...
-                break;
-            }
-          } else {
-            include "beranda.php";
-          }
-
-          // if (isset($_GET['page'])) {
-          //   $hal = $_GET['page'];
-            
-          //   switch ($hal) {
-          //     case 'beranda':
-          //       include "beranda.php";
-          //       break;
-              
-          //     case 'prog' :
-          //       include "prog/view.php";
-          //       break;
-          //     case 'progDet' :
-          //       include "program/detail.php";
-          //       break;
-
-          //     case 'lembaga':
-          //       include "lembaga/tampil.php";
-          //       break;
-
-          //   }
-          // } else {
-          //   include "beranda.php";
-          // }
-        ?>
+                        }
+                      } else {
+                        include "beranda.php";
+                      }
+                    ?>
         </div>
       </div>
     </div>

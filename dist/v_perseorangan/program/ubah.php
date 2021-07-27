@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once("../koneksi.php");
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM program WHERE id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
@@ -74,6 +74,14 @@ include_once("koneksi.php");
             <div class="col-sm-8">
             <input type="text" class="form-control" name="txtDonasi" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['donasi']; ?>"  required="">
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">Tanggal Berakhir </label>
+            <div class="col-sm-8">
+            <input type="text" class="form-control" name="txtAkhir" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            value="<?php echo $data_cek['tgl_akhir']; ?>"  required="">
             </div>
         </div>
 

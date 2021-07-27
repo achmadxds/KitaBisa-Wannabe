@@ -50,7 +50,7 @@ if ($datakode) {
                   <th>No</th>
                   <th>Kode Program</th>
                   <th>Nama Program</th>
-                  <th>Lembaga</th>
+                  <th>Atas Nama</th>
                   <th>Donasi</th>
                   <th>Status</th>
                   <th></th>
@@ -66,7 +66,7 @@ if ($datakode) {
 
               <?php
 
-                $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P') AND a.idLembaga='$data_status'";
+                $sql_tampil = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$data_id' AND a.idLevel='2') ";
                 $query_tampil = mysqli_query($con, $sql_tampil);
                 $no = 1;
                 while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -77,7 +77,7 @@ if ($datakode) {
                     
                     </td>
                     <td><?php echo $data['nmProgram']; ?></td>
-                    <td><?php echo $data['nmLembaga']; ?></td>
+                    <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['donasi']; ?></td>
                     <td>
                     <?php
@@ -97,6 +97,7 @@ if ($datakode) {
                       }?></td>
 
                     <td>
+                        <a href="?page=progUbah&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
                         <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
                         <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                     </td>
@@ -141,17 +142,18 @@ if ($datakode) {
               </div>
 
               <div class="form-group">
-                <label>Lembaga</label>
+                <label>Perseorangan</label>
                 <select name="txtIdLembaga" class="form-control">
-                  <option value="">- Lembaga -</option>
+                  <option value="">- Perseorangan -</option>
+                  
                   <?php
-                  $p = mysqli_query($con, "select id , nmLembaga from lembaga where id='$data_id'") or die(mysqli_error($con));
+                  $p = mysqli_query($con, "select id , nama from perseorangan where id='$data_id'") or die(mysqli_error($con));
                   while ($datap = mysqli_fetch_array($p)) {
-                    echo '<option value="' . $datap['id'] . '">' . $datap['nmLembaga'] . '</option>';
+                    echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
                   } ?>
                 </select>
               </div>
-
+              
               <div class="form-group">
                 <label>Keterangan</label>
                 <textarea class="form-control" name="txtketerangan" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required />
@@ -161,6 +163,11 @@ if ($datakode) {
               <div class="form-group">
                 <label>Donasi</label>
                 <input type="text" class="form-control" name="txtDonasi" />
+              </div>
+           
+            <div class="form-group">
+                <label>Tanggal Akhir</label>
+                <input type="date" class="form-control" name="txtAkhir" />
               </div>
             </div>
 

@@ -164,6 +164,12 @@ if ($datakode) {
               </div>
             </div>
 
+            <div class="form-group">
+                <label>Tanggal Akhir</label>
+                <input type="date" class="form-control" name="txtAkhir" />
+              </div>
+            </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-bs-dismiss="modal">Batal</button>
               <button type="submit" class="btn btn-primary" name="btnSimpan">Simpan</button>
