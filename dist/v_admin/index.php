@@ -143,12 +143,22 @@ if (isset($_SESSION['ses_username']) == "") {
 
                   <li class="sidebar-title">Menu Master</li>
 
-                  <li class="sidebar-item ">
-                    <a href="?page=#" class='sidebar-link'>
-                      <i class="bi bi-steam-fill"></i>
+                  <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                      <i class="bi bi-stack"></i>
                       <span>Administrasi Donasi</span>
                     </a>
+                    <ul class="submenu ">
+                      <li class="submenu-item ">
+                        <a href="?page=reportProgram">Data Program</a>
+                      </li>
+                      <li class="submenu-item ">
+                        <a href="?page=reportDana">Data Donasi</a>
+                      </li>
+                      
+                    </ul>
                   </li>
+                 
                 <?php
                 break;
 
@@ -252,6 +262,9 @@ if (isset($_SESSION['ses_username']) == "") {
           case 'progArchive':
             include "program/arsip.php";
             break;
+          case 'reportProgram' :
+            include "program/report.php";
+            break;
 
           case 'donatur':
             include "donatur/tampil.php";
@@ -295,6 +308,12 @@ if (isset($_SESSION['ses_username']) == "") {
 
           case 'dana':
             include "dana/view.php";
+            break;
+          case 'reportDana' :
+            include "dana/report.php";
+            break;
+          case 'printAllDana' :
+            include "dana/printAll.php";
             break;
 
           case 'danaAksi':

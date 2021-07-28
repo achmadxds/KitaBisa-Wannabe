@@ -29,6 +29,7 @@ include_once("../../koneksi.php");
                       <th>Program</th>
                       <th>Dana Target</th>
                       <th>Dana Terkumpul</th>
+                      <th>Tidak Terkumpul</th>
                       <th>Status</th>
                       <th>Rekap Dana</th>
                     </tr>
@@ -38,7 +39,8 @@ include_once("../../koneksi.php");
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, b.id as boom, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
+                  $sql_tampil = "SELECT a.id, b.id as boom, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idlevel='1'";
+                  // $sql_tampil = "SELECT a.id, b.id as boom, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
                   while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -48,8 +50,8 @@ include_once("../../koneksi.php");
                       <td><?php echo $data['kdProgram']; ?></td>
                       <td><?php echo $data['nmProgram']; ?></td>
                       <td>Rp. <?php echo $data['donasi']; ?></td>
-                      <td>Rp. <?php echo $data['nominal']; ?></td>
-
+                      <td>Rp. <?php echo $data['Total']; ?></td>
+                      <td>Rp. <?php echo $data['Tidak']; ?></td>
                       <td> Terkonfirmasi </td>
 
                       <td>
