@@ -11,7 +11,7 @@ include_once("../../koneksi.php");
   </header>
 
   <div class="page-heading">
-    <h3>Kelola Donasi</h3>
+    <h3>Kelola Dana</h3>
   </div>
 
   <div class="page-content">
@@ -19,9 +19,6 @@ include_once("../../koneksi.php");
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Rekap Donasi</a>
-            </div>
             <div class="card-body">
               <table class="table table-striped" id="program7">
                 <thead>
@@ -33,6 +30,7 @@ include_once("../../koneksi.php");
                       <th>Dana Target</th>
                       <th>Dana Terkumpul</th>
                       <th>Status</th>
+                      <th>Rekap Dana</th>
                     </tr>
                   </center>
                 </thead>
@@ -40,7 +38,7 @@ include_once("../../koneksi.php");
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
+                  $sql_tampil = "SELECT a.id, b.id as boom, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
                   while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -52,18 +50,10 @@ include_once("../../koneksi.php");
                       <td>Rp. <?php echo $data['donasi']; ?></td>
                       <td>Rp. <?php echo $data['nominal']; ?></td>
 
+                      <td> Terkonfirmasi </td>
+
                       <td>
-                        <?php
-                        if ($data['status'] == 'T') {
-                        ?>
-                          <a href="?page=danaKonfirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
-                        <?php
-                        } else {
-                        ?>
-                          Terkonfirmasi
-                        <?php
-                        }
-                        ?>
+                        <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap Dana</a>
                       </td>
                     </tr>
                   <?php
@@ -104,8 +94,8 @@ include_once("../../koneksi.php");
           </div>
 
           <div class="form-group">
-            <label>Target Donasi</label>
-            <input type="text" class="form-control" name="txt" />
+            <label>Jumlah Donasi</label>
+            <input type="text" class="form-control" name="txt" readonly/>
           </div>
 
           <div class="modal-footer">

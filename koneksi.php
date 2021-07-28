@@ -91,10 +91,13 @@
     return $query;
   }
 
-  function insertKelolaDana()
+  function insertKelolaDana($a, $b)
   {
     global $con;
+    $c = 1;
+    $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) 
+            VALUES ('.$a.','.$b.', '.$c.') ';
 
-    // $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) VALUES ('.$_POST['txtIdLembaga'].','.$_POST['txtIdLembaga'].','[value-4]') ';
+    mysqli_query($con, $sql);
   }
 ?>

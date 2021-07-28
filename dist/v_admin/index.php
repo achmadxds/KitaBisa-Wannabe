@@ -227,6 +227,10 @@ if (isset($_SESSION['ses_username']) == "") {
             include "../v_perseorangan/transaksi/confirm.php";
             break;
 
+          case 'rekapDana':
+            include "../v_admin/aksi.php";
+            break;
+
           case 'prog':
             include "program/tampil.php";
             break;
