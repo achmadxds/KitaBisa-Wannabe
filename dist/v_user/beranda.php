@@ -1,7 +1,3 @@
-<?php
-include_once("koneksi.php");
-?>
-
 <div id="main">
   <header class="mb-3">
     <a href="#" class="burger-btn d-block d-xl-none">
@@ -28,12 +24,12 @@ include_once("koneksi.php");
                   <div class="col-md-8">
                     <h6 class="text-muted font-semibold">Riwayat DonasiS</h6>
 
-                    <h6 class="font-extrabold mb-0"><?php // menghitung
-                                                    $sql_hitung = "SELECT COUNT(id) from lembaga ";
-                                                    $q_hit = mysqli_query($con, $sql_hitung);
-                                                    while ($row = mysqli_fetch_array($q_hit)) {
-                                                      echo  $row[0] . "";
-                                                    }
+                    <h6 class="font-extrabold mb-0"><?php
+                                                      $sql_hitung = "SELECT COUNT(id) from lembaga ";
+                                                      $q_hit = mysqli_query($con, $sql_hitung);
+                                                      while ($row = mysqli_fetch_array($q_hit)) {
+                                                        echo  $row[0] . "";
+                                                      }
                                                     ?></h6>
                     <a href="#" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
@@ -62,28 +58,6 @@ include_once("koneksi.php");
                       ?></h6>
                     <a href="?page=prog" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-
-                </div>
-                <div class="card-body">
-                  <p>
-                    <center>
-                      <br>
-                      <font face="Courier new"> Portal Donasi Lembaga </font>
-                      <br>
-                      <font face="Courier new">Se-Kabupaten Kudus</font>
-                      <br> <br><br>
-                      <img src="../images/donasi.jpg" height="200px" width="350px;" align="center" />
-                    </center>
-                  </p>
                 </div>
               </div>
             </div>

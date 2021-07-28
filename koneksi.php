@@ -48,4 +48,46 @@
       echo "<script>alert('Login Gagal!!')</script>";
     }
   }
+
+  function SelectAllLembaga()
+  {
+    global $con;
+
+    $sql = "SELECT * FROM `lembaga` ";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
+  function SelectAllProgram()
+  {
+    global $con;
+
+    $sql = "SELECT * FROM `program` ";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
+  function InserTransaksi()
+  {
+    global $con;
+
+    $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`) VALUES 
+    ('".$_POST['idProgramDonasi']."','".$_POST['idDonaturDonasi']."','".$_POST['dnProgramDonasi']."','T')";
+    
+    mysqli_query($con, $sql);
+  }
+
+  function RecordTransaction()
+  {
+    global $con;
+
+    $idUser = $_SESSION["ses_id"];
+    $sql = 'SELECT * FROM `transaksi` WHERE `idDonatur`= '.$idUser.' ';
+
+    $query = mysqli_query($con, $sql);
+
+    return $query;
+  }
 ?>
