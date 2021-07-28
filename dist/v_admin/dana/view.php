@@ -39,7 +39,7 @@ include_once("koneksi.php");
 
               <?php
 
-                $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id'";
+                $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
                 $query_tampil = mysqli_query($con, $sql_tampil);
                 $no = 1;
                 while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {

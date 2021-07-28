@@ -27,6 +27,7 @@
                       <th>Donatur</th>
                       <th>Nominal</th>
                       <th></th>
+                      <th>Native</th>
                     </tr>
                   </center>
                 </thead>
@@ -34,7 +35,7 @@
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.idLembaga, c.nama  FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='$data_id'";
+                  $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.idLembaga, c.nama  FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='$data_id' AND b.idLevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
                   while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -65,6 +66,20 @@
                         }
                         ?>
                       </td>
+                      <td>
+                    <?php
+                      if ($data['status']== 'T'){
+                      ?>
+                      <a href="?page=confirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                      <?php
+                      }else{
+                        ?>
+                      <a href="#" class='btn btn-success btn-sm'>Success</a>
+                      </td>
+                      <?php 
+                      }?>
+                        
+                    </td>
                     </tr>
                   <?php
                     $no++;

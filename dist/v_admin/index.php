@@ -128,12 +128,18 @@ if (isset($_SESSION['ses_username']) == "") {
               case 'L-kasie':
               ?>
                 <li class="sidebar-item ">
-                  <a href="?page=progAcc" class='sidebar-link'>
+                  <a href="?page=prog" class='sidebar-link'>
                     <i class="bi bi-steam-fill"></i>
                     <span>Kelola Data Program</span>
                   </a>
                 </li>
 
+                <li class="sidebar-item ">
+                  <a href="?page=dana" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Dana</span>
+                  </a>
+                </li>
 
                 <li class="sidebar-title">Menu Master</li>
 
@@ -214,7 +220,10 @@ if (isset($_SESSION['ses_username']) == "") {
             break;
 
           case 'aksi':
-            include "aksi.php";
+            include "../v_admin/aksi.php";
+            break;
+          case 'confirm' :
+            include "../v_perseorangan/transaksi/confirm.php";
             break;
 
           case 'prog':
