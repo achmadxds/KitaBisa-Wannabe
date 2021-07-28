@@ -63,7 +63,7 @@
   {
     global $con;
 
-    $sql = "SELECT * FROM `program` ";
+    $sql = "SELECT * FROM `program` WHERE status='P' ";
     $query_login = mysqli_query($con, $sql);
 
     return $query_login;
@@ -90,4 +90,13 @@
 
     return $query;
   }
-?>
+
+  function UpdateStatusTransaksi()
+  {
+    global $con;
+
+    $idUser = $_POST["idTransksisu"];
+    echo $idUser;
+    $sql = "UPDATE `transaksi` SET `status`='K' WHERE `id`='.$idUser.'";
+    mysqli_query($con, $sql);
+  }

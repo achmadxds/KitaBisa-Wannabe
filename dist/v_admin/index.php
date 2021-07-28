@@ -1,13 +1,13 @@
 <?php
-  session_start();
-  if (isset($_SESSION['ses_username']) == "") {
-    echo "<meta http-equiv='refresh' content='0;url=.../../login.php'>";
-  } else {
-    $data_username = $_SESSION["ses_username"];
-    $data_nama = $_SESSION["ses_nama"];
-    $data_id = $_SESSION["ses_id"];
-    $data_status = $_SESSION["ses_level"];
-  }
+session_start();
+if (isset($_SESSION['ses_username']) == "") {
+  echo "<meta http-equiv='refresh' content='0;url=.../../login.php'>";
+} else {
+  $data_username = $_SESSION["ses_username"];
+  $data_nama = $_SESSION["ses_nama"];
+  $data_id = $_SESSION["ses_id"];
+  $data_status = $_SESSION["ses_level"];
+}
 ?>
 <!DOCTYPE html>
 
@@ -63,127 +63,125 @@
               </a>
             </li>
             <?php //Tampilan Bosku
-              switch ($data_status) {
-                case 'admin':
-                  ?>
-                    <li class="sidebar-item ">
-                      <a href="?page=jenis" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Master Jenis</span>
-                      </a>
-                    </li>
-
-                    <li class="sidebar-item ">
-                      <a href="?page=donatur" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Donatur</span>
-                      </a>
-                    </li>
-
-                    <li class="sidebar-item ">
-                      <a href="?page=progAcc" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Data Program</span>
-                      </a>
-                    </li>
-
-                    <li class="sidebar-item ">
-                      <a href="?page=lembaga" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Data Lembaga Terdaftar</span>
-                      </a>
-                    </li>
-
-                    <li class="sidebar-item ">
-                      <a href="?page=prsg" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span> Data Perseorangan</span>
-                      </a>
-                    </li>
-
-                    <li class="sidebar-title">Menu Master</li>
-
-                    <li class="sidebar-item  has-sub">
-                      <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Kelola Data Pengguna</span>
-                      </a>
-                      <ul class="submenu ">
-                        <li class="submenu-item ">
-                          <a href="?page=super">Super User</a>
-                        </li>
-                        <li class="submenu-item ">
-                          <a href="?page=usrPrg">Perseorangan</a>
-                        </li>
-                        <li class="submenu-item ">
-                          <a href="?page=user">
-                            <span>Data User Donatur
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                  <?php
-                  break;
-
-                  case 'L-kasie':
-                    ?>
-                      <li class="sidebar-item ">
-                      <a href="?page=progAcc" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Kelola Data Program</span>
-                      </a>
-                    </li>
-
-                    
-                    <li class="sidebar-title">Menu Master</li>
-
-                    <li class="sidebar-item ">
-                      <a href="?page=#" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
-                        <span>Administrasi Donasi</span>
-                      </a>
-                    </li>
-                    <?php
-                    break;
-  
-                
-
-                case 'L-seksie':
-                  ?>
-                  <li class="sidebar-item ">
-              <a href="?page=prog" class='sidebar-link'>
-                <i class="bi bi-steam-fill"></i>
-                <span>Kelola Data Program</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item ">
-              <a href="?page=transaksi" class='sidebar-link'>
-                <i class="bi bi-steam-fill"></i>
-                <span>Transaksi Donasi</span>
-              </a>
-            </li>
-           
-            <li class="sidebar-item ">
-              <a href="?page=dana" class='sidebar-link'>
-                <i class="bi bi-steam-fill"></i>
-                <span>Kelola Dana</span>
-              </a>
-            </li>
-
-
-            <li class="sidebar-title">Menu Lain</li>
-
-            <li class="sidebar-item  has-sub">
-              <a href="#" class='sidebar-link'>
-                <i class="bi bi-stack"></i>
-                <span>Laporan Administrasi</span>
+            switch ($data_status) {
+              case 'admin':
+              ?>
+                <li class="sidebar-item ">
+                  <a href="?page=jenis" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Master Jenis</span>
+                  </a>
                 </li>
-                <?php
-                  break;
-              }
+
+                <li class="sidebar-item ">
+                  <a href="?page=donatur" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Donatur</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=progAcc" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Data Program</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=lembaga" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Data Lembaga Terdaftar</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=prsg" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span> Data Perseorangan</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-title">Menu Master</li>
+
+                <li class="sidebar-item  has-sub">
+                  <a href="#" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Kelola Data Pengguna</span>
+                  </a>
+                  <ul class="submenu ">
+                    <li class="submenu-item ">
+                      <a href="?page=super">Super User</a>
+                    </li>
+                    <li class="submenu-item ">
+                      <a href="?page=usrPrg">Perseorangan</a>
+                    </li>
+                    <li class="submenu-item ">
+                      <a href="?page=user">
+                        <span>Data User Donatur
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <?php
+                break;
+
+              case 'L-kasie':
+              ?>
+                <li class="sidebar-item ">
+                  <a href="?page=progAcc" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Data Program</span>
+                  </a>
+                </li>
+
+
+                <li class="sidebar-title">Menu Master</li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=#" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Administrasi Donasi</span>
+                  </a>
+                </li>
+              <?php
+                break;
+
+              case 'L-seksie':
+              ?>
+                <li class="sidebar-item ">
+                  <a href="?page=prog" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Data Program</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=transaksi" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Transaksi Donasi</span>
+                  </a>
+                </li>
+
+                <li class="sidebar-item ">
+                  <a href="?page=dana" class='sidebar-link'>
+                    <i class="bi bi-steam-fill"></i>
+                    <span>Kelola Dana</span>
+                  </a>
+                </li>
+
+
+                <li class="sidebar-title">Menu Lain</li>
+
+                <li class="sidebar-item">
+                  <a href="#" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Laporan Administrasi</span>
+                </li>
+              <?php
+                break;
+            }
             ?>
-            
+
             <li class="sidebar-item " style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
               <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i style="color: white;" class="bi bi-box-arrow-right"></i>
@@ -200,129 +198,133 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <?php
-        if (isset($_GET['page'])) {
-          $hal = $_GET['page'];
+      if (isset($_GET['page'])) {
+        $hal = $_GET['page'];
 
-          switch ($hal) {
-            case 'beranda':
-              include "beranda.php";
-              break;
-            case 'try':
-              include "c.php";
-              break;
+        switch ($hal) {
+          case 'beranda':
+            include "beranda.php";
+            break;
+          case 'try':
+            include "c.php";
+            break;
 
-            case 'd':
-              include "d.php";
-              break;
+          case 'd':
+            include "d.php";
+            break;
 
-            case 'prog':
-              include "program/tampil.php";
-              break;
-            case 'progAcc':
-              include "program/accept.php";
-              break;
-            case 'progUbah':
-              include "program/ubah.php";
-              break;
-            case 'progAksi':
-              include "program/aksi.php";
-              break;
-            case 'progKonfirm':
-              include "program/konfirm.php";
-              break;
-            case 'progDet':
-              include "program/detail.php";
-              break;
-            case 'progArchive':
-              include "program/arsip.php";
-              break;
+          case 'aksi':
+            include "aksi.php";
+            break;
 
-            case 'donatur':
-              include "donatur/tampil.php";
-              break;
-            case 'donUbah':
-              include "donatur/ubah.php";
-              break;
-            case 'donAksi':
-              include "donatur/aksi.php";
-              break;
+          case 'prog':
+            include "program/tampil.php";
+            break;
+          case 'progAcc':
+            include "program/accept.php";
+            break;
+          case 'progUbah':
+            include "program/ubah.php";
+            break;
+          case 'progAksi':
+            include "program/aksi.php";
+            break;
+          case 'progKonfirm':
+            include "program/konfirm.php";
+            break;
+          case 'progDet':
+            include "program/detail.php";
+            break;
+          case 'progArchive':
+            include "program/arsip.php";
+            break;
 
-            case 'lembaga':
-              include "lembaga/tampil.php";
-              break;
-            case 'lembUbah':
-              include "lembaga/ubah.php";
-              break;
-            case 'lembAksi':
-              include "lembaga/aksi.php";
-              break;
+          case 'donatur':
+            include "donatur/tampil.php";
+            break;
+          case 'donUbah':
+            include "donatur/ubah.php";
+            break;
+          case 'donAksi':
+            include "donatur/aksi.php";
+            break;
 
-            case 'prsg':
-              include "perseorangan/view.php";
-              break;
-            case 'prsgUbah':
-              include "perseorangan/ubah.php";
-              break;
-            case 'prsgAksi':
-              include "perseorangan/aksi.php";
-              break;
-            case 'prsgDet':
-              include "perseorangan/detail.php";
-              break;
-            case 'konfirmed':
-              include "perseorangan/acc.php";
-              break;
+          case 'lembaga':
+            include "lembaga/tampil.php";
+            break;
+          case 'lembUbah':
+            include "lembaga/ubah.php";
+            break;
+          case 'lembAksi':
+            include "lembaga/aksi.php";
+            break;
 
-            case 'transaksi' :
-              include "transaksi/view.php";
-              break;
+          case 'prsg':
+            include "perseorangan/view.php";
+            break;
+          case 'prsgUbah':
+            include "perseorangan/ubah.php";
+            break;
+          case 'prsgAksi':
+            include "perseorangan/aksi.php";
+            break;
+          case 'prsgDet':
+            include "perseorangan/detail.php";
+            break;
+          case 'konfirmed':
+            include "perseorangan/acc.php";
+            break;
 
-            case 'dana' :
-              include "dana/view.php";
-              break;
+          case 'transaksi':
+            include "transaksi/view.php";
+            break;
 
-            case 'jenis':
-              include "jenis/view.php";
-              break;
-            case 'jnsUbah':
-              include "jenis/ubah.php";
-              break;
-            case 'jnsAksi':
-              include "jenis/aksi.php";
-              break;
+          case 'dana':
+            include "dana/view.php";
+            break;
 
-            case 'super':
-              include "superUser/tampil.php";
-              break;
-            case 'supUbah':
-              include "superUser/ubah.php";
-              break;
-            case 'supAksi':
-              include "superUser/aksi.php";
-              break;
+          case 'jenis':
+            include "jenis/view.php";
+            break;
+          case 'jnsUbah':
+            include "jenis/ubah.php";
+            break;
+          case 'jnsAksi':
+            include "jenis/aksi.php";
+            break;
 
-            case 'user':
-              include "user/tampil.php";
-              break;
-            case 'usrUbah':
-              include "user/ubah.php";
-              break;
-            case 'usrAksi':
-              include "user/aksi.php";
-              break;
+          case 'super':
+            include "superUser/tampil.php";
+            break;
+          case 'supUbah':
+            include "superUser/ubah.php";
+            break;
+          case 'supAksi':
+            include "superUser/aksi.php";
+            break;
 
-            case 'usrPrg':
-              include "userPsg/tampil.php";
-              break;
-            case 'usrPrgUbah':
-              include "userPsg/ubah.php";
-              break;
-            case 'usrPrgAksi':
-              include "userPsg/aksi.php";
-          }
-        } else {
-          include "beranda.php";
+          case 'user':
+            include "user/tampil.php";
+            break;
+          case 'usrUbah':
+            include "user/ubah.php";
+            break;
+          case 'usrAksi':
+            include "user/aksi.php";
+            break;
+
+          case 'usrPrg':
+            include "userPsg/tampil.php";
+            break;
+          case 'usrPrgUbah':
+            include "userPsg/ubah.php";
+            break;
+          case 'usrPrgAksi':
+            include "userPsg/aksi.php";
         }
+      } else {
+        include "beranda.php";
+      }
       ?>
     </div>
   </div>
