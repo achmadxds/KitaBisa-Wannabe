@@ -20,15 +20,15 @@
 
 <style>
   #aaooo {
-  margin: 20px;
-  width: 400px;
-  height: 8px;
-  position: relative;
-}
+    margin: 20px;
+    width: 400px;
+    height: 8px;
+    position: relative;
+  }
 </style>
 
 <body id="page-top">
-  <div id="aaooo">  </div>
+  <div id="aaooo"> </div>
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#page-top">Donasi-Ku</a>
@@ -39,7 +39,6 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Program</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="dist/login.php">Masuk</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.php">Login</a></li>
         </ul>
@@ -78,63 +77,24 @@
       <!-- Portfolio Grid Items-->
       <div class="row justify-content-center">
         <!-- Portfolio Item 1-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" style="background-color: gray;">
-              <div class="portfolio-item-caption-content text-center text-white">
-                <p>KAGET</p>
-                <!-- <div id="chartContainer"></div> -->
+        <?php 
+          include_once('koneksi.php');
+
+          $a = ShowProgramPublish();
+
+          foreach ($a as $key => $value) {
+            ?>
+              <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                  <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><h2><?php echo $value['nmProgram'] ?></h2></div>
+                  </div>
+                  <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
+                </div>
               </div>
-              <!-- <i class="fas fa-plus fa-3x"></i> -->
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
-          </div>
-        </div>
-        <!-- Portfolio Item 2-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
-          </div>
-        </div>
-        <!-- Portfolio Item 3-->
-        <div class="col-md-6 col-lg-4 mb-5">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
-          </div>
-        </div>
-        <!-- Portfolio Item 4-->
-        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
-          </div>
-        </div>
-        <!-- Portfolio Item 5-->
-        <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
-          </div>
-        </div>
-        <!-- Portfolio Item 6-->
-        <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-              <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
-          </div>
-        </div>
+            <?php  
+          }
+        ?>
       </div>
     </div>
   </section>

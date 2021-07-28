@@ -100,4 +100,14 @@
 
     mysqli_query($con, $sql);
   }
+
+  function ShowProgramPublish()
+  {
+    global $con;
+
+    $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
+    $query = mysqli_query($con, $sql);
+
+    return $query;
+  }
 ?>
