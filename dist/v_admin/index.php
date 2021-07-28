@@ -65,130 +65,131 @@ if (isset($_SESSION['ses_username']) == "") {
             <?php //Tampilan Bosku
             switch ($data_status) {
               case 'admin':
-              ?>
-                <li class="sidebar-item ">
-                  <a href="?page=jenis" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Master Jenis</span>
-                  </a>
-                </li>
+                ?>
+                  <li class="sidebar-item ">
+                    <a href="?page=jenis" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Master Jenis</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=donatur" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Donatur</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=donatur" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Donatur</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=progAcc" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Data Program</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=progAcc" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Data Program</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=lembaga" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Data Lembaga Terdaftar</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=lembaga" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Data Lembaga Terdaftar</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=prsg" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span> Data Perseorangan</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=prsg" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span> Data Perseorangan</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-title">Menu Master</li>
+                  <li class="sidebar-title">Menu Master</li>
 
-                <li class="sidebar-item  has-sub">
-                  <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>Kelola Data Pengguna</span>
-                  </a>
-                  <ul class="submenu ">
-                    <li class="submenu-item ">
-                      <a href="?page=super">Super User</a>
-                    </li>
-                    <li class="submenu-item ">
-                      <a href="?page=usrPrg">Perseorangan</a>
-                    </li>
-                    <li class="submenu-item ">
-                      <a href="?page=user">
-                        <span>Data User Donatur
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              <?php
+                  <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                      <i class="bi bi-stack"></i>
+                      <span>Kelola Data Pengguna</span>
+                    </a>
+                    <ul class="submenu ">
+                      <li class="submenu-item ">
+                        <a href="?page=super">Super User</a>
+                      </li>
+                      <li class="submenu-item ">
+                        <a href="?page=usrPrg">Perseorangan</a>
+                      </li>
+                      <li class="submenu-item ">
+                        <a href="?page=user">
+                          <span>Data User Donatur
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                <?php
                 break;
 
               case 'L-kasie':
-              ?>
-                <li class="sidebar-item ">
-                  <a href="?page=prog" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Data Program</span>
-                  </a>
-                </li>
+                ?>
+                  <li class="sidebar-item ">
+                    <a href="?page=prog" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Data Program</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=dana" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Dana</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=dana" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Dana</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-title">Menu Master</li>
+                  <li class="sidebar-title">Menu Master</li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=#" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Administrasi Donasi</span>
-                  </a>
-                </li>
-              <?php
+                  <li class="sidebar-item ">
+                    <a href="?page=#" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Administrasi Donasi</span>
+                    </a>
+                  </li>
+                <?php
                 break;
 
               case 'L-seksie':
-              ?>
-                <li class="sidebar-item ">
-                  <a href="?page=prog" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Data Program</span>
-                  </a>
-                </li>
+                ?>
+                  <li class="sidebar-item ">
+                    <a href="?page=prog" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Data Program</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=transaksi" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Transaksi Donasi</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=transaksi" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Transaksi Donasi</span>
+                    </a>
+                  </li>
 
-                <li class="sidebar-item ">
-                  <a href="?page=dana" class='sidebar-link'>
-                    <i class="bi bi-steam-fill"></i>
-                    <span>Kelola Dana</span>
-                  </a>
-                </li>
+                  <li class="sidebar-item ">
+                    <a href="?page=dana" class='sidebar-link'>
+                      <i class="bi bi-steam-fill"></i>
+                      <span>Kelola Dana</span>
+                    </a>
+                  </li>
 
 
-                <li class="sidebar-title">Menu Lain</li>
+                  <li class="sidebar-title">Menu Lain</li>
 
-                <li class="sidebar-item">
-                  <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>Laporan Administrasi</span>
-                </li>
-              <?php
+                  <li class="sidebar-item ">
+                    <a href="#" class='sidebar-link'>
+                      <i class="bi bi-stack"></i>
+                      <span>Administrasi Donasi</span>
+                    </a>
+                  </li>
+                <?php
                 break;
             }
             ?>
 
-            <li class="sidebar-item " style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
+            <li class="sidebar-item" style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
               <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i style="color: white;" class="bi bi-box-arrow-right"></i>
                 <span style="color: white;">Logout</span>
@@ -290,6 +291,10 @@ if (isset($_SESSION['ses_username']) == "") {
 
           case 'dana':
             include "dana/view.php";
+            break;
+
+          case 'danaAksi':
+            include "aksi.php";
             break;
 
           case 'jenis':

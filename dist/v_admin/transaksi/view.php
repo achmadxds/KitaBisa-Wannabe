@@ -26,8 +26,7 @@
                       <th>Program</th>
                       <th>Donatur</th>
                       <th>Nominal</th>
-                      <th></th>
-                      <th>Native</th>
+                      <th>Aksi</th>
                     </tr>
                   </center>
                 </thead>
@@ -46,39 +45,20 @@
                       <td><?php echo $data['nmProgram']; ?></td>
                       <td><?php echo $data['nama']; ?></td>
                       <td>Rp. <?php echo $data['nominal']; ?></td>
+                      <td>
+                        <?php
+                          if ($data['status'] == 'T') {
+                            ?>
+                              <a href="?page=confirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                            <?php
+                          } else {
+                            ?>
+                              <a href="#" class='btn btn-success btn-sm'>Success</a>
+                              </td>
+                            <?php
+                          } 
+                        ?>
 
-                      <td>
-                        <?php
-                        if ($data['status'] == 'T') {
-                        ?>
-                          <form action="?page=aksi" method="post">
-                            <input type="hidden" name="idTransksisu" value="<?php echo $data['id']; ?>">
-                            <button name="btnUpdateStatusTransaksi" class='btn btn-warning btn-sm'> <i class="fa fa-check"></i> </button>
-                          </form>
-                          <!-- <a href="?page=danaKonfirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i>
-                            <form action="" method="post"></form>
-                          </a> -->
-                        <?php
-                        } else {
-                        ?>
-                          Terkonfirmasi
-                        <?php
-                        }
-                        ?>
-                      </td>
-                      <td>
-                    <?php
-                      if ($data['status']== 'T'){
-                      ?>
-                      <a href="?page=confirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
-                      <?php
-                      }else{
-                        ?>
-                      <a href="#" class='btn btn-success btn-sm'>Success</a>
-                      </td>
-                      <?php 
-                      }?>
-                        
                     </td>
                     </tr>
                   <?php
@@ -100,27 +80,5 @@
 <script>
   $('#program6').DataTable({
     scrollY: 350,
-    // "columns": [{
-    //     "width": "5%"
-    //   },
-    //   {
-    //     "width": "20%"
-    //   },
-    //   {
-    //     "width": "30%"
-    //   },
-    //   {
-    //     "width": "10%"
-    //   },
-    //   {
-    //     "width": "10%"
-    //   },
-    //   {
-    //     "width": "10%"
-    //   },
-    //   {
-    //     "width": "15%"
-    //   },
-    // ]
   });
 </script>

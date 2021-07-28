@@ -16,7 +16,7 @@ if (isset($_GET['kode'])) {
 
 
 	<div class="row">
-		<div class="col-12">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
 					<h6>

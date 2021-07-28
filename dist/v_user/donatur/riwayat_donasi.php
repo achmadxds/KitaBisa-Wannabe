@@ -18,7 +18,9 @@
             <thead>
               <center>
                 <tr>
+                  <th>Nama Program</th>
                   <th>Nominal Donasi</th>
+                  <th>Tanggal</th>
                   <th>Aksi</th>
                 </tr>
               </center>
@@ -30,7 +32,9 @@
                 foreach ($a as $key => $value) {
                   ?>
                     <tr>
+                      <td><b><?php echo $value['nmProgram'] ?></b></td>
                       <td><b><?php echo $value['nominal'] ?></b></td>
+                      <td><b><?php echo $value['tanggal'] ?></b></td>
                       <td><a href="" class="btn btn-primary">LIHAT</a></td>
                     </tr>
                   <?php
@@ -48,8 +52,10 @@
   $('#program3').DataTable({
     scrollY: 350,
     "columns": [
-      { "width": "85%" },
-      { "width": "15%" }
+      { "width": "30%" },
+      { "width": "30%" },
+      { "width": "30%" },
+      { "width": "10%" }
     ]
   });
 </script>

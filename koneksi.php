@@ -73,8 +73,8 @@
   {
     global $con;
 
-    $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`) VALUES 
-    ('".$_POST['idProgramDonasi']."','".$_POST['idDonaturDonasi']."','".$_POST['dnProgramDonasi']."','T')";
+    $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`, `tanggal`) VALUES 
+    ('".$_POST['idProgramDonasi']."','".$_POST['idDonaturDonasi']."','".$_POST['dnProgramDonasi']."','T', now())";
     
     mysqli_query($con, $sql);
   }
@@ -84,19 +84,17 @@
     global $con;
 
     $idUser = $_SESSION["ses_id"];
-    $sql = 'SELECT * FROM `transaksi` WHERE `idDonatur`= '.$idUser.' ';
+    $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal FROM transaksi a, program b WHERE b.id = a.idProgram AND a.idDonatur='.$idUser.' ';
 
     $query = mysqli_query($con, $sql);
 
     return $query;
   }
 
-  function UpdateStatusTransaksi()
+  function insertKelolaDana()
   {
     global $con;
 
-    $idUser = $_POST["idTransksisu"];
-    echo $idUser;
-    $sql = "UPDATE `transaksi` SET `status`='K' WHERE `id`='.$idUser.'";
-    mysqli_query($con, $sql);
+    // $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) VALUES ('.$_POST['txtIdLembaga'].','.$_POST['txtIdLembaga'].','[value-4]') ';
   }
+?>
