@@ -13,7 +13,7 @@ function uploadfiles()
 
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 41943040) {
-			move_uploaded_file($file_tmp, __DIR__ . '../../images/files/' . $namas);
+			move_uploaded_file($file_tmp, __DIR__ . '/../../../images/files/' . $namas);
 			return $namas;
 		} else {
 			return;
