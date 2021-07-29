@@ -64,7 +64,7 @@
                                                       echo  $row[0]."";
                                                   }
                                                   ?></h6>
-                                                  <a href="?page=prog" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                                                  <a href="?page=progAcc" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
