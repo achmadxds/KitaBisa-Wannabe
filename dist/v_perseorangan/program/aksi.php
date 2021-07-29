@@ -10,7 +10,7 @@ function uploadfiles()
 	$namas = 'Photo_' . $_POST['txtKdProgram'] . "." . $ekstensi;
 	$ukuran	= $_FILES['txtfotoProgram']['size'];
 	$file_tmp = $_FILES['txtfotoProgram']['tmp_name'];
-
+	$ckk = null;
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 41943040) {
 			move_uploaded_file($file_tmp, __DIR__ . '/../../../images/files/' . $namas);
