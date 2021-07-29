@@ -98,7 +98,7 @@ if (isset($_GET['kode'])) {
 									<?php
 									if ($data_cek['gambar'] != null) {
 									?>
-										<embed src="/upload/surat/. $kode->fileSurat ?>" type="application/pdf" width="100%" height="600px">
+										<embed src="/upload/surat/. "". ?>" type="application/pdf" width="100%" height="600px">
 									<?php
 									} else {
 									?>

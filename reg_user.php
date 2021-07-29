@@ -1,12 +1,18 @@
 <?php
 include_once("koneksi.php");
-$con = mysqli_connect("localhost", "root", "", "sosial");
+// $con = mysqli_connect("localhost", "root", "", "sosial");
+				$sql_cek = "SELECT MAX(id) as id FROM perseorangan";
+        $query_cek = mysqli_query($con, $sql_cek);
+        $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
+				echo $data_cek['id'];
 if (isset($_POST['btnReg'])) {
-	$sql_simpan = "INSERT INTO user (kdUser, nama, username, password, status) VALUES (
-                    '" . $_POST['txtKode'] . "',
+	
+	$sql_simpan = "INSERT INTO user (nama, username, password, level, idDaftar, status) VALUES (
                     '" . $_POST['txtNama'] . "',
                     '" . $_POST['txtUsername'] . "',
                     '" . $_POST['txtPassword'] . "',
+										'perseorangan',
+										'".$data_cek['id']."',
                     'Nonaktif')";
 	$query_simpan = mysqli_query($con, $sql_simpan);
 

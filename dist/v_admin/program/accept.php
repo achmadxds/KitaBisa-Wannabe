@@ -40,7 +40,8 @@ include_once("koneksi.php");
 
               <?php
 
-                $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P')";
+                $sql_tampil = "SELECT * FROM program";
+                // SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P')
                 $query_tampil = mysqli_query($con, $sql_tampil);
                 $no = 1;
                 while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -49,7 +50,19 @@ include_once("koneksi.php");
                     <td><?php echo $no; ?></td>
                     <td><?php echo $data['kdProgram']; ?></td>
                     <td><?php echo $data['nmProgram']; ?></td>
-                    <td><?php echo $data['nmLembaga']; ?></td>
+                    <td>
+                    <?php 
+                    if ($data['idLevel'] == '1'){
+                    ?>
+                      Lembaga
+                    <?php 
+                    }else {
+                      ?>
+                      Perseorangan
+                    <?php
+                    }
+                    ?>
+                    </td>
                     <td><?php echo $data['keterangan']; ?></td>
                     <td><?php echo $data['donasi']; ?></td>
 

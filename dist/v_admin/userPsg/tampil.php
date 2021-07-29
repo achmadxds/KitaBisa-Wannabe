@@ -35,7 +35,7 @@
     
         <?php
             
-            $sql_tampil = "SELECT a.id, a.username, a.status, b.nama, b.kdPerseorangan FROM user a, perseorangan b WHERE a.idDaftar=b.kdPerseorangan and level ='perseorangan'";
+            $sql_tampil = "SELECT a.id, a.nama, a.username, a.status FROM user a, perseorangan b WHERE a.idDaftar=b.id AND level='perseorangan'";
             $query_tampil = mysqli_query($con, $sql_tampil);
             $no=1;
             while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {

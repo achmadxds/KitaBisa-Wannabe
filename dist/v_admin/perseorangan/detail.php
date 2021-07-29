@@ -1,7 +1,7 @@
 <?php
-include_once("koneksi.php");
+include_once("../koneksi.php");
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM perseorangan a, user b WHERE b.kdUser=a.kdPerseorangan AND a.id='".$_GET['kode']."'";
+        $sql_cek = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.idJenis, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan' AND a.id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -38,7 +38,6 @@ include_once("koneksi.php");
 										</div>
 										<div class="tab-content">
 											<div id="popular10" class="tab-pane active">
-
 												<section class="panel">
 													<div class="panel-body">
 														<table class="table">
@@ -119,7 +118,7 @@ include_once("koneksi.php");
 													<?php
 														if($data_cek['berkas'] != null) {
 															?>
-																<embed src="/upload/surat/. $kode->fileSurat ?>" type="application/pdf" width="100%" height="600px">
+																<embed src="/kitabisa-wannabe/files/<?php echo $data_cek['berkas']; ?>"c type="application/pdf" width="100%" height="600px">
 															<?php
 														} else {
 															?>
