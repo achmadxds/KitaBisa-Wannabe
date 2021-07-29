@@ -31,7 +31,7 @@ include_once("../../koneksi.php");
                       <th>Dana Terkumpul</th>
                       <th>Tidak Terkumpul</th>
                       <th>Status</th>
-                      <th>Rekap Dana</th>
+                      <th></th>
                     </tr>
                   </center>
                 </thead>
@@ -55,7 +55,20 @@ include_once("../../koneksi.php");
                       <td> Terkonfirmasi </td>
 
                       <td>
+                      <?php
+                        if ($data_status == 'L-kasie') {
+                        ?>
+                         
+                        <?php
+                        } elseif ($data_status == 'L-seksie') {
+                        ?>
                         <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap Dana</a>
+                        <?php
+                        } else {
+                        ?>
+                        <?php
+                        } ?>
+                        
                       </td>
                     </tr>
                   <?php

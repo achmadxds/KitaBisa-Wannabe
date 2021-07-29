@@ -41,7 +41,7 @@ include_once("../koneksi.php");
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='1'";
+                  $sql_tampil = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idLevel='2'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
                   while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {

@@ -40,7 +40,20 @@ if ($datakode) {
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Ajukan Program</a>
+            <?php
+                        if ($data_status == 'L-kasie') {
+                        ?>
+                         
+                        <?php
+                        } elseif ($data_status == 'L-seksie') {
+                        ?>
+                          <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Ajukan Program</a>
+                        <?php
+                        } else {
+                        ?>
+                        <?php
+                        } ?>
+              
               <!-- Program Terdaftar -->
             </div>
             <div class="card-body">
@@ -98,8 +111,20 @@ if ($datakode) {
                         } ?></td>
 
                     <td>
-                      <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
-                      <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                    <?php
+                        if ($data_status == 'L-kasie') {
+                        ?>
+                          <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <?php
+                        } elseif ($data_status == 'L-seksie') {
+                        ?>
+                        <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                        <?php
+                        } else {
+                        ?>
+                        <?php
+                        } ?>
                     </td>
                     </tr>
                   <?php

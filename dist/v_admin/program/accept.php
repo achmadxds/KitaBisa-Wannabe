@@ -29,7 +29,7 @@ include_once("koneksi.php");
                   <th>No</th>
                   <th>Kode Program</th>
                   <th>Nama Program</th>
-                  <th>Lembaga</th>
+                  <th>Pengaju</th>
                   <th>Keterangan</th>
                   <th>Donasi</th>
                   <th>Piihan</th>
