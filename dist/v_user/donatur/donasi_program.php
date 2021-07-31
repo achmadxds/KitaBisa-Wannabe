@@ -68,6 +68,10 @@
             <input type="text" class="form-control" value="<?php echo $_SESSION["ses_nama"]; ?>" readonly />
           </div>
           <div class="form-group">
+            <label>No Rekening</label>
+            <input type="text" class="form-control" name="nmProgramDonasi" id="nmProgramDonasi" placeholder="5570865" readonly />
+          </div>
+          <div class="form-group">
             <label>Donasi</label>
             <input type="text" class="form-control" name="dnProgramDonasi" placeholder="Rp. 5000" />
           </div>

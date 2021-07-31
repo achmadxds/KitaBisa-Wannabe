@@ -77,10 +77,10 @@ if (isset($_POST['btnSimpan'])) {
 
 		if ($query_hapus) {
 			echo "<script>alert('Hapus Berhasil')</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php?page=prog'>";
+			echo "<meta http-equiv='refresh' content='0; url=index.php?page=progAcc'>";
 		} else {
 			echo "<script>alert('Hapus Gagal')</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php?page=prog'>";
+			echo "<meta http-equiv='refresh' content='0; url=index.php?page=progAcc'>";
 		}
 	}
 	//selesai proses hapus

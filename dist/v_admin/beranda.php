@@ -209,7 +209,7 @@
                                                 <?php
                                                     if ($data_status == 'L-kasie') {
                                                     ?>
-                                                    <a href="#" class="small-box-footer">Cek Pada Admin Lembaga <i class="fa fa-arrow-circle-right"></i></a>
+                                                    
                                                     <?php
                                                     } elseif ($data_status == 'L-seksie') {
                                                     ?>

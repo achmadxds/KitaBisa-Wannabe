@@ -1,4 +1,5 @@
 <?php
+include_once("../koneksi.php");
     if(isset($_GET['kode'])){
         $sql_cek = "SELECT * FROM perseorangan WHERE id='".$_GET['kode']."'";
         $query_cek = mysqli_query($con, $sql_cek);
