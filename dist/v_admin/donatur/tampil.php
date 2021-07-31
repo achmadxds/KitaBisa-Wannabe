@@ -29,7 +29,6 @@
         <th>Donatur</th>
         <th>Alamat</th>
         <th>No Hp</th>
-        <th>Alamat</th>
         <th>Tanggal Reg</th>
         <th>Status</th>
         <th></th>
@@ -48,7 +47,6 @@
         <tr>       
             <td><?php echo $no; ?></td>
             <td><?php echo $data['nama']; ?></td>
-            <td><?php echo $data['jekel']; ?></td>
             <td><?php echo $data['alamat']; ?></td>
             <td><?php echo $data['no_hp']; ?></td>
             <td><?php echo $data['tgl_daftar']; ?></td>

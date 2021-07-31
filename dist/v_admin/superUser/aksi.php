@@ -23,9 +23,10 @@
     }
 elseif(isset ($_POST['btnUBAH'])){
     //mulai proses ubah
-    $sql_ubah = "UPDATE super_user SET
+    $sql_ubah = "UPDATE user SET
         nama='".$_POST['txtNm']."',
-        idLembaga='".$_POST['txtIdLembaga']."',
+        username='".$_POST['txtUsername']."',
+        password='".$_POST['txtPassword']."',
         level='".$_POST['txtLevel']."',
         status='".$_POST['txtStatus']."'
         WHERE id='".$_POST['txtId']."'";
@@ -43,7 +44,7 @@ elseif(isset ($_POST['btnUBAH'])){
 }else{
     //mulai proses hapus
     if(isset($_GET['kode'])){
-        $sql_hapus = "DELETE FROM super_user WHERE id='".$_GET['kode']."'";
+        $sql_hapus = "DELETE FROM user WHERE id='".$_GET['kode']."'";
         $query_hapus = mysqli_query($con, $sql_hapus);
 
         if ($query_hapus) {

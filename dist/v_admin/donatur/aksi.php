@@ -8,6 +8,7 @@
         jekel='".$_POST['txtJekel']."',
         alamat='".$_POST['txtAlamat']."',
         no_hp='".$_POST['txtNoHP']."',
+        id_chat='".$_POST['txtidchat']."',
         status='".$_POST['txtStatus']."'
         WHERE id='".$_POST['txtId']."'";
     $query_ubah = mysqli_query($con, $sql_ubah);

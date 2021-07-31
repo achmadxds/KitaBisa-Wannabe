@@ -4,8 +4,9 @@
  	if(isset ($_POST['btnUBAH'])){
     //mulai proses ubah
     $sql_ubah = "UPDATE user SET
-        username='".$_POST['txtNm']."',
-        password='".$_POST['txtIdLembaga']."'
+        nama = '".$_POST['txtNm']."',
+        username='".$_POST['txtUsername']."',
+        password='".$_POST['txtpassword']."'
         WHERE id='".$_POST['txtId']."'";
     $query_ubah = mysqli_query($con, $sql_ubah);
 
@@ -21,7 +22,7 @@
 }else{
     //mulai proses hapus
     if(isset($_GET['kode'])){
-      $sql_arsip = "UPDATE donatur SET status = 'Aktif' where id = '".$_GET['kode']."'";
+      $sql_arsip = "UPDATE user SET status = 'Aktif' where id = '".$_GET['kode']."'";
           $query_arsip = mysqli_query($con, $sql_arsip);
   
               if ($query_arsip) {

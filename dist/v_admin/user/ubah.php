@@ -24,7 +24,7 @@ include_once("koneksi.php");
         Ubah Data Pengguna Perseorangan
         </div>
         <div class="card-body">
-        <form class="form-horizontal" action="?page=userAksi" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="?page=usrAksi" method="post" enctype="multipart/form-data">
     <div class="box-body">
 
         <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
@@ -42,15 +42,15 @@ include_once("koneksi.php");
             <label class="col-sm-2 control-label">Username</label>
             <div class="col-sm-8">
             <input type="text" class="form-control"  name="txtUsername" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
-            value="<?php echo $data_cek['username']; ?>" required="" readonly="">
+            value="<?php echo $data_cek['username']; ?>" required="" >
             </div>
         </div>
 
         <div class="form-group">
         <label class="col-sm-2 control-label">Password</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control"  name="txtNmProgram" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
-                value="<?php echo $data_cek['nmProgram']; ?>" required="">
+                <input type="password" class="form-control"  name="txtpassword" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+                value="<?php echo $data_cek['password']; ?>" required="">
             </div>
         </div>
 

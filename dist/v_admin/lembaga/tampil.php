@@ -48,7 +48,6 @@ if ($datakode) {
 								<th>No</th>
 								<th>Kode Lembaga</th>
 								<th>Nama Lembaga</th>
-								<th>Bidang</th>
 								<th>Alamat</th>
 								<th>Pimpinan</th>
 								<th>No Rekening</th>
@@ -60,7 +59,7 @@ if ($datakode) {
 
 						<?php
 
-						$sql_tampil = "SELECT a.id, a.kdLembaga, a.nmLembaga, b.nama, a.alamat, a.nmPimpinan, a.no_rek FROM lembaga a, mst_jenis b WHERE a.idJenis=b.id AND b.jenis='1'";
+						$sql_tampil = "SELECT * FROM lembaga";
 						$query_tampil = mysqli_query($con, $sql_tampil);
 						$no = 1;
 						while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -69,7 +68,6 @@ if ($datakode) {
 								<td><?php echo $no; ?></td>
 								<td><?php echo $data['kdLembaga']; ?></td>
 								<td><?php echo $data['nmLembaga']; ?></td>
-								<td><?php echo $data['nama']; ?></td>
 								<td><?php echo $data['alamat']; ?></td>
 								<td><?php echo $data['nmPimpinan']; ?></td>
 								<td><?php echo $data['no_rek']; ?></td>

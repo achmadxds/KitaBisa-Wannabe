@@ -4,7 +4,8 @@
  	if(isset ($_POST['btnUBAH'])){
     //mulai proses ubah
     $sql_ubah = "UPDATE user SET
-        username='".$_POST['txtNm']."',
+        nama='".$_POST['txtNm']."',
+        username='".$_POST['txtUsername']."',
         password='".$_POST['txtPassword']."'
         WHERE id='".$_POST['txtId']."'";
     $query_ubah = mysqli_query($con, $sql_ubah);

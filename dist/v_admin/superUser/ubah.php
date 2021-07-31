@@ -32,30 +32,30 @@ include_once("koneksi.php");
             value="<?php echo $data_cek['id']; ?>" required="" readonly="">
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">Username</label>
-            <div class="col-sm-8">
-            <input type="text" class="form-control"  name="txtUsername" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
-            value="<?php echo $data_cek['username']; ?>" required="" readonly="">
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="col-sm-2 control-label">Nama Pengguna</label>
             <div class="col-sm-8">
             <input type="text" class="form-control"  name="txtNm" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['nama']; ?>">
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-8">
+            <input type="text" class="form-control"  name="txtUsername" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            value="<?php echo $data_cek['username']; ?>" required="">
+            </div>
+        </div>
 
         <div class="form-group">
         <label class="col-sm-2 control-label">Password</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control"  name="txtNmProgram" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
-                value="<?php echo $data_cek['nmProgram']; ?>" required="">
+                <input type="password" class="form-control"  name="txtPassword" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+                value="<?php echo $data_cek['password']; ?>" required="">
             </div>
         </div>
 
-        <div class="form-group" >
+        <!-- <div class="form-group" >
         <label class="col-sm-2 control-label">Lembaga</label>
             <div class="col-sm-8">
             <select name="txtIdLembaga" class="form-control" required>
@@ -67,7 +67,7 @@ include_once("koneksi.php");
                 } ?>
             </select>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
         <label class="col-sm-2 control-label">Level </label>

@@ -49,8 +49,8 @@ include_once("koneksi.php");
         <div class="form-group">
         <label class="col-sm-2 control-label">Password</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control"  name="txtNmProgram" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
-                value="<?php echo $data_cek['nmProgram']; ?>" required="">
+                <input type="password" class="form-control"  name="txtPassword" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+                value="<?php echo $data_cek['password']; ?>" required="">
             </div>
         </div>
 

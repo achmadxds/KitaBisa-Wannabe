@@ -27,9 +27,8 @@ include_once("koneksi.php");
         Ubah Data Donatur
         </div>
         <div class="card-body">
-        <form class="form-horizontal" action="?halaman=progAksi" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="?page=donAksi" method="post" enctype="multipart/form-data">
     <div class="box-body">
-
         <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['id']; ?>" required="" readonly="">
 
@@ -63,8 +62,16 @@ include_once("koneksi.php");
         <div class="form-group">
         <label class="col-sm-2 control-label">No HP </label>
             <div class="col-sm-8">
-            <input type="text" class="form-control" name="txtNoHp" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            <input type="text" class="form-control" name="txtNoHP" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['no_hp']; ?>"  required="">
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-2 control-label">ID CHAT </label>
+            <div class="col-sm-8">
+            <input type="text" class="form-control" name="txtidchat" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+            value="<?php echo $data_cek['id_chat']; ?>"  required="">
             </div>
         </div>
 
