@@ -1,6 +1,6 @@
 <?php
-  include_once("koneksi.php");
-  if (isset($_POST['btnLogin'])) LoginUser();
+include_once("koneksi.php");
+if (isset($_POST['btnLogin'])) LoginUser();
 ?>
 
 <!DOCTYPE html>
@@ -25,19 +25,19 @@
 </head>
 
 <body>
-	<div id="app">
-		<div id="main">
+  <div id="app">
+    <div id="main">
 
-			<div class="page-content">
-				<section class="content">
-					<div class="row">
+      <div class="page-content">
+        <section class="content">
+          <div class="row">
             <div class="col-8 mt-2">
               <div class="card m-5">
 
                 <div class="card-body">
                   <center>
-                  <font face="Trebuchet MS"><b>SELAMAT DATANG DI<br> PORTAL DONASI-KU</b></font><br> 
-										<br><br>
+                    <font face="Trebuchet MS"><b>SELAMAT DATANG DI<br> PORTAL DONASI-KU</b></font><br>
+                    <br><img src="images/posyandu.png" height="150px" width="150px" align="center"><br>
                     <form action="" method="post">
                       <div class="form-group col-sm-7">
                         <input type="text" class="form-control" name="txtusm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -54,15 +54,15 @@
                 </div>
               </div>
             </div>
-					</div>
+          </div>
 
-			</div>
+      </div>
 
-			</section>
-		</div>
+      </section>
+    </div>
 
-	</div>
-	</div>
+  </div>
+  </div>
 
 </body>
 

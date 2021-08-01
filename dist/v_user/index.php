@@ -94,8 +94,53 @@
                   <?php
                   break;
                 
-                default:
-                  # code...
+                case 'perseorangan':
+                  ?>
+                    <li class="sidebar-item active ">
+                      <a href="?level=perseorangan&page=beranda" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+                    
+                    <li class="sidebar-item ">
+                        <a href="?level=perseorangan&page=program" class='sidebar-link'>
+                          <i class="bi bi-steam-fill"></i>
+                          <span>Kelola Data Program</span>
+                        </a>
+                      </li>
+
+                      <li class="sidebar-item ">
+                        <a href="?level=perseorangan&page=transaksi" class='sidebar-link'>
+                          <i class="bi bi-steam-fill"></i>
+                          <span>Transaksi Donasi</span>
+                        </a>
+                      </li>
+                    
+                      <li class="sidebar-item ">
+                        <a href="?level=perseorangan&page=dana" class='sidebar-link'>
+                          <i class="bi bi-steam-fill"></i>
+                          <span>Kelola Dana</span>
+                        </a>
+                      </li>
+
+                      <li class="sidebar-title">Menu Lain</li>
+
+                      <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                          <i class="bi bi-stack"></i>
+                          <span>Laporan Administrasi</span>
+                      </li>
+
+                    
+                    <li class="sidebar-item "
+                      style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
+                      <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i style="color: white;" class="bi bi-box-arrow-right"></i>
+                        <span style="color: white;">Logout</span>
+                      </a>
+                    </li>
+                  <?php
                   break;
               }
             ?>
@@ -135,8 +180,36 @@
                 }
                 break;
               
-              default:
-                # code...
+              case 'perseorangan':
+                switch ($_GET['page']) {
+                  case 'beranda':
+                    include "beranda.php";
+                    break;
+
+                  case 'program':
+                    include "perseorangan/program/program_view.php";
+                    break;
+
+                  case 'programEdit':
+                    include "perseorangan/program/program_edit.php";
+                    break;
+
+                  case 'programSave':
+                    include "perseorangan/program/program_aksi.php";
+                  break;
+
+                  case 'programDetail':
+                    include "perseorangan/program/program_detail.php";
+                  break;
+
+                  case 'transaksi':
+                    include "perseorangan/transaksi/transaksi_view.php";
+                  break;
+
+                  case 'dana':
+                    include "perseorangan/dana/dana_view.php";
+                  break;
+                }
                 break;
             }
           } else {

@@ -1,27 +1,7 @@
 <?php
-include_once("../../koneksi.php");
-// KODE OTOMATIS
-// membuat query max untuk kode
-$carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
-// menjadikannya array
-$datakode = mysqli_fetch_array($carikode);
-// jika $datakode
-if ($datakode) {
-  // var_dump($datakode);
-  // membuat variabel baru untuk mengambil kode mulai dari 3
-  $nilaikode = $datakode[0];
-  // menjadikan $nilaikode ( int )
-  $kode = (int) $nilaikode;
-  // setiap $kode di tambah 1
-  $kode = $kode + 1;
-
-  $hasilkode = "PLDN" . str_pad($kode, 2, "0", STR_PAD_LEFT);
-} else {
-  $hasilkode = "PLDN01";
-}
+  include_once("__DIR__ .  ../../../../koneksi.php");
+  $maxID = MaxIdProgram();
 ?>
-
-
 
 <div id="main">
   <header class="mb-3">
@@ -29,7 +9,6 @@ if ($datakode) {
       <i class="bi bi-justify fs-3"></i>
     </a>
   </header>
-
 
   <div class="page-content">
     <section class>
@@ -57,54 +36,45 @@ if ($datakode) {
                     </tr>
                   </center>
                 </thead>
+
                 <tbody>
                   <?php
-                  // $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
-                  // $query_oto = mysqli_query($con, $sql_otoarsip);
-
-                  ?>
-
-              <?php
-                          $a = progPer();
-                          $b= archiveOto();
-                          $no = 1;
-                          foreach ($a as $key => $data) {
+                    $data = SelectDataProgram($_SESSION["ses_id"]);
+                    $no = 1;
+                    foreach ($data as $value) {
                       ?>
-                    <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $data['kdProgram']; ?> <br>
+                        <tr>
+                          <td><?php echo $no; ?></td>
+                          <td><?php echo $value['kdProgram']; ?></td>
+                          <td><?php echo $value['nmProgram']; ?></td>
+                          <td><?php echo $value['nama']; ?></td>
+                          <td><?php echo $value['donasi']; ?></td>
+                          <td>
+                            <?php
+                              switch ($value['status']) {
+                                case 'P':
+                                  echo 'Publish';
+                                  break;
+                                
+                                case 'A':
+                                  echo 'Arsip';
+                                  break;
 
-                      </td>
-                      <td><?php echo $data['nmProgram']; ?></td>
-                      <td><?php echo $data['nama']; ?></td>
-                      <td><?php echo $data['donasi']; ?></td>
-                      <td>
-                        <?php
-                        if ($data['status'] == 'P') {
-                        ?>
-                          Publish
-                        <?php
-                        } elseif ($data['status'] == 'A') {
-                        ?>
-                          Arsip
-                        <?php
-                        } else {
-                        ?>
-                          Ditangguhkan
-                      </td>
-                    <?php
-                        } ?></td>
-
-                    <td>
-                      <a href="?page=progUbah&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
-                      <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
-                      <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
-                    </td>
-                    </tr>
-                  <?php
-                    $no++;
-                  }
-
+                                default:
+                                  echo 'Ditangguhkan';
+                                  break;
+                              }
+                            ?>
+                          </td>
+                          <td>
+                            <a href="?level=perseorangan&page=programEdit&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
+                            <a href="?level=perseorangan&page=programDetail&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                            <a href="?level=perseorangan&page=programSave&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                          </td>
+                        </tr>
+                      <?php
+                      $no++;
+                    }
                   ?>
                 </tbody>
               </table>
@@ -121,14 +91,13 @@ if ($datakode) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Tambah Program</h4>
       </div>
-      <form action="?page=progAksi" method="post" enctype="multipart/form-data">
+      <form action="?level=perseorangan&page=programSave" method="post" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="form-group">
             <label>Kode Program</label>
-            <input type="text" class="form-control" name="txtKdProgram" value="<?php echo $hasilkode; ?>" readonly />
+            <input type="text" class="form-control" name="txtKdProgram" value="<?php echo $maxID; ?>" readonly />
           </div>
           <div class="form-group">
             <label>Nama Program</label>
@@ -141,9 +110,9 @@ if ($datakode) {
           </div>
 
           <div class="form-group">
-            <label>Jenis</label>
-            <select name="txtJenis" class="form-control">
-              <option value="">- Jenis Program -</option>
+            <label>Perseorangan</label>
+            <select name="txtIdLembaga" class="form-control">
+              <option value="<?php echo $_SESSION["ses_id"] ?>"><?php echo $_SESSION["ses_nama"] ?></option>
 
               <?php
               $p = mysqli_query($con, "select * from mst_jenis") or die(mysqli_error($con));
@@ -180,8 +149,16 @@ if ($datakode) {
 </div>
 
 <script>
-  console.log($('#program1'))
   $('#program1').DataTable({
     scrollY: 350,
+    "columns": [
+      { "width": "5%" },
+      { "width": "15%" },
+      { "width": "25%" },
+      { "width": "15%" },
+      { "width": "15%" },
+      { "width": "10%" },
+      { "width": "15%" },
+    ]
   });
 </script>

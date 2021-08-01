@@ -1,218 +1,387 @@
 <?php
-  define('HOST','localhost');
-  define('USER','root');
-  define('PASS','');
-  define('DB','sosialrev');
-  // define('DB','sosial');
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('DB', 'sosialrev');
+// define('DB','sosial');
 
-  $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
+$con = mysqli_connect(HOST, USER, PASS, DB) or die('Unable to Connect');
 
-  function LoginUser() {
-    global $con;
+function LoginUser()
+{
+  global $con;
 
-    $sql_login = "SELECT * FROM `user` WHERE status='Aktif' AND `username`='" . $_POST['txtusm'] . "' AND `password`='" . $_POST['txtpassword'] . "'";
-    $query_login = mysqli_query($con, $sql_login);
-    $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
-    $jumlah_login = mysqli_num_rows($query_login);
+  $sql_login = "SELECT * FROM `user` WHERE status='Aktif' AND `username`='" . $_POST['txtusm'] . "' AND `password`='" . $_POST['txtpassword'] . "'";
+  $query_login = mysqli_query($con, $sql_login);
+  $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+  $jumlah_login = mysqli_num_rows($query_login);
 
-    if ($jumlah_login >= 1) {
-      session_start();
-      $_SESSION["ses_username"] = $data_login["username"];
-      $_SESSION["ses_nama"] = $data_login["nama"];
-      $_SESSION["ses_level"] = $data_login["level"];
-      $_SESSION["ses_id"] = $data_login['idDaftar'];
+  if ($jumlah_login >= 1) {
+    session_start();
+    $_SESSION["ses_username"] = $data_login["username"];
+    $_SESSION["ses_nama"] = $data_login["nama"];
+    $_SESSION["ses_level"] = $data_login["level"];
+    $_SESSION["ses_id"] = $data_login['idDaftar'];
 
-      echo "<script>alert('Login Berhasil')</script>";
-      switch ($data_login['level']) {
-        case 'admin':
-          echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
-          break;
-        
-        case 'perseorangan':
-          echo "<meta http-equiv='refresh' content='0; url=dist/v_perseorangan/index.php'>";
-          break;
+    echo "<script>alert('Login Berhasil')</script>";
+    switch ($data_login['level']) {
+      case 'admin':
+        echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
+        break;
 
-        case 'L-kasie':
-          echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
-          break;
+      case 'perseorangan':
+        echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
+        break;
 
-        case 'L-seksie':
-          echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
-          break;
+      case 'L-kasie':
+        echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
+        break;
 
+      case 'L-seksie':
+        echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
+        break;
 
-        case 'donatur':
-          echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
-          break;
-      }
-    } else {
-      echo "<script>alert('Login Gagal!!')</script>";
+      case 'donatur':
+        echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
+        break;
     }
+  } else {
+    echo "<script>alert('Login Gagal!!')</script>";
   }
+}
 
-  function SelectAlljenis()
-  {
-    global $con;
-    $sql = "SELECT * FROM `mst_jenis` ";
-    $query_login = mysqli_query($con, $sql);
+function SelectAlljenis()
+{
+  global $con;
+  $sql = "SELECT * FROM `mst_jenis` ";
+  $query_login = mysqli_query($con, $sql);
 
-    return $query_login;
+  return $query_login;
+}
+
+function SelectAllDonatur()
+{
+  global $con;
+  $sql = "SELECT * FROM `donatur` ";
+  $query_login = mysqli_query($con, $sql);
+  return $query_login;
+}
+
+function SelectAllLembaga()
+{
+  global $con;
+  $sql = "SELECT * FROM `lembaga` ";
+  $query_login = mysqli_query($con, $sql);
+
+  return $query_login;
+}
+
+function SelectAllProgram()
+{
+  global $con;
+
+  $sql = "SELECT * FROM `program` WHERE status='P' ";
+  $query_login = mysqli_query($con, $sql);
+
+  return $query_login;
+}
+
+function InserTransaksi()
+{
+  global $con;
+
+  $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`, `tanggal`) VALUES 
+    ('" . $_POST['idProgramDonasi'] . "','" . $_POST['idDonaturDonasi'] . "','" . $_POST['dnProgramDonasi'] . "','T', now())";
+
+  mysqli_query($con, $sql);
+}
+
+function RecordTransaction()
+{
+  global $con;
+
+  $idUser = $_SESSION["ses_id"];
+  $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal FROM transaksi a, program b WHERE b.id = a.idProgram AND a.idDonatur=' . $idUser . ' ';
+
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function insertKelolaDana($a, $b)
+{
+  global $con;
+  $c = 1;
+  $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) 
+            VALUES (' . $a . ',' . $b . ', ' . $c . ') ';
+
+  mysqli_query($con, $sql);
+}
+
+function ShowProgramPublish()
+{
+  global $con;
+
+  $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function MaxIdProgram()
+{
+  global $con;
+
+  $carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
+  $datakode = mysqli_fetch_array($carikode);
+  if ($datakode) {
+    $nilaikode = $datakode[0];
+    $kode = (int) $nilaikode;
+    $kode = $kode + 1;
+
+    $hasilkode = "PLDN" . str_pad($kode, 2, "0", STR_PAD_LEFT);
+  } else {
+    $hasilkode = "PLDN01";
   }
+}
 
-  function SelectAllDonatur()
-  {
-    global $con;
-    $sql = "SELECT * FROM `donatur` ";
-    $query_login = mysqli_query($con, $sql);
+function SelectAllProg()
+{
+  global $con;
 
-    return $query_login;
-  }
+  $sql = "SELECT * FROM `program` ";
+  $query_login = mysqli_query($con, $sql);
 
-  function SelectAllLembaga()
-  {
-    global $con;
+  return $query_login;
+}
 
-    $sql = "SELECT * FROM `lembaga` ";
-    $query_login = mysqli_query($con, $sql);
+function SelectAllPerseorangan()
+{
+  global $con;
 
-    return $query_login;
-  }
+  $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+  $query_login = mysqli_query($con, $sql);
 
-  function SelectAllProgram()
-  {
-    global $con;
+  return $query_login;
+}
 
-    $sql = "SELECT * FROM `program` WHERE status='P' ";
-    $query_login = mysqli_query($con, $sql);
-
-    return $query_login;
-  }
-
-  function SelectAllProg()
-  {
-    global $con;
-
-    $sql = "SELECT * FROM `program` ";
-    $query_login = mysqli_query($con, $sql);
-
-    return $query_login;
-  }
-
-  function SelectAllPerseorangan()
-  {
-    global $con;
-
-    $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
-    $query_login = mysqli_query($con, $sql);
-
-    return $query_login;
-  }
-
-  function showUserSuper()
-  {
+function showUserSuper()
+{
   global $con;
 
   $sql = "SELECT a.id, a.nama, a.username, a.idDaftar, b.nmLembaga, a.level, a.status FROM user a, lembaga b WHERE a.idDaftar=b.id AND (a.level != 'donatur' AND a.level != 'perseorangan') OR a.idDaftar ='0'";
   $query_login = mysqli_query($con, $sql);
 
   return $query_login;
-  }
+}
 
-  function showUserPer()
-  {
+function showUserPer()
+{
   global $con;
 
   $sql = "SELECT a.id, a.nama, a.username, a.status FROM user a, perseorangan b WHERE a.idDaftar=b.id AND level='perseorangan'";
   $query_login = mysqli_query($con, $sql);
 
   return $query_login;
-  }
+}
 
-  function showUserDon()
-  {
+function showUserDon()
+{
   global $con;
 
   $sql = "SELECT * FROM user WHERE level ='donatur'";
   $query_login = mysqli_query($con, $sql);
 
   return $query_login;
+}
+
+function confirmUser()
+{
+  global $con;
+  if (isset($_GET['kode'])) {
+    $sql_arsip = "UPDATE user SET status = 'Aktif' where id = '" . $_GET['kode'] . "'";
+    $query_arsip = mysqli_query($con, $sql_arsip);
+
+    if ($query_arsip) {
+      echo "<script>alert('Akun Diaktifkan')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+    } else {
+      echo "<script>alert('Akun Gagal Diaktifkan')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+    }
   }
+}
 
-  function confirmUser()
-  {
-    global $con;
-    if(isset($_GET['kode'])){
-      $sql_arsip = "UPDATE user SET status = 'Aktif' where id = '".$_GET['kode']."'";
-          $query_arsip = mysqli_query($con, $sql_arsip);
-  
-              if ($query_arsip) {
-                  echo "<script>alert('Akun Diaktifkan')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
-              }else{
-                  echo "<script>alert('Akun Gagal Diaktifkan')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
-              }
-          }
+function SelectDataProgram($data_id)
+{
+  global $con;
+
+  $query = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$data_id' AND a.idLevel='2') ";
+  $sql = mysqli_query($con, $query);
+
+  return $sql;
+}
+
+function GetDataProgramByID($id)
+{
+  global $con;
+
+  $query    = "SELECT * FROM program WHERE id='$id'";
+  $sql      = mysqli_query($con, $query);
+  $sql_slice = mysqli_fetch_array($sql, MYSQLI_BOTH);
+
+  return $sql_slice;
+}
+
+function Upload_Files($namePost, $codePost)
+{
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg');
+  $nama = $_FILES[$namePost]['name'];
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Photo_' . $_POST[$codePost] . "." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      move_uploaded_file($file_tmp, __DIR__ . '/images/files/' . $namas);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
   }
+}
 
-  function InserTransaksi()
-  {
-    global $con;
+function InsertToProgram($upload)
+{
+  global $con;
 
-    $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`, `tanggal`) VALUES 
-    ('".$_POST['idProgramDonasi']."','".$_POST['idDonaturDonasi']."','".$_POST['dnProgramDonasi']."','T', now())";
-    
-    mysqli_query($con, $sql);
+  $date = date('Y-m-d');
+  $sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir) VALUES (
+					'" . $_POST['txtKdProgram'] . "',
+					'" . $_POST['txtNmProgram'] . "',
+					'" . $_POST['txtIdLembaga'] . "',
+					'" . $_POST['txtketerangan'] . "',
+          '" . $_POST['txtDonasi'] . "',
+					'T',
+          '2',
+					'" . $upload . "',
+					'" . $date . "',
+					'" . $_POST['txtAkhir'] . "')";
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
   }
+}
 
-  function RecordTransaction()
-  {
-    global $con;
+function UpdateToProgram()
+{
+  global $con;
 
-    $idUser = $_SESSION["ses_id"];
-    $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal FROM transaksi a, program b WHERE b.id = a.idProgram AND a.idDonatur='.$idUser.' ';
+  $sql_ubah = "UPDATE program SET
+        kdProgram='" . $_POST['txtKdProgram'] . "',
+        nmProgram='" . $_POST['txtNmProgram'] . "',
+        idLembaga='" . $_POST['txtIdLembaga'] . "',
+        keterangan='" . $_POST['txtKeterangan'] . "',
+        donasi='" . $_POST['txtDonasi'] . "',
+        status='T'
+        WHERE id='" . $_POST['txtId'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
 
-    $query = mysqli_query($con, $sql);
-
-    return $query;
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
   }
+}
 
-  function insertKelolaDana($a, $b)
-  {
-    global $con;
-    $c = 1;
-    $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) 
-            VALUES ('.$a.','.$b.', '.$c.') ';
+function DeleteProgram($id)
+{
+  global $con;
 
-    mysqli_query($con, $sql);
+  $sql_hapus = "DELETE FROM program WHERE id='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=program'>";
   }
+}
 
-  function ShowProgramPublish()
-  {
-    global $con;
+function DetailProgram($id)
+{
+  global $con;
 
-    $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
-    $query = mysqli_query($con, $sql);
+  $query = "SELECT a.id, a.kdProgram, b.kdPerseorangan, b.nama, a.nmProgram, a.gambar, a.keterangan, a.donasi, a.status, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='" . $_SESSION["ses_id"] . "' AND a.idLevel='2') AND a.id='$id'";
+  $sql = mysqli_query($con, $query);
+  $sql_slice = mysqli_fetch_array($sql, MYSQLI_BOTH);
 
-    return $query;
+  return $sql_slice;
+}
+
+function SelectDataTransaksiDonasi()
+{
+  global $con;
+
+  $query = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
+  $sql = mysqli_query($con, $query);
+
+  return $sql;
+}
+
+function ConfirmTransaksiDonasi($id)
+{
+  global $con;
+
+  $query = "UPDATE transaksi SET status = 'K' where id = '$id'";
+  $sql = mysqli_query($con, $query);
+
+  if ($sql) {
+    echo "<script>alert('Konfirmasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+  } else {
+    echo "<script>alert('konfirmasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
   }
+}
 
-  function progPer()
-  {
-    global $con;
+function progPer()
+{
+  global $con;
+  $idUser = $_SESSION["ses_id"];
+  $sql = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$idUser' AND a.idLevel='2')";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
 
-    $idUser = $_SESSION["ses_id"];
-    $sql ="SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$idUser' AND a.idLevel='2')";
-    $query = mysqli_query($con, $sql);
+function archiveOto()
+{
+  global $con;
+  $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
+  mysqli_query($con, $sql_otoarsip);
+}
 
-    return $query;
-  }
+function SelectDataDana()
+{
+  global $con;
 
-  function archiveOto()
-  {
-    global $con;
+  $query = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
+  $sql = mysqli_query($con, $query);
 
-    $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
-    mysqli_query($con, $sql_otoarsip);
-  }
+  return $sql;
+}
+
 ?>

@@ -1,7 +1,4 @@
-<?php
-include_once("../koneksi.php");
-
-?>
+<?php include_once("__DIR__ .  ../../../../koneksi.php"); ?>
 
 <div id="main">
   <header class="mb-3">
@@ -10,12 +7,8 @@ include_once("../koneksi.php");
     </a>
   </header>
 
-
   <div class="page-content">
     <section class>
-
-      <br>
-      <br>
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -38,29 +31,23 @@ include_once("../koneksi.php");
                   </center>
                 </thead>
                 <tbody>
-
                   <?php
-
-                  $sql_tampil = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idLevel='2'";
-                  $query_tampil = mysqli_query($con, $sql_tampil);
-                  $no = 1;
-                  while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-                  ?>
-                    <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $data['kdProgram']; ?> <br>
-
-                      </td>
-                      <td><?php echo $data['nmProgram']; ?></td>
-                      <td><?php echo $data['donasi']; ?></td>
-                      <td><?php echo $data['Total']; ?></td>
-                      <td><?php echo $data['Tidak']; ?></td>
-
-                    </tr>
-                  <?php
-                    $no++;
-                  }
-
+                    $no = 1;
+                    $data = SelectDataDana();
+                    foreach ($data as $value) {
+                      ?>
+                        <tr>
+                          <td><?php echo $no; ?></td>
+                          <td><?php echo $value['kdProgram']; ?></td>
+                          <td><?php echo $value['nmProgram']; ?></td>
+                          <td><?php echo $value['donasi']; ?></td>
+                          <td><?php echo $value['Total']; ?></td>
+                          <td><?php echo $value['Tidak']; ?></td>
+                          <td></td>
+                        </tr>
+                      <?php
+                      $no++;
+                    }
                   ?>
                 </tbody>
               </table>
@@ -74,7 +61,5 @@ include_once("../koneksi.php");
 </div>
 
 <script>
-  console.log($('#table111'))
-  $('#table111').DataTable({
-  });
+  $('#table111').DataTable({})
 </script>
