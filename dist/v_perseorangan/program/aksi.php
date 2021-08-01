@@ -25,10 +25,11 @@ function uploadfiles()
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir) VALUES (
+	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, idJenis, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir) VALUES (
 					'" . $_POST['txtKdProgram'] . "',
 					'" . $_POST['txtNmProgram'] . "',
-					'" . $_POST['txtIdLembaga'] . "',
+					'" . $data_id. "',
+					'" . $_POST['txtJenis'] . "',
 					'" . $_POST['txtketerangan'] . "',
           '" . $_POST['txtDonasi'] . "',
 					'T',

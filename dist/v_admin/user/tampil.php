@@ -1,5 +1,5 @@
 <?php 
-     include_once("koneksi.php");
+     include_once("../../koneksi.php");
     ?>
 <!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
 
@@ -31,13 +31,10 @@
     </center>
     </thead>
     <tbody>
-    
-        <?php
-            
-            $sql_tampil = "SELECT id, nama, username, password, status FROM user WHERE level ='donatur'";
-            $query_tampil = mysqli_query($con, $sql_tampil);
-            $no=1;
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
+    <?php
+            $a = showUserDon();
+            $no = 1;
+            foreach ($a as $key => $data) {
         ?>
         <tr>       
             <td><?php echo $no; ?></td>

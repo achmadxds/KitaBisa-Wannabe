@@ -164,18 +164,7 @@ if ($datakode) {
             <input type="file" class="form-control" name="txtfotoProgram" />
           </div>
 
-          <div class="form-group">
-            <label>Atas Nama</label>
-            <input type="text" class="form-control" name="txtKdProgram" value="<?php echo $data_id ?>;" placeholder="
-              <?php
-              $p = mysqli_query($con, "select id , nmLembaga from lembaga where id='$data_id'") or die(mysqli_error($con));
-              while ($datap = mysqli_fetch_array($p)) {
-                echo $datap['nmLembaga'];
-              } ;?>"
-            
-            readonly/>
-          </div>
-
+            <input type="hidden" class="form-control" name="txtidPengguna" value="<?php echo $data_id ?>" />
           
           <div class="form-group">
             <label>Jenis Program</label>

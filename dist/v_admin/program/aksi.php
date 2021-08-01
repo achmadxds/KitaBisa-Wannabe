@@ -32,7 +32,7 @@ if (isset($_POST['btnSimpan'])) {
 	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, idJenis, keterangan, donasi, status, idLevel, gambar, tgl_masuk) VALUES (
 					'" . $_POST['txtKdProgram'] . "',
 					'" . $_POST['txtNmProgram'] . "',
-					'" . $_POST['txtIdLembaga'] . "',
+					'" . $_POST['txtidPengguna'] . "',
 					'" . $_POST['txtJenis'] . "',
 					'" . $_POST['txtketerangan'] . "',
           '" . $_POST['txtDonasi'] . "',

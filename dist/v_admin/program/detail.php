@@ -1,9 +1,12 @@
 <?php
 include_once("koneksi.php");
 if (isset($_GET['kode'])) {
-	$sql_cek = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.gambar, a.keterangan, a.idLembaga,  a.donasi, a.status, b.no_rek, a.idLevel FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.id='" . $_GET['kode'] . "'";
+	$sql_cek = "SELECT a.id, a.kdProgram, a.nmProgram, b.kdLembaga , b.nmLembaga, a.gambar, a.keterangan, a.idLembaga,  a.donasi, a.status, b.no_rek, a.idLevel FROM program a, lembaga b WHERE a.idLembaga=b.id AND a.id='" . $_GET['kode'] . "'";
+	$sql_ceks = "SELECT a.id, a.kdProgram, a.nmProgram, b.kdPerseorangan , b.nama, a.gambar, a.keterangan, a.idLembaga,  a.donasi, a.status, b.no_rek, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id AND a.id='" . $_GET['kode'] . "'";
 	$query_cek = mysqli_query($con, $sql_cek);
+	$query_ceks = mysqli_query($con, $sql_ceks);
 	$data_cek = mysqli_fetch_array($query_cek, MYSQLI_BOTH);
+	$data_ceks = mysqli_fetch_array($query_ceks, MYSQLI_BOTH);
 }
 ?>
 
@@ -47,15 +50,14 @@ if (isset($_GET['kode'])) {
 													<td width="170"><b>Lembaga / Perseorangan</b></td>
 													<td>
 														<?php if ($data_cek['idLevel'] == '1') { ?>
-															Lembaga -
+															Lembaga - <?php echo $data_cek['kdLembaga']; ?>
 														<?php
 														} else {
 														?>
-															Perseorangan -
+															Perseorangan - <?php echo $data_ceks['kdPerseorangan']; ?>
 														<?php
 														}
 														?>
-														<?php echo $data_cek['idLembaga']; ?>
 													</td>
 												</tr>
 

@@ -122,7 +122,7 @@
   {
   global $con;
 
-  $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+  $sql = "SELECT a.id, a.nama, a.username, a.status FROM user a, perseorangan b WHERE a.idDaftar=b.id AND level='perseorangan'";
   $query_login = mysqli_query($con, $sql);
 
   return $query_login;
@@ -132,10 +132,27 @@
   {
   global $con;
 
-  $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+  $sql = "SELECT * FROM user WHERE level ='donatur'";
   $query_login = mysqli_query($con, $sql);
 
   return $query_login;
+  }
+
+  function confirmUser()
+  {
+    global $con;
+    if(isset($_GET['kode'])){
+      $sql_arsip = "UPDATE user SET status = 'Aktif' where id = '".$_GET['kode']."'";
+          $query_arsip = mysqli_query($con, $sql_arsip);
+  
+              if ($query_arsip) {
+                  echo "<script>alert('Akun Diaktifkan')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+              }else{
+                  echo "<script>alert('Akun Gagal Diaktifkan')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+              }
+          }
   }
 
   function InserTransaksi()
@@ -178,5 +195,24 @@
     $query = mysqli_query($con, $sql);
 
     return $query;
+  }
+
+  function progPer()
+  {
+    global $con;
+
+    $idUser = $_SESSION["ses_id"];
+    $sql ="SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$idUser' AND a.idLevel='2')";
+    $query = mysqli_query($con, $sql);
+
+    return $query;
+  }
+
+  function archiveOto()
+  {
+    global $con;
+
+    $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
+    mysqli_query($con, $sql_otoarsip);
   }
 ?>

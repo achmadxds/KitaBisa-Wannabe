@@ -1,5 +1,5 @@
 <?php
-include_once("../koneksi.php");
+include_once("../../koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
 $carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
@@ -59,17 +59,17 @@ if ($datakode) {
                 </thead>
                 <tbody>
                   <?php
-                  $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
-                  $query_oto = mysqli_query($con, $sql_otoarsip);
+                  // $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
+                  // $query_oto = mysqli_query($con, $sql_otoarsip);
 
                   ?>
 
-                  <?php
-                  $sql_tampil = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$data_id' AND a.idLevel='2') ";
-                  $query_tampil = mysqli_query($con, $sql_tampil);
-                  $no = 1;
-                  while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-                  ?>
+              <?php
+                          $a = progPer();
+                          $b= archiveOto();
+                          $no = 1;
+                          foreach ($a as $key => $data) {
+                      ?>
                     <tr>
                       <td><?php echo $no; ?></td>
                       <td><?php echo $data['kdProgram']; ?> <br>
@@ -141,12 +141,12 @@ if ($datakode) {
           </div>
 
           <div class="form-group">
-            <label>Perseorangan</label>
-            <select name="txtIdLembaga" class="form-control">
-              <option value="">- Perseorangan -</option>
+            <label>Jenis</label>
+            <select name="txtJenis" class="form-control">
+              <option value="">- Jenis Program -</option>
 
               <?php
-              $p = mysqli_query($con, "select id , nama from perseorangan where id='$data_id'") or die(mysqli_error($con));
+              $p = mysqli_query($con, "select * from mst_jenis") or die(mysqli_error($con));
               while ($datap = mysqli_fetch_array($p)) {
                 echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
               } ?>
