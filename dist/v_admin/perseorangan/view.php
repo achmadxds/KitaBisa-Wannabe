@@ -1,5 +1,5 @@
 <?php
-include_once("../koneksi.php");
+include_once("../../koneksi.php");
 ?>
 <div id="main">
 	<header class="mb-3">
@@ -33,12 +33,11 @@ include_once("../koneksi.php");
     </thead>
     <tbody>
     
-        <?php
-            $sql_tampil = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.idJenis, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
-            $query_tampil = mysqli_query($con, $sql_tampil);
-            $no=1;
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
+    <?php
+            $a = SelectAllPerseorangan();
+            $no = 1;
+            foreach ($a as $key => $data) {
+                ?>
         <tr>       
             <td><?php echo $no; ?></td>
             <td><?php echo $data['kdPerseorangan']; ?></td>

@@ -49,18 +49,6 @@ include_once("koneksi.php");
             </div>
         </div>
 
-        <div class="form-group" >
-        <label class="col-sm-2 control-label">Lembaga</label>
-            <div class="col-sm-8">
-            <select name="txtJenis" class="form-control" required>
-            <option value="<?php echo $data_cek['jenis']; ?>"> - Jenis -</option>
-            <option value="Sosial">Sosial</option>
-            <option value="Bencana">Bencana</option>
-            <option value="Yatim-Lansia">Yatim / Lansia</option>
-            </select>
-            </div>
-        </div>
-
         <div class="form-group">
         <label class="col-sm-2 control-label">Alamat </label>
             <div class="col-sm-8">

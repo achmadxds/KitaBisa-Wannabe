@@ -5,7 +5,8 @@
  define('HOST','localhost');
  define('USER','root');
  define('PASS','');
- define('DB','sosial');
+ define('DB','sosialrev');
+//  define('DB','sosial');
 
 //  define('HOST','localhost');
 //  define('USER','201653054');

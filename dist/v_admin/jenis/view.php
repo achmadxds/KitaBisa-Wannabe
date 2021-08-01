@@ -30,26 +30,25 @@ include_once("../../koneksi.php");
 							</center>
 						</thead>
 						<tbody>
+						<?php
+                $a = SelectAlljenis();
+								$no = 1;
 
-							<?php
-							$sql_tampil = "SELECT * FROM mst_jenis";
-							$query_tampil = mysqli_query($con, $sql_tampil);
-							$no = 1;
-							while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-							?>
-								<tr>
-									<td><?php echo $no; ?></td>
-									<td><?php echo $data['nama']; ?></td>
-									<td>
-										<a href="?page=jnsUbah&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
-										<a href="?page=jnsAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Hapus Jenis ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                foreach ($a as $key => $value) {
+                  ?>
+                    <tr>
+											<td><?php echo $no; ?></td>
+                      <td><b><?php echo $value['nama'] ?></b></td>
+											<td>
+										<a href="?page=jnsUbah&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
+										<a href="?page=jnsAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Hapus Jenis ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
 									</td>
-								</tr>
-							<?php
-								$no++;
-							}
-
-							?>
+                    </tr>
+                  <?php
+									$no++;
+                }
+              ?>
+							
 						</tbody>
 					</table>
 				</div>
@@ -74,16 +73,6 @@ include_once("../../koneksi.php");
 					<div class="form-group">
 						<label>Jenis Donasi</label>
 						<input type="text" class="form-control" name="txtJenis" />
-					</div>
-					<div class="form-group">
-						<label> Jenis </label>
-						<div>
-							<select name="txtPil" class="form-control" required>
-								<option value=""> - Jenis -</option>
-								<option value="1">Lembaga</option>
-								<option value="0">Perseorangan</option>
-							</select>
-						</div>
 					</div>
 			</div>
 

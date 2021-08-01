@@ -3,10 +3,9 @@ include_once("koneksi.php");
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, idJenis, alamat, nmPimpinan, berkas, no_hp, no_rek,tgl) VALUES (
+	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, alamat, nmPimpinan, berkas, no_hp, no_rek,tgl) VALUES (
 					'" . $_POST['txtKdLembaga'] . "',
 					'" . $_POST['txtNmLembaga'] . "',
-					'" . $_POST['txtJenis'] . "',
 					'" . $_POST['txtAlamat'] . "',
 					'" . $_POST['txtNmPimpinan'] . "',
 					'".uploadFiles()."',
@@ -26,7 +25,6 @@ if (isset($_POST['btnSimpan'])) {
 	//mulai proses ubah
 	$sql_ubah = "UPDATE lembaga SET
         nmLembaga='" . $_POST['txtNmLembaga'] . "',
-        idJenis='" . $_POST['txtJenis'] . "',
         alamat='" . $_POST['txtAlamat'] . "',
         nmPimpinan='" . $_POST['txtNmPimpinan'] . "',
         no_hp='" . $_POST['txtNoHp'] . "',
@@ -72,7 +70,7 @@ function uploadFiles()
 
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 41943040) {
-			move_uploaded_file($file_tmp, __DIR__ . '/../../files/' . $namas);
+			move_uploaded_file($file_tmp, __DIR__ . '../../files' . $namas);
 			return $namas;
 		} else {
 			return;

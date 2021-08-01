@@ -165,13 +165,26 @@ if ($datakode) {
           </div>
 
           <div class="form-group">
-            <label>Lembaga</label>
-            <select name="txtIdLembaga" class="form-control">
-              <option value="">- Lembaga -</option>
+            <label>Atas Nama</label>
+            <input type="text" class="form-control" name="txtKdProgram" value="<?php echo $data_id ?>;" placeholder="
               <?php
               $p = mysqli_query($con, "select id , nmLembaga from lembaga where id='$data_id'") or die(mysqli_error($con));
               while ($datap = mysqli_fetch_array($p)) {
-                echo '<option value="' . $datap['id'] . '">' . $datap['nmLembaga'] . '</option>';
+                echo $datap['nmLembaga'];
+              } ;?>"
+            
+            readonly/>
+          </div>
+
+          
+          <div class="form-group">
+            <label>Jenis Program</label>
+            <select name="txtJenis" class="form-control">
+              <option value="">- Program -</option>
+              <?php
+              $p = mysqli_query($con, "select id, nama from mst_jenis") or die(mysqli_error($con));
+              while ($datap = mysqli_fetch_array($p)) {
+                echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
               } ?>
             </select>
           </div>

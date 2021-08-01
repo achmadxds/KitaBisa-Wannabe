@@ -1,7 +1,7 @@
 <?php
 include_once("koneksi.php");
 // $con = mysqli_connect("localhost", "root", "", "sosial");
-				$sql_cek = "SELECT MAX(id) as id FROM perseorangan";
+				$sql_cek = "SELECT MAX(id) as id FROM donatur";
         $query_cek = mysqli_query($con, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
 if (isset($_POST['btnReg'])) {

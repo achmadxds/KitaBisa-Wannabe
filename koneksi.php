@@ -2,7 +2,8 @@
   define('HOST','localhost');
   define('USER','root');
   define('PASS','');
-  define('DB','sosial');
+  define('DB','sosialrev');
+  // define('DB','sosial');
 
   $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
@@ -49,6 +50,24 @@
     }
   }
 
+  function SelectAlljenis()
+  {
+    global $con;
+    $sql = "SELECT * FROM `mst_jenis` ";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
+  function SelectAllDonatur()
+  {
+    global $con;
+    $sql = "SELECT * FROM `donatur` ";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
   function SelectAllLembaga()
   {
     global $con;
@@ -67,6 +86,56 @@
     $query_login = mysqli_query($con, $sql);
 
     return $query_login;
+  }
+
+  function SelectAllProg()
+  {
+    global $con;
+
+    $sql = "SELECT * FROM `program` ";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
+  function SelectAllPerseorangan()
+  {
+    global $con;
+
+    $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+    $query_login = mysqli_query($con, $sql);
+
+    return $query_login;
+  }
+
+  function showUserSuper()
+  {
+  global $con;
+
+  $sql = "SELECT a.id, a.nama, a.username, a.idDaftar, b.nmLembaga, a.level, a.status FROM user a, lembaga b WHERE a.idDaftar=b.id AND (a.level != 'donatur' AND a.level != 'perseorangan') OR a.idDaftar ='0'";
+  $query_login = mysqli_query($con, $sql);
+
+  return $query_login;
+  }
+
+  function showUserPer()
+  {
+  global $con;
+
+  $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+  $query_login = mysqli_query($con, $sql);
+
+  return $query_login;
+  }
+
+  function showUserDon()
+  {
+  global $con;
+
+  $sql = "SELECT a.id, a.kdPerseorangan, a.nama, a.jekel, a.alamat, a.berkas, a.no_hp, a.no_rek, a.tgl_daftar, b.status FROM perseorangan a, user b WHERE b.idDaftar=a.id AND  b.level='perseorangan'";
+  $query_login = mysqli_query($con, $sql);
+
+  return $query_login;
   }
 
   function InserTransaksi()

@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once("../../koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
 $carikode = mysqli_query($con, "SELECT MAX(kdLembaga) FROM lembaga");
@@ -56,14 +56,11 @@ if ($datakode) {
 						</center>
 					</thead>
 					<tbody>
-
-						<?php
-
-						$sql_tampil = "SELECT * FROM lembaga";
-						$query_tampil = mysqli_query($con, $sql_tampil);
-						$no = 1;
-						while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-						?>
+					<?php
+            $a = SelectAllLembaga();
+            $no = 1;
+            foreach ($a as $key => $data) {
+                ?>
 							<tr>
 								<td><?php echo $no; ?></td>
 								<td><?php echo $data['kdLembaga']; ?></td>
@@ -108,18 +105,6 @@ if ($datakode) {
 									<div class="form-group">
 										<label>Nama Lembaga</label>
 										<input type="text" class="form-control" name="txtNmLembaga" />
-									</div>
-
-									<div class="form-group">
-										<label>Jenis Lembaga</label>
-										<select name="txtJenis" class="form-control">
-											<option value="">- Lembaga -</option>
-											<?php
-											$p = mysqli_query($con, "select id, nama from mst_jenis WHERE jenis='1'") or die(mysqli_error($con));
-											while ($datap = mysqli_fetch_array($p)) {
-												echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
-											} ?>
-										</select>
 									</div>
 
 									<div class="form-group">

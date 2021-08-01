@@ -1,5 +1,5 @@
 <?php 
-     include_once("koneksi.php");
+     include_once("../../koneksi.php");
     ?>
 <!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
 <div id="main">
@@ -38,12 +38,10 @@
     </thead>
     <tbody>
     
-        <?php
-            
-            $sql_tampil = "SELECT a.id, a.nama, a.username, a.idDaftar, b.nmLembaga, a.level, a.status FROM user a, lembaga b WHERE a.idDaftar=b.id AND (a.level != 'donatur' AND a.level != 'perseorangan') OR a.idDaftar ='0'";
-            $query_tampil = mysqli_query($con, $sql_tampil);
-            $no=1;
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
+    <?php
+            $a = showUserSuper();
+            $no = 1;
+            foreach ($a as $key => $data) {
         ?>
         <tr>       
             <td><?php echo $no; ?></td>

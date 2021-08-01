@@ -1,5 +1,5 @@
 <?php
-include_once("koneksi.php");
+include_once("../../koneksi.php");
 
 ?>
 <!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
@@ -37,22 +37,18 @@ include_once("koneksi.php");
               </center>
             </thead>
             <tbody>
-
-              <?php
-
-                $sql_tampil = "SELECT * FROM program";
-                // SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P')
-                $query_tampil = mysqli_query($con, $sql_tampil);
-                $no = 1;
-                while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+            <?php
+            $a = SelectAllProg();
+            $no = 1;
+            foreach ($a as $key => $value) {
                 ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $data['kdProgram']; ?></td>
-                    <td><?php echo $data['nmProgram']; ?></td>
+                    <td><?php echo $value['kdProgram']; ?></td>
+                    <td><?php echo $value['nmProgram']; ?></td>
                     <td>
                     <?php 
-                    if ($data['idLevel'] == '1'){
+                    if ($value['idLevel'] == '1'){
                     ?>
                       Lembaga
                     <?php 
@@ -63,27 +59,25 @@ include_once("koneksi.php");
                     }
                     ?>
                     </td>
-                    <td><?php echo $data['keterangan']; ?></td>
-                    <td><?php echo $data['donasi']; ?></td>
+                    <td><?php echo $value['keterangan']; ?></td>
+                    <td><?php echo $value['donasi']; ?></td>
 
                     <td>
                       <?php
-                      if ($data['status'] == 'T') {
+                      if ($value['status'] == 'T') {
                       ?>
-                        <a href="?page=progKonfirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
-                        <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
-                        <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                        <a href="?page=progKonfirm&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                        <a href="?page=progDet&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <a href="?page=progAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                       <?php
                       } else {
                       ?>
-                        <a href="?page=progArchive&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-archive"></i></a>
-                        <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
-                        <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                        <a href="?page=progArchive&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-archive"></i></a>
+                        <a href="?page=progDet&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <a href="?page=progAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                       <?php
                       }
                       ?>
-                      <!-- <a href="?halaman=balas&kode=<?php echo $data['idKonsul']; ?>"class='btn btn-success btn-sm'>Balas</a> -->
-                      <!-- <a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-sm">Balas</a> -->
                     </td>
                   </tr>
                 <?php

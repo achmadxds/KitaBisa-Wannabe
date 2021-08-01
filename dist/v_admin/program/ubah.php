@@ -50,16 +50,22 @@ include_once("koneksi.php");
         <div class="form-group" >
         <label class="col-sm-2 control-label">Lembaga</label>
             <div class="col-sm-8">
-            <select name="txtIdLembaga" class="form-control" required>
-            <option value="<?php echo $data_cek['idLembaga']; ?>"> - Lembaga -</option>
-            <?php
-                $p = mysqli_query($con, "select id , nmLembaga from lembaga") or die(mysqli_error($con));
-                while ($datap = mysqli_fetch_array($p)) {
-                    echo '<option value="' . $datap['id'] . '">' . $datap['nmLembaga'] . '</option>';
-                } ?>
-            </select>
+            <input type="text" class="form-control"  name="idLembaga" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+                value="<?php echo $data_cek['idLembaga']; ?>" required="">
             </div>
         </div>
+
+        <div class="form-group">
+            <label>Jenis Program</label>
+            <select name="txtJenis" class="form-control">
+              <option value="<?php echo $data_cek['idJenis']; ?>">- Program -</option>
+              <?php
+              $p = mysqli_query($con, "select id, nama from mst_jenis") or die(mysqli_error($con));
+              while ($datap = mysqli_fetch_array($p)) {
+                echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
+              } ?>
+            </select>
+          </div>
 
         <div class="form-group">
         <label class="col-sm-2 control-label">Keterangan </label>

@@ -21,12 +21,11 @@ if ($datakode) {
 
 if (isset($_POST['btnDaftarPers'])) {
 	$date = date('Y-m-d');
-	$sql_simpan = "INSERT INTO perseorangan (kdPerseorangan, nama, jekel, alamat, idJenis, berkas, no_hp, no_rek, tgl_daftar) VALUES (
+	$sql_simpan = "INSERT INTO perseorangan (kdPerseorangan, nama, jekel, alamat, berkas, no_hp, no_rek, tgl_daftar) VALUES (
 											'" . $_POST['txtKd'] . "',
 											'" . $_POST['txtNm'] . "',
 											'" . $_POST['txtJekel'] . "',
 											'" . $_POST['txtAlamat'] . "',
-											'" . $_POST['txtJenis'] . "',
 											'".uploadFile()."',
 											'" . $_POST['txtNohp'] . "',
 											'" . $_POST['txtNoRek'] . "',
@@ -134,20 +133,6 @@ include_once("koneksi.php");
 												<label class="col-sm-5 control-label">Alamat </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat">
-												</div>
-											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label"> Jenis </label>
-												<div class="col-sm-8">
-													<select name="txtJenis" class="form-control">
-														<option value=""> - Jenis -</option>
-														<?php
-														$p = mysqli_query($con, "select id, nama from mst_jenis WHERE jenis='0'") or die(mysqli_error($con));
-														while ($datap = mysqli_fetch_array($p)) {
-															echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
-														} ?>
-													</select>
 												</div>
 											</div>
 

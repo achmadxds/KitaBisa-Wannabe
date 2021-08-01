@@ -102,15 +102,15 @@
 <?php
 include_once("koneksi.php");
 if (isset($_POST['btnDaftarPer'])) {
+	
 	$date = date('Y-m-d');
-	$sql_simpan = "INSERT INTO donatur (nama,jekel,alamat,no_hp,username,password,status,tgl_daftar) VALUES (
-                    '" . $_POST['txtNm'] . "',
+	$sql_simpan = "INSERT INTO donatur (kdDonatur, nama,jekel,alamat,no_hp,id_chat,tgl_daftar) VALUES (
+                    '" . $_POST['txtKd'] . "',
+										'" . $_POST['txtNm'] . "',
                     '" . $_POST['txtJekel'] . "',
-					'" . $_POST['txtAlamat'] . "',
+										'" . $_POST['txtAlamat'] . "',
                     '" . $_POST['txtNohp'] . "',
-                    '" . $_POST['txtUsername'] . "',
-                    '" . $_POST['txtPassword'] . "',
-                    'Nonaktif',
+										'" . $_POST['txtIdChat'] . "',
                     '$date')";
 	$query_simpan = mysqli_query($con, $sql_simpan);
 
@@ -162,6 +162,13 @@ if (isset($_POST['btnDaftarPer'])) {
 										<br><br>
 										<form action="" method="post" enctype="multipart/form-data">
 											<div class="form-group col-sm-8">
+												<label class="col-sm-6 control-label">Kode Donatur </label>
+												<div class="col-sm-12">
+													<input type="text" class="form-control" placeholder="Nama Donatur" name="txtKd" value="<?php
+										echo(uniqid());	?>" readonly />
+												</div>
+											</div>
+											<div class="form-group col-sm-8">
 												<label class="col-sm-6 control-label">Nama </label>
 												<div class="col-sm-12">
 													<input type="text" class="form-control" placeholder="Nama Donatur" name="txtNm" required autofocus />
@@ -187,26 +194,20 @@ if (isset($_POST['btnDaftarPer'])) {
 											</div>
 
 											<div class="form-group">
+												<label class="col-sm-6 control-label">ID Chat Telegeram </label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat" required="">
+												</div>
+											</div>
+
+											<div class="form-group">
 												<label class="col-sm-6 control-label">Alamat </label>
 												<div class="col-sm-8">
 													<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat" required="">
 												</div>
 											</div>
 
-											<div class="form-group">
-												<label class="col-sm-6 control-label">Username </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan Username Pengguna" name="txtUsername" required="">
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-sm-6 control-label">Password </label>
-												<div class="col-sm-8">
-													<input type="password" class="form-control" placeholder="Masukkan Password Pengguna" name="txtPassword" required="">
-												</div>
-											</div>
-
+										
 											<br>
 											<div class="form-group col-sm-5">
 												<input type="submit" class="form-control btn btn-primary" value="Daftar" name="btnDaftarPer">

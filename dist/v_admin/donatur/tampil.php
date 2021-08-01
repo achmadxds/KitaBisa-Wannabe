@@ -1,5 +1,5 @@
 <?php 
-     include_once("koneksi.php");
+     include_once("../../koneksi.php");
    
     ?>
 <!-- <h4><span class="glyphicon glyphicon-briefcase"></span>Yayasan SMK NU Ma'arif Kudus</h4> -->
@@ -38,30 +38,29 @@
     <tbody>
     
         <?php
-            
-            $sql_tampil = "SELECT * FROM donatur";
-            $query_tampil = mysqli_query($con, $sql_tampil);
-            $no=1;
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-        <tr>       
+            $a = SelectAllDonatur();
+            $no = 1;
+            foreach ($a as $key => $value) {
+                ?>
+        <tr>
             <td><?php echo $no; ?></td>
-            <td><?php echo $data['nama']; ?></td>
-            <td><?php echo $data['alamat']; ?></td>
-            <td><?php echo $data['no_hp']; ?></td>
-            <td><?php echo $data['tgl_daftar']; ?></td>
-            <td><?php echo $data['status']?></td>
+            <td><?php echo $value['nama']; ?></td>
+            <td><?php echo $value['alamat']; ?></td>
+            <td><?php echo $value['no_hp']; ?></td>
+            <td><?php echo $value['tgl_daftar']; ?></td>
+            <td><?php echo $value['status']?></td>
             
             <td>
             <?php
-               if($data['status'] == 'Aktif'){
+               if($value['status'] == 'Aktif'){
               ?>
-              <a href="?page=donUbah&kode=<?php echo $data['id']; ?>"class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
+              <a href="?page=donUbah&kode=<?php echo $value['id']; ?>"class='btn btn-warning btn-sm'><i class="fa fa-edit"></i></a>
+              <a href="?page=donAksi&kode=<?php echo $value['id']; ?>"onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
               <?php
               } else {
                 ?>
-                <a href="?page=donAcc&kode=<?php echo $data['id']; ?>"class='btn btn-success btn-sm'><i class="fa fa-check"></i></a>
-                <a href="?page=donAksi&kode=<?php echo $data['id']; ?>"onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                <a href="?page=donAcc&kode=<?php echo $value['id']; ?>"class='btn btn-success btn-sm'><i class="fa fa-check"></i></a>
+                <a href="?page=donAksi&kode=<?php echo $value['id']; ?>"onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                 <?php
               }
               ?>
