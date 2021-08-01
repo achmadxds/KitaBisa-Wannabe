@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Jul 2021 pada 17.47
+-- Waktu pembuatan: 01 Agu 2021 pada 05.35
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -52,6 +52,14 @@ CREATE TABLE `donatur` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `donatur`
+--
+
+INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
+(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 333456, 'Aktif', '2021-08-01'),
+(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 333456, 'Aktif', '2021-08-01');
+
 -- --------------------------------------------------------
 
 --
@@ -70,6 +78,14 @@ CREATE TABLE `lembaga` (
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `lembaga`
+--
+
+INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
+(2, 'LMB001', 'Yayasan Pita Kuning', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pita Kuning.zip', '0898767234', '056785421', '2021-08-01'),
+(3, 'LMB002', 'Yayasan Pelita Hati', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', 'H. Nooryanto', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '1234895', '2021-08-01');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +96,16 @@ CREATE TABLE `mst_jenis` (
   `id` int(11) NOT NULL,
   `nama` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mst_jenis`
+--
+
+INSERT INTO `mst_jenis` (`id`, `nama`) VALUES
+(8, 'Sosial Hukum'),
+(9, 'Kesehatan'),
+(10, 'Yatim'),
+(11, 'Lingkungan');
 
 -- --------------------------------------------------------
 
@@ -99,6 +125,13 @@ CREATE TABLE `perseorangan` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `perseorangan`
+--
+
+INSERT INTO `perseorangan` (`id`, `kdPerseorangan`, `nama`, `jekel`, `alamat`, `berkas`, `no_hp`, `no_rek`, `tgl_daftar`) VALUES
+(14, 'DPM001', 'Ali Zuhdi', 'L', 'Ds. Ploso', 'Perseorangan_Ali Zuhdi.zip', '08980695197', '0006576788', '2021-08-01');
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +143,7 @@ CREATE TABLE `program` (
   `kdProgram` varchar(20) NOT NULL,
   `nmProgram` varchar(75) NOT NULL,
   `idLembaga` int(11) DEFAULT NULL,
+  `idJenis` int(11) DEFAULT NULL,
   `gambar` varchar(300) DEFAULT NULL,
   `keterangan` varchar(200) DEFAULT NULL,
   `donasi` varchar(50) NOT NULL,
@@ -118,6 +152,13 @@ CREATE TABLE `program` (
   `tgl_akhir` date DEFAULT NULL,
   `idLevel` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `program`
+--
+
+INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `idJenis`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
+(25, 'PLDN01', 'Donasi Oksigen & Masker Covid-19', 2, 9, 'Photo_PLDN01.jpg', 'Diajukan', '8000000', 'P', '2021-08-01', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -149,6 +190,18 @@ CREATE TABLE `user` (
   `idDaftar` int(11) NOT NULL DEFAULT 0,
   `status` enum('Aktif','Nonaktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='komen';
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `status`) VALUES
+(8, 'Administrator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
+(9, 'Febriansyah', 'ian', 'ian', 'donatur', 2, 'Aktif'),
+(10, 'Ali Zuhdi', 'ali', 'ali', 'perseorangan', 14, 'Aktif'),
+(11, 'Riani Putri', 'riani', 'riani', 'L-kasie', 2, 'Aktif'),
+(12, 'Lania Widiastuti', 'lania', 'lania', 'L-seksie', 2, 'Aktif'),
+(13, 'Rina', 'rina', 'rina', 'perseorangan', 3, 'Nonaktif');
 
 --
 -- Indexes for dumped tables
@@ -216,31 +269,31 @@ ALTER TABLE `dana`
 -- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `lembaga`
 --
 ALTER TABLE `lembaga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mst_jenis`
 --
 ALTER TABLE `mst_jenis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `perseorangan`
 --
 ALTER TABLE `perseorangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
@@ -252,7 +305,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
