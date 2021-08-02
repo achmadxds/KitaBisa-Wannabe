@@ -234,7 +234,7 @@ if (isset($_SESSION['ses_username']) == "") {
             include "../v_admin/aksi.php";
             break;
           case 'confirm' :
-            include "../v_perseorangan/transaksi/confirm.php";
+            include "../v_user/perseorangan/transaksi/transaksi_confirm.php";
             break;
 
           case 'rekapDana':

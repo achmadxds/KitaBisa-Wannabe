@@ -355,21 +355,21 @@ function SelectDataTransaksiDonasi()
   return $sql;
 }
 
-function ConfirmTransaksiDonasi($id)
-{
-  global $con;
+// function ConfirmTransaksiDonasi($id)
+// {
+//   global $con;
 
-  $query = "UPDATE transaksi SET status = 'K' where id = '$id'";
-  $sql = mysqli_query($con, $query);
+//   $query = "UPDATE transaksi SET status = 'K' where id = '$id'";
+//   $sql = mysqli_query($con, $query);
 
-  if ($sql) {
-    echo "<script>alert('Konfirmasi Berhasil')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
-  } else {
-    echo "<script>alert('konfirmasi Gagal')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
-  }
-}
+//   if ($sql) {
+//     echo "<script>alert('Konfirmasi Berhasil')</script>";
+//     echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+//   } else {
+//     echo "<script>alert('konfirmasi Gagal')</script>";
+//     echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+//   }
+// }
 
 function progPer()
 {
@@ -415,4 +415,102 @@ function GetProgramByJenis($jenis)
   $sql = mysqli_query($con, $query);
 
   return $sql;
+}
+
+
+function sendTransaksi()
+{
+  function ConfirmTransaksiDonasi($id)
+    {
+      global $con;
+
+      $query = "UPDATE transaksi SET status = 'K' where id = '$id'";
+      $sql = mysqli_query($con, $query);
+
+      if ($sql) {
+        echo "<script>alert('Konfirmasi Berhasil')</script>";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+      } else {
+        echo "<script>alert('konfirmasi Gagal')</script>";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+      }
+
+      
+    }
+  
+  if(isset($_GET['kode'])){
+    global $con;
+    $sql_cek = "SELECT a.id AS don, a.nama, a.id_chat, c.nmProgram, b.id FROM donatur a, transaksi b, program c WHERE b.idDonatur=a.id AND b.idProgram=c.id AND b.id='".$_GET['kode']."'";
+    $query_cek = mysqli_query($con, $sql_cek);
+    $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
+  }
+  define('BOT_TOKEN', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  define('CHAT_ID',$data_cek['id_chat']);
+   
+  function kirimTelegram($pesan) {
+      $pesan = json_encode($pesan);
+      $API = "https://api.telegram.org/bot".BOT_TOKEN."/sendmessage?chat_id=".CHAT_ID."&text=$pesan";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+      curl_setopt($ch, CURLOPT_URL, $API);
+      $result = curl_exec($ch);
+      curl_close($ch);
+      return $result;
+  }
+   
+  kirimTelegram("Transaksi Donasi Anda telah diterima. Terimakasih Atas donasi yang anda berikan");
+}
+
+function broadcast()
+{
+  function confirmProg($id)
+  {
+    global $con;
+
+    $query = "UPDATE program SET status = 'P' where id = '$id'";
+    $sql = mysqli_query($con, $query);
+
+    if ($sql) {
+      echo "<script>alert('Konfirmasi Berhasil')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+    } else {
+      echo "<script>alert('konfirmasi Gagal')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
+    }
+
+  }
+  global $con;
+  $sql_no = "SELECT id_chat FROM donatur";
+  $query_no = mysqli_query($con, $sql_no);
+  $no = 1;
+  $data_chat = [];
+  while ($data = mysqli_fetch_array($query_no, MYSQLI_BOTH)) {
+    $chatId =  $data['id_chat'];
+    array_push($data_chat, $chatId);
+  }
+  define('BOT_TOKENS', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  foreach ($data_chat as $value) {
+  define('CHAT_IDS',$value);
+  }
+   function kirimTelegrams($pesan) {
+    // global $con;
+    // $query = "SELECT a.id AS don, a.nama, a.id_chat, c.nmProgram, b.id FROM donatur a, transaksi b, program c WHERE b.idDonatur=a.id AND b.idProgram=c.id AND b.id='$id'";
+    // $sql = mysqli_query($con, $query);
+      $pesan = json_encode($pesan);
+      
+      $API = "https://api.telegram.org/bot".BOT_TOKENS."/sendmessage?chat_id=".CHAT_IDS."&text=$pesan";
+      
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+      curl_setopt($ch, CURLOPT_URL, $API);
+      $result = curl_exec($ch);
+      curl_close($ch);
+      return $result;
+  }
+   
+  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. 
+  Semoga ada waktu untuk mengecek donasi, Terimakasih");
+
 }
