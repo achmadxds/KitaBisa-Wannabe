@@ -411,7 +411,7 @@ function GetProgramByJenis($jenis)
 {
   global $con;
 
-  $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' ORDER BY tgl_masuk DESC';
+  $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' AND `status`="P" ORDER BY tgl_masuk';
   $sql = mysqli_query($con, $query);
 
   return $sql;

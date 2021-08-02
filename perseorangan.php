@@ -26,7 +26,7 @@ if (isset($_POST['btnDaftarPers'])) {
 											'" . $_POST['txtNm'] . "',
 											'" . $_POST['txtJekel'] . "',
 											'" . $_POST['txtAlamat'] . "',
-											'".uploadFile()."',
+											'" . uploadFile() . "',
 											'" . $_POST['txtNohp'] . "',
 											'" . $_POST['txtNoRek'] . "',
 											'$date')";
@@ -104,52 +104,35 @@ include_once("koneksi.php");
 												PORTAL DONASI-KU</b></font><br>
 										<br><br>
 										<form action="" method="post" enctype="multipart/form-data">
-											<div class="form-group col-sm-8">
-												<label class="col-sm-5 control-label">Kode Anda </label>
-												<div class="col-sm-12">
-													<input type="text" class="form-control" name="txtKd" value="<?php echo $hasilkode; ?>" readonly />
+											<div class="col-lg-12">
+												<div class="row">
+													<div class="col-6">
+														<label class="control-label">Kode Anda </label>
+														<input type="text" class="form-control" name="txtKd" value="<?php echo $hasilkode; ?>" readonly />
+														<br>
+														<label class="control-label">Nama </label>
+														<input type="text" class="form-control" placeholder="Nama" name="txtNm" autofocus />
+														<br>
+														<label class="col-sm-5 control-label">Berkas </label>
+														<input type="file" class="form-control" placeholder="Pilih File PDF" name="txtBerkasu">
+													</div>
+													<div class="col-6">
+														<label class="control-label">Jenis Kelamin</label>
+														<select name="txtJekel" class="form-control">
+															<option value=""> - Jenis Kelamin -</option>
+															<option value="P">Perempuan</option>
+															<option value="L">Laki-Laki</option>
+														</select>
+														<br>
+														<label class="control-label">Alamat </label>
+														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat">
+														<br>
+														<label class="control-label">No Handphone </label>
+														<input type="text" class="form-control" placeholder="Masukkan No Handphone" name="txtNohp">
+													</div>
 												</div>
 											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">Nama </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Nama" name="txtNm" autofocus />
-												</div>
-											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">Jenis Kelamin</label>
-												<div class="col-sm-8">
-													<select name="txtJekel" class="form-control">
-														<option value=""> - Jenis Kelamin -</option>
-														<option value="P">Perempuan</option>
-														<option value="L">Laki-Laki</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">Alamat </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat">
-												</div>
-											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">Berkas </label>
-												<div class="col-sm-8">
-													<input type="file" class="form-control" placeholder="Pilih File PDF" name="txtBerkasu">
-												</div>
-											</div>
-
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">No Handphone </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan No Handphone" name="txtNohp">
-												</div>
-											</div>
-
+											<br>
 											<div class="form-group col-sm-12">
 												<label class="col-sm-5 control-label">No Rekening </label>
 												<div class="col-sm-8">

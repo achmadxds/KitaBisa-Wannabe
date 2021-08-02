@@ -1,7 +1,7 @@
 <?php
 include_once("koneksi.php");
 if (isset($_POST['btnDaftarPer'])) {
-	
+
 	$date = date('Y-m-d');
 	$sql_simpan = "INSERT INTO donatur (kdDonatur, nama,jekel,alamat,no_hp,id_chat,tgl_daftar) VALUES (
                     '" . $_POST['txtKd'] . "',
@@ -60,53 +60,35 @@ if (isset($_POST['btnDaftarPer'])) {
 												PORTAL DONASI-KU</b></font><br>
 										<br><br>
 										<form action="" method="post" enctype="multipart/form-data">
-											<div class="form-group col-sm-8">
-												<label class="col-sm-6 control-label">Kode Donatur </label>
-												<div class="col-sm-12">
-													<input type="text" class="form-control" placeholder="Nama Donatur" name="txtKd" value="<?php
-										echo(uniqid());	?>" readonly />
-												</div>
-											</div>
-											<div class="form-group col-sm-8">
-												<label class="col-sm-6 control-label">Nama </label>
-												<div class="col-sm-12">
-													<input type="text" class="form-control" placeholder="Nama Donatur" name="txtNm" required autofocus />
-												</div>
-											</div>
-
-											<div class="form-group"col-sm-8>
-												<label class="col-sm-6 control-label">Jenis Kelamin</label>
-												<div class="col-sm-8">
-													<select name="txtJekel" class="form-control" required>
-														<option value=""> - Jenis Kelamin -</option>
-														<option value="P">Perempuan</option>
-														<option value="L">Laki-Laki</option>
-													</select>
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-sm-6 control-label">No Handphone </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan No HP" name="txtNohp" required="">
+											<div class="col-lg-12">
+												<div class="row">
+													<div class="col-6">
+														<label class="control-label">Kode Donatur </label>
+														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtKd" value="<?php echo (uniqid());	?>" readonly />
+														<br>
+														<label class="control-label">No Handphone </label>
+														<input type="text" class="form-control" placeholder="Masukkan No HP" name="txtNohp" required="">
+														<br>
+														<label class="control-label">ID Chat Telegeram </label>
+														<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat" required="">
+													</div>
+													<div class="col-6">
+														<label class="control-label">Nama </label>
+														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtNm" required autofocus />
+														<br>
+														<label class="control-label">Jenis Kelamin</label>
+														<select name="txtJekel" class="form-control" required>
+															<option value=""> - Jenis Kelamin -</option>
+															<option value="P">Perempuan</option>
+															<option value="L">Laki-Laki</option>
+														</select>
+														<br>
+														<label class="control-label">Alamat </label>
+														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat" required="">
+													</div>
 												</div>
 											</div>
 
-											<div class="form-group">
-												<label class="col-sm-6 control-label">ID Chat Telegeram </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat" required="">
-												</div>
-											</div>
-
-											<div class="form-group">
-												<label class="col-sm-6 control-label">Alamat </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat" required="">
-												</div>
-											</div>
-
-										
 											<br>
 											<div class="form-group col-sm-5">
 												<input type="submit" class="form-control btn btn-primary" value="Daftar" name="btnDaftarPer">
