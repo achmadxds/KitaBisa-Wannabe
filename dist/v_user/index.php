@@ -68,22 +68,46 @@
                     </li>
                     <li class="sidebar-item ">
                       <a href="?level=donatur&page=list" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
+                        <i class="bi bi-steam"></i>
                         <span>Data Yayasan</span>
                       </a>
                     </li>
-                    <li class="sidebar-item ">
-                      <a href="?level=donatur&page=prog" class='sidebar-link'>
-                        <i class="bi bi-steam-fill"></i>
+                    <li class="sidebar-item has-sub">
+                      <a href="#" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
                         <span>Donasi Program</span>
                       </a>
+                      <ul class="submenu">
+                        <li class="submenu-item ">
+                          <a href="?level=donatur&page=prog&an=1">Lembaga</a>
+                        </li>
+                        <li class="submenu-item ">
+                          <a href="?level=donatur&page=prog&an=2">Perseorangan</a>
+                        </li>
+                      </ul>
                     </li>
                     <li class="sidebar-item ">
                       <a href="?level=donatur&page=riwayat" class='sidebar-link'>
                         <i class="bi bi-steam-fill"></i>
                         <span>Riwayat Donasi</span>
                       </a>
-                    </li>    
+                    </li>
+
+                    <li class="sidebar-item  has-sub">
+                      <a href="#" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Administrasi Donasi</span>
+                      </a>
+                      <ul class="submenu ">
+                        <li class="submenu-item ">
+                          <a href="?page=reportProgram">Data Program</a>
+                        </li>
+                        <li class="submenu-item ">
+                          <a href="?page=reportDana">Data Donasi</a>
+                        </li>
+                      </ul>
+                    </li>
+
                     <li class="sidebar-item "
                       style="background-color: #bf0808; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;">
                       <a class='sidebar-link' data-bs-toggle="modal" data-bs-target="#exampleModal">

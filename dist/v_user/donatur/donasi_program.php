@@ -18,12 +18,14 @@
           <div class="card-body">
             <div class="row">
               <?php
-              $a = SelectAllProgram();
+              if($_GET['an']) {
+                $a = getProgamByUSERS($_GET['an']);
+              }
               foreach ($a as $key => $value) {
               ?>
                 <div class="col-4">
                   <div class="card">
-                    <a href="#" data-bs-toggle="modal" onclick="Clicked(this)" data-bs-target="#myModal" data-kd="<?php echo $value['kdProgram'] ?>" data-nm="<?php echo $value['nmProgram'] ?>" data-id="<?php echo $value['id'] ?>">
+                    <a href="#" data-bs-toggle="modal" onclick="Clicked(this)" data-bs-target="#myModal" data-kd="<?php echo $value['kode'] ?>" data-nm="<?php echo $value['nmProgram'] ?>" data-id="<?php echo $value['id'] ?>" data-so="<?php echo $value['no_rek'] ?>" data-si="<?php echo $value['namaAtas'] ?>" >
                       <div class="card-body"> 
                         <h5 class="text-center pb-2"><?php echo $value['nmProgram'] ?></h5>
                         <img src="__DIR__ . /../../../images/files/<?php echo $value['gambar'] ?>" alt="" width="100%" height="150px">
@@ -65,7 +67,11 @@
           </div>
           <div class="form-group">
             <label>No Rekening</label>
-            <input type="text" class="form-control" name="nmProgramDonasi" id="nmProgramDonasi" placeholder="5570865" readonly />
+            <input type="text" class="form-control" name="nmProgramDonasi" id="no_rek" placeholder="5570865" readonly />
+          </div>
+          <div class="form-group">
+            <label>Atas Nama</label>
+            <input type="text" class="form-control" name="" id="hatasNama" readonly />
           </div>
           <div class="form-group">
             <label>Donasi</label>
@@ -86,5 +92,9 @@
     $('#kdProgramDonasi').val($(param).data('kd'))
     $('#nmProgramDonasi').val($(param).data('nm'))
     $('#idProgramDonasi').val($(param).data('id'))
+    $('#no_rek').val($(param).data('so'))
+    $('#hatasNama').val($(param).data('si'))
+    // $(param).data('so')
+    // $(param).data('si')
   }
 </script>

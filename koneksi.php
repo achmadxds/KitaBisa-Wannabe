@@ -462,6 +462,24 @@ function sendTransaksi()
   kirimTelegram("Transaksi Donasi Anda telah diterima. Terimakasih Atas donasi yang anda berikan");
 }
 
+function getProgamByUSERS($param)
+{
+  global $con;
+
+  switch ($param) {
+    case 1:
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nmLembaga as namaAtas, b.no_rek, a.gambar FROM program a, lembaga b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      break;
+    
+    case 2:
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nama as namaAtas, b.no_rek, a.gambar FROM program a, perseorangan b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      break;
+  }
+
+  $sql = mysqli_query($con, $query);
+  return $sql;
+}
+
 function broadcast()
 {
   function confirmProg($id)
