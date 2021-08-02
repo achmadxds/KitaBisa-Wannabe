@@ -191,7 +191,7 @@ if ($datakode) {
 
           <div class="form-group">
             <label>Tanggal Akhir</label>
-            <input type="date" class="form-control" name="txtAkhir" />
+            <input type="date" class="form-control" name="txtAkhirtgl" />
           </div>
         </div>
         <div class="modal-footer">

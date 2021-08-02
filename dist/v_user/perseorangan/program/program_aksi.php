@@ -2,7 +2,7 @@
 include_once("__DIR__ .  ../../../../koneksi.php");
 
 if (isset($_POST['btnSimpan'])) {
-	InsertToProgram(Upload_Files('txtfotoProgram', 'txtKdProgram'));
+	InsertToProgram(Upload_Files('txtfotoProgram', 'txtKdProgram', 'perseorangan'));
 } elseif (isset($_POST['btnUBAH'])) {
   UpdateToProgram();
 } else {

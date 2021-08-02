@@ -20,6 +20,7 @@
                 <tr>
                   <th>Nama Program</th>
                   <th>Nominal Donasi</th>
+                  <th>Lembaga</th>
                   <th>Tanggal</th>
                   <th>Aksi</th>
                 </tr>
@@ -28,12 +29,19 @@
             <tbody>
               <?php
                 $a = RecordTransaction();
-
                 foreach ($a as $key => $value) {
                   ?>
                     <tr>
                       <td><b><?php echo $value['nmProgram'] ?></b></td>
                       <td><b><?php echo $value['nominal'] ?></b></td>
+                      <td><b><?php echo $value['nmLembaga'] ?></b></td>
+                      <!-- <?php
+                        if($value['nmLembaga'] == null) {
+                          echo "<td><b> Perseorangan </b></td>";
+                        } else {
+                          echo "<td><b> '".$value['nmLembaga']."' </b></td>";
+                        }
+                      ?> -->
                       <td><b><?php echo $value['tanggal'] ?></b></td>
                       <td><a href="" class="btn btn-primary">LIHAT</a></td>
                     </tr>
@@ -53,8 +61,9 @@
     scrollY: 350,
     "columns": [
       { "width": "30%" },
-      { "width": "30%" },
-      { "width": "30%" },
+      { "width": "15%" },
+      { "width": "25%" },
+      { "width": "20%" },
       { "width": "10%" }
     ]
   });

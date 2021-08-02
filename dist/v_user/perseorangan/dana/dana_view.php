@@ -18,7 +18,6 @@
             <div class="card-body">
               <table class="table table-striped" id="table111">
                 <thead>
-                  <center>
                     <tr>
                       <th>No</th>
                       <th>Kode Program</th>
@@ -26,27 +25,22 @@
                       <th>Dana Target</th>
                       <th>Dana Masuk</th>
                       <th>Dana Tidak Tercapai</th>
-                      <th></th>
                     </tr>
-                  </center>
                 </thead>
                 <tbody>
                   <?php
-                    $no = 1;
-                    $data = SelectDataDana();
+                    $data = SelectDataDana($_SESSION["ses_id"]);
                     foreach ($data as $value) {
                       ?>
                         <tr>
-                          <td><?php echo $no; ?></td>
+                          <td></td>
                           <td><?php echo $value['kdProgram']; ?></td>
                           <td><?php echo $value['nmProgram']; ?></td>
                           <td><?php echo $value['donasi']; ?></td>
                           <td><?php echo $value['Total']; ?></td>
                           <td><?php echo $value['Tidak']; ?></td>
-                          <td></td>
                         </tr>
                       <?php
-                      $no++;
                     }
                   ?>
                 </tbody>

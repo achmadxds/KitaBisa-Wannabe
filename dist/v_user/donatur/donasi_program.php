@@ -18,21 +18,21 @@
           <div class="card-body">
             <div class="row">
               <?php
-                $a = SelectAllProgram();
-                foreach ($a as $key => $value) {
-                ?>
-                  <div class="col-4">
-                    <div class="card">
-                      <a href="#" data-bs-toggle="modal" onclick="Clicked(this)" data-bs-target="#myModal" data-kd="<?php echo $value['kdProgram'] ?>" data-nm="<?php echo $value['nmProgram'] ?>" data-id="<?php echo $value['id'] ?>" >
-                        <div class="card-body">
-                          <h5 class="text-center pb-2"><?php echo $value['nmProgram'] ?></h5>
-                          <img src="__DIR__ . /../../../images/files/<?php echo $value['gambar'] ?>" alt="" width="100%" height="150px">
-                        </div>
-                      </a>
-                    </div>
+              $a = SelectAllProgram();
+              foreach ($a as $key => $value) {
+              ?>
+                <div class="col-4">
+                  <div class="card">
+                    <a href="#" data-bs-toggle="modal" onclick="Clicked(this)" data-bs-target="#myModal" data-kd="<?php echo $value['kdProgram'] ?>" data-nm="<?php echo $value['nmProgram'] ?>" data-id="<?php echo $value['id'] ?>">
+                      <div class="card-body"> 
+                        <h5 class="text-center pb-2"><?php echo $value['nmProgram'] ?></h5>
+                        <img src="__DIR__ . /../../../images/files/<?php echo $value['gambar'] ?>" alt="" width="100%" height="150px">
+                      </div>
+                    </a>
                   </div>
-                <?php
-                }
+                </div>
+              <?php
+              }
               ?>
             </div>
           </div>
@@ -42,21 +42,17 @@
   </div>
 </div>
 
-</div>
-
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Kirim Donasi</h4>
-      </div>
       <form action="?level=donatur&page=aksiTambah" method="post" enctype="multipart/form-data">
         <div class="modal-body">
+          <h2 class="text-center">Kirim Donasi</h2>
+          <hr>
           <div class="form-group">
-            <input type="hidden" name="idDonaturDonasi" value="<?php echo $_SESSION["ses_id"]; ?>"/>
+            <input type="hidden" name="idDonaturDonasi" value="<?php echo $_SESSION["ses_id"]; ?>" />
             <input type="hidden" name="idProgramDonasi" id="idProgramDonasi" />
-            <label>Kode Program</label>
-            <input type="text" class="form-control" name="kdProgramDonasi" id="kdProgramDonasi" readonly />
+            <input type="hidden" class="form-control" name="kdProgramDonasi" id="kdProgramDonasi" readonly />
           </div>
           <div class="form-group">
             <label>Nama Program</label>
@@ -90,8 +86,5 @@
     $('#kdProgramDonasi').val($(param).data('kd'))
     $('#nmProgramDonasi').val($(param).data('nm'))
     $('#idProgramDonasi').val($(param).data('id'))
-    console.log($(param).data('id'))
-    console.log($(param).data('kd'))
-    console.log($(param).data('nm'))
   }
 </script>

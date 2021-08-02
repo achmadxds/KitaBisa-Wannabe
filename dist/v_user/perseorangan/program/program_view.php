@@ -27,7 +27,7 @@
                   <center>
                     <tr>
                       <th>No</th>
-                      <th>Kode Program</th>
+                      <th>Kode</th>
                       <th>Nama Program</th>
                       <th>Atas Nama</th>
                       <th>Donasi</th>
@@ -90,11 +90,10 @@
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Tambah Program</h4>
-      </div>
       <form action="?level=perseorangan&page=programSave" method="post" enctype="multipart/form-data">
         <div class="modal-body">
+          <h3 class="text-center">Tambah Program</h3>
+          <hr>
           <div class="form-group">
             <label>Kode Program</label>
             <input type="text" class="form-control" name="txtKdProgram" value="<?php echo $maxID; ?>" readonly />
@@ -110,21 +109,28 @@
           </div>
 
           <div class="form-group">
-            <label>Perseorangan</label>
+            <label>Atas Nama</label>
             <select name="txtIdLembaga" class="form-control">
               <option value="<?php echo $_SESSION["ses_id"] ?>"><?php echo $_SESSION["ses_nama"] ?></option>
+            </select>
+          </div>
 
+          <div class="form-group">
+            <label>Jenis Program</label>
+            <select name="txtJenis" class="form-control">
+              <option value="">~~ PILIH ~~</option>
               <?php
-              $p = mysqli_query($con, "select * from mst_jenis") or die(mysqli_error($con));
-              while ($datap = mysqli_fetch_array($p)) {
-                echo '<option value="' . $datap['id'] . '">' . $datap['nama'] . '</option>';
-              } ?>
+                $dt = GetMasterJenis();
+                foreach ($dt as $value) {
+                  echo '<option value="'.$value['id'].'">'.$value['nama'].'</option>';
+                }
+              ?>
             </select>
           </div>
 
           <div class="form-group">
             <label>Keterangan</label>
-            <textarea class="form-control" name="txtketerangan" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required />
+            <textarea class="form-control" name="txtketerangan" required />
             </textarea>
           </div>
 

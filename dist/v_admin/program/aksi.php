@@ -1,24 +1,22 @@
 <?php
 include_once("koneksi.php");
 
-function uploadfiles()
+function uploadfilesz()
 {
 	$ekstensi_diperbolehkan	= array('jpg', 'png', 'jpeg');
 	$nama = $_FILES['txtfotoProgram']['name'];
 	$x = explode('.', $nama);
 	$ekstensi = strtolower(end($x));
-	$namas = 'Photo_' . $_POST['txtKdProgram'] . "." . $ekstensi;
+	$namas = 'Photo_' . $_POST['txtKdProgram'] . "_" . "Lembaga" . "." . $ekstensi;
 	$ukuran	= $_FILES['txtfotoProgram']['size'];
 	$file_tmp = $_FILES['txtfotoProgram']['tmp_name'];
 
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 41943040) {
-			if(!move_uploaded_file($file_tmp, __DIR__ . '/../../../images/files/' . $namas)) {
+			if (!move_uploaded_file($file_tmp, __DIR__ . '/../../../images/files/' . $namas)) {
 				die();
 			}
-			// move_uploaded_file($file_tmp, __DIR__ . '/../../images/files/' . $namas);
 			return $namas;
-			die();
 		} else {
 			return;
 		}
@@ -29,18 +27,20 @@ function uploadfiles()
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, idJenis, keterangan, donasi, status, idLevel, gambar, tgl_masuk) VALUES (
+	echo $_POST['txtJenis'];
+	$sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir, idJenis) VALUES (
 					'" . $_POST['txtKdProgram'] . "',
 					'" . $_POST['txtNmProgram'] . "',
 					'" . $_POST['txtidPengguna'] . "',
-					'" . $_POST['txtJenis'] . "',
 					'" . $_POST['txtketerangan'] . "',
           '" . $_POST['txtDonasi'] . "',
 					'T',
           '1',
-					'" . uploadfiles() . "',
-					'" . $date . "')";
-	$query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+					'" . uploadfilesz() . "',
+					'" . $date . "',
+					'" . $_POST['txtAkhirtgl'] . "',
+          '" . $_POST['txtJenis'] . "')";
+	$query_insert = mysqli_query($con, $sql_insert) or die(mysqli_error($con));
 
 	if ($query_insert) {
 		echo "<script>alert('Simpan Berhasil')</script>";
@@ -79,10 +79,10 @@ if (isset($_POST['btnSimpan'])) {
 
 		if ($query_hapus) {
 			echo "<script>alert('Hapus Berhasil')</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php?page=progAcc'>";
+			echo "<meta http-equiv='refresh' content='0; url=index.php?page=prog'>";
 		} else {
 			echo "<script>alert('Hapus Gagal')</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php?page=progAcc'>";
+			echo "<meta http-equiv='refresh' content='0; url=index.php?page=prog'>";
 		}
 	}
 	//selesai proses hapus

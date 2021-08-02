@@ -50,6 +50,15 @@ function LoginUser()
   }
 }
 
+function GetMasterJenis()
+{
+  global $con;
+  $sql = "SELECT * FROM `mst_jenis`";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
 function SelectAlljenis()
 {
   global $con;
@@ -101,7 +110,7 @@ function RecordTransaction()
   global $con;
 
   $idUser = $_SESSION["ses_id"];
-  $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal FROM transaksi a, program b WHERE b.id = a.idProgram AND a.idDonatur=' . $idUser . ' ';
+  $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal, c.nmLembaga FROM transaksi a, program b, lembaga c WHERE b.id = a.idProgram AND a.idDonatur=' . $idUser . ' AND c.id=b.idLembaga ';
 
   $query = mysqli_query($con, $sql);
 
@@ -132,7 +141,7 @@ function MaxIdProgram()
 {
   global $con;
 
-  $carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
+  $carikode = mysqli_query($con, "SELECT MAX(id) FROM program");
   $datakode = mysqli_fetch_array($carikode);
   if ($datakode) {
     $nilaikode = $datakode[0];
@@ -143,6 +152,8 @@ function MaxIdProgram()
   } else {
     $hasilkode = "PLDN01";
   }
+
+  return $hasilkode;
 }
 
 function SelectAllProg()
@@ -233,13 +244,13 @@ function GetDataProgramByID($id)
   return $sql_slice;
 }
 
-function Upload_Files($namePost, $codePost)
+function Upload_Files($namePost, $codePost, $jenist)
 {
   $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg');
   $nama = $_FILES[$namePost]['name'];
   $x = explode('.', $nama);
   $ekstensi = strtolower(end($x));
-  $namas = 'Photo_' . $_POST[$codePost] . "." . $ekstensi;
+  $namas = 'Photo_' . $_POST[$codePost] . '_' . $jenist . "." . $ekstensi;
   $ukuran  = $_FILES[$namePost]['size'];
   $file_tmp = $_FILES[$namePost]['tmp_name'];
 
@@ -260,7 +271,7 @@ function InsertToProgram($upload)
   global $con;
 
   $date = date('Y-m-d');
-  $sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir) VALUES (
+  $sql_insert = "INSERT INTO program (kdProgram, nmProgram, idLembaga, keterangan, donasi, status, idLevel, gambar, tgl_masuk, tgl_akhir, idJenis) VALUES (
 					'" . $_POST['txtKdProgram'] . "',
 					'" . $_POST['txtNmProgram'] . "',
 					'" . $_POST['txtIdLembaga'] . "',
@@ -270,7 +281,9 @@ function InsertToProgram($upload)
           '2',
 					'" . $upload . "',
 					'" . $date . "',
-					'" . $_POST['txtAkhir'] . "')";
+					'" . $_POST['txtAkhir'] . "',
+          '" . $_POST['txtJenis'] . "')";
+
   $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
 
   if ($query_insert) {
@@ -374,14 +387,32 @@ function archiveOto()
   mysqli_query($con, $sql_otoarsip);
 }
 
-function SelectDataDana()
+function SelectDataDana($id)
 {
   global $con;
 
-  $query = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
+  $query = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$id' AND b.idLevel='1'";
   $sql = mysqli_query($con, $query);
 
   return $sql;
 }
 
-?>
+function GetNewestProgram($order)
+{
+  global $con;
+
+  $query = 'SELECT * FROM `program` ORDER BY `program`.`tgl_masuk` ' . $order;
+  $sql = mysqli_query($con, $query);
+
+  return $sql;
+}
+
+function GetProgramByJenis($jenis)
+{
+  global $con;
+
+  $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' ORDER BY tgl_masuk DESC';
+  $sql = mysqli_query($con, $query);
+
+  return $sql;
+}
