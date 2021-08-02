@@ -468,17 +468,16 @@ function broadcast()
   {
     global $con;
 
-    $query = "UPDATE program SET status = 'P' where id = '$id'";
-    $sql = mysqli_query($con, $query);
+    $sql_arsip = "UPDATE program SET status = 'P' where id = '$id'";
+    $query_arsip = mysqli_query($con, $sql_arsip);
 
-    if ($sql) {
-      echo "<script>alert('Konfirmasi Berhasil')</script>";
-      echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
-    } else {
-      echo "<script>alert('konfirmasi Gagal')</script>";
-      echo "<meta http-equiv='refresh' content='0; url=index.php?level=perseorangan&page=transaksi'>";
-    }
-
+        if ($query_arsip) {
+            echo "<script>alert('Konfirmasi Berhasil')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+        }else{
+            echo "<script>alert('konfirmasi Gagal')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+        }
   }
   global $con;
   $sql_no = "SELECT id_chat FROM donatur";
@@ -510,7 +509,6 @@ function broadcast()
       return $result;
   }
    
-  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. 
-  Semoga ada waktu untuk mengecek donasi, Terimakasih");
+  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih");
 
 }
