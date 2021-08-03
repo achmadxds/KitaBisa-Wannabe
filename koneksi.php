@@ -110,12 +110,13 @@ function RecordTransaction()
   global $con;
 
   $idUser = $_SESSION["ses_id"];
-  $sql = 'SELECT a.nominal, b.nmProgram, a.tanggal, c.nmLembaga FROM transaksi a, program b, lembaga c WHERE b.id = a.idProgram AND a.idDonatur=' . $idUser . ' AND c.id=b.idLembaga ';
+  $sql ='SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
 
   $query = mysqli_query($con, $sql);
 
   return $query;
 }
+
 
 function insertKelolaDana($a, $b)
 {
