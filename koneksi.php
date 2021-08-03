@@ -353,7 +353,7 @@ function SelectDataTransaksiDonasi()
 {
   global $con;
 
-  $query = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
+  $query = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
   $sql = mysqli_query($con, $query);
 
   return $sql;
@@ -533,7 +533,7 @@ function broadcast()
       }
   }
    
-  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
+  kirimTelegrams("Halo Para Donatur yang terhormat. Peduliku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
 
 }
 

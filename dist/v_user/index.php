@@ -223,6 +223,10 @@
                   case 'transaksi':
                     include "perseorangan/transaksi/transaksi_view.php";
                   break;
+                  
+                  case 'confirm' :
+                    include "perseorangan/transaksi/transaksi_confirm.php";
+                    break;
 
                   case 'dana':
                     include "perseorangan/dana/dana_view.php";
