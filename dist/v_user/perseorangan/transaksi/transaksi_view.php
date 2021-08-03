@@ -1,4 +1,4 @@
-<?php include_once("__DIR__ .  ../../../../koneksi.php"); ?>
+<?php include_once("../../koneksi.php"); ?>
 
 <div id="main">
   <header class="mb-3">
@@ -55,7 +55,7 @@
                             <?php
                               if ($value['status'] == 'T') {
                               ?>
-                                <a href="?page=confirm&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                                <a href="?level=perseorangan&page=confirm&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
                               <?php
                               } else {
                                 echo '<a href="#" class="btn btn-success btn-sm">Success</a>'; 
