@@ -55,10 +55,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Program</h6>
+                                                <h6 class="text-muted font-semibold">Program Baru</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                   <?php // menghitung
-                                                  $sql_hitung = "SELECT COUNT(id) from program where status ='P'";
+                                                  $sql_hitung = "SELECT COUNT(id) from program where status ='T'";
                                                   $q_hit= mysqli_query($con, $sql_hitung);
                                                   while($row = mysqli_fetch_array($q_hit)) {
                                                       echo  $row[0]."";
@@ -109,7 +109,7 @@
                                                 <h6 class="text-muted font-semibold">Perseorangan</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                 <?php
-                                                    $sql_hitung = "SELECT COUNT(kdPerseorangan) from perseorangan a, user b where b.id=a.id AND b.status ='Aktif'";
+                                                    $sql_hitung = "SELECT COUNT(kdPerseorangan) from perseorangan";
                                                     $q_hit= mysqli_query($con, $sql_hitung);
                                                     while($row = mysqli_fetch_array($q_hit)) {
                                                         echo  $row[0]."";
@@ -132,10 +132,10 @@
                                     <div class="card-body">
                                     <p>
                                       <center>
-                                      <br> <font face="Courier new"> Portal Donasi Lembaga </font>
-                                      <br> <font face="Courier new">Se-Kabupaten Kudus</font>
+                                      <br> <font face="Trebuchet MS"><b> Portal Donasi </b></font>
+                                      <br> <font face="Trebuchet MS"><b> Peduli-Ku </b></font>
                                       <br> <br><br>
-                                      <img src="../images/donasi.jpg" height="200px" width="350px;" align="center"/>
+                                      <img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
                                       </center>
                                   </p>
                                     </div>
@@ -173,7 +173,7 @@
                                                 <h6 class="text-muted font-semibold">Program</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                   <?php // menghitung
-                                                  $sql_hitung = "SELECT COUNT(id) from program where status ='P'";
+                                                  $sql_hitung = "SELECT COUNT(id) from program where status ='P' AND idLembaga='$data_id' AND idLevel='1'";
                                                   $q_hit= mysqli_query($con, $sql_hitung);
                                                   while($row = mysqli_fetch_array($q_hit)) {
                                                       echo  $row[0]."";
@@ -195,8 +195,8 @@
                                                     <i class="iconly-boldBookmark"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-md-9">
-                                                <h6 class="text-muted font-semibold">Trans. Masuk</h6>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Dana Masuk</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                 <?php
                                                     $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.idLembaga AND b.idLevel='1' AND a.status ='T' AND b.idLembaga='$data_id'";
@@ -237,10 +237,10 @@
                                     <div class="card-body">
                                     <p>
                                       <center>
-                                      <br> <font face="Courier new"> Portal DonasiS Lembaga </font>
-                                      <br> <font face="Courier new">Se-Kabupaten Kudus</font>
+                                      <br> <font face="Trebuchet MS"><b> Selamat Datang Di </b></font>
+                                      <br> <font face="Trebuchet MS"><b> Portal Donasi Peduliku </b></font>
                                       <br> <br><br>
-                                      <img src="../images/donasi.jpg" height="200px" width="350px;" align="center"/>
+                                      <img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
                                       </center>
                                   </p>
                                     </div>

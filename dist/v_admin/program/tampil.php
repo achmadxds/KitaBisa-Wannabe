@@ -2,7 +2,7 @@
 include_once("koneksi.php");
 // KODE OTOMATIS
 // membuat query max untuk kode
-$carikode = mysqli_query($con, "SELECT MAX(id) FROM program") or die('error');
+$carikode = mysqli_query($con, "SELECT MAX(kdProgram) FROM program") or die('error');
 // menjadikannya array
 $datakode = mysqli_fetch_array($carikode);
 // jika $datakode

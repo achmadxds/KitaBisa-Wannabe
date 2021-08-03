@@ -22,10 +22,10 @@
                     </div>
                   </div>
                   <div class="col-md-8">
-                    <h6 class="text-muted font-semibold">Riwayat DonasiS</h6>
+                    <h6 class="text-muted font-semibold">Riwayat Donasi</h6>
 
                     <h6 class="font-extrabold mb-0"><?php
-                                                      $sql_hitung = "SELECT COUNT(id) from lembaga ";
+                                                      $sql_hitung = "SELECT COUNT(id) from transaksi where idDonatur='$idPengguna'";
                                                       $q_hit = mysqli_query($con, $sql_hitung);
                                                       while ($row = mysqli_fetch_array($q_hit)) {
                                                         echo  $row[0] . "";
@@ -50,7 +50,7 @@
                     <h6 class="text-muted font-semibold">Program</h6>
                     <h6 class="font-extrabold mb-0">
                       <?php // menghitung
-                      $sql_hitung = "SELECT COUNT(id) from program where status ='P'";
+                      $sql_hitung = "SELECT COUNT(id) from program where status ='P' AND idLembaga='$idPengguna'";
                       $q_hit = mysqli_query($con, $sql_hitung);
                       while ($row = mysqli_fetch_array($q_hit)) {
                         echo  $row[0] . "";
@@ -62,6 +62,25 @@
               </div>
             </div>
           </div>
+          <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                    <p>
+                                      <center>
+                                      <br> <font face="Trebuchet MS"><b> Selamat Datang Di </b></font>
+                                      <br> <font face="Trebuchet MS"><b> Portal Donasi Peduliku </b></font>
+                                      <br> <br><br>
+                                      <img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
+                                      </center>
+                                  </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
           <div class="card">
           </div>
 

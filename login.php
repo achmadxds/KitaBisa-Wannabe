@@ -36,8 +36,8 @@ if (isset($_POST['btnLogin'])) LoginUser();
 
                 <div class="card-body">
                   <center>
-                    <font face="Trebuchet MS"><b>SELAMAT DATANG DI<br> PORTAL DONASI-KU</b></font><br>
-                    <br><img src="images/posyandu.png" height="150px" width="150px" align="center"><br>
+                    <font face="Trebuchet MS"><b>SELAMAT DATANG DI<br> PORTAL PEDULI-KU</b></font><br>
+                    <br><img src="images/donasi.png" height="100px" width="100px" align="center"><br><br>
                     <form action="" method="post">
                       <div class="form-group col-sm-7">
                         <input type="text" class="form-control" name="txtusm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>

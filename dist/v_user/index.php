@@ -17,7 +17,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Donasi-Ku</title>
+  <title>Portal Peduli-Ku</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
             <div class="logo">
               <span><img src="./assets/images/logo/dash-1.ico" alt=""></span>
               <a href="index.php">
-              Donasi-Ku</a>
+              Peduli-Ku</a>
             </div>
             <div class="toggler">
               <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>

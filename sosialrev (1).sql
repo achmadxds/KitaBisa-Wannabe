@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Agu 2021 pada 05.35
+-- Waktu pembuatan: 02 Agu 2021 pada 10.30
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -47,7 +47,7 @@ CREATE TABLE `donatur` (
   `jekel` enum('P','L') DEFAULT NULL,
   `alamat` varchar(200) DEFAULT NULL,
   `no_hp` varchar(14) DEFAULT NULL,
-  `id_chat` int(10) DEFAULT NULL,
+  `id_chat` bigint(20) DEFAULT NULL,
   `status` enum('Aktif','Nonaktif') NOT NULL,
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -57,8 +57,8 @@ CREATE TABLE `donatur` (
 --
 
 INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
-(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 333456, 'Aktif', '2021-08-01'),
-(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 333456, 'Aktif', '2021-08-01');
+(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 1625733126, 'Aktif', '2021-08-01'),
+(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 1625733126, 'Aktif', '2021-08-01');
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,8 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `idJenis`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
-(25, 'PLDN01', 'Donasi Oksigen & Masker Covid-19', 2, 9, 'Photo_PLDN01.jpg', 'Diajukan', '8000000', 'P', '2021-08-01', NULL, 1);
+(25, 'PLDN01', 'Donasi Oksigen & Masker Covid19', 2, 9, 'Photo_PLDN01.jpg', 'Diajukan', '8000000', 'P', '2021-08-01', NULL, 1),
+(26, 'PLDN01', 'Vitamin A', 2, 9, 'Photo_PLDN01.png', 'Kesehatan', '600000', 'P', '2021-08-02', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -174,6 +175,13 @@ CREATE TABLE `transaksi` (
   `tanggal` date NOT NULL,
   `status` enum('K','T') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `idProgram`, `idDonatur`, `nominal`, `tanggal`, `status`) VALUES
+(17, 25, 2, 60000, '2021-08-01', 'K');
 
 -- --------------------------------------------------------
 
@@ -293,13 +301,13 @@ ALTER TABLE `perseorangan`
 -- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

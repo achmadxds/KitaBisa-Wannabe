@@ -31,7 +31,8 @@
   <div id="aaooo"> </div>
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="#page-top">Donasi-Ku</a>
+      <img class="masthead-avatar mb-5" src="images/landing.png" width="300px" height="80px" alt="..." />
+      <!-- Peduli-ku -->
       <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -63,7 +64,7 @@
   <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
       <!-- Masthead Avatar Image-->
-      <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+      <!-- <img class="masthead-avatar mb-5" src="images/donasi.png" alt="..." /> -->
       <!-- Masthead Heading-->
       <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang</h1>
       <h1 class="masthead-heading text-uppercase mb-0">Portal Donasi Yayasan Kabupaten Kudus</h1>

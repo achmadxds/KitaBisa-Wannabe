@@ -141,10 +141,11 @@ function MaxIdProgram()
 {
   global $con;
 
-  $carikode = mysqli_query($con, "SELECT MAX(id) FROM program");
+  $carikode = mysqli_query($con, "SELECT MAX(kdProgram) FROM program");
   $datakode = mysqli_fetch_array($carikode);
   if ($datakode) {
-    $nilaikode = $datakode[0];
+    // $nilaikode = substr($datakode[0], 3);
+    $nilaikode = substr($datakode[0],4);
     $kode = (int) $nilaikode;
     $kode = $kode + 1;
 
@@ -232,6 +233,8 @@ function SelectDataProgram($data_id)
 
   return $sql;
 }
+
+
 
 function GetDataProgramByID($id)
 {
@@ -490,8 +493,8 @@ function broadcast()
     $query_arsip = mysqli_query($con, $sql_arsip);
 
         if ($query_arsip) {
-            echo "<script>alert('Konfirmasi Berhasil')</script>";
-            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+            // echo "<script>alert('Konfirmasi Berhasil')</script>";
+            // echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
         }else{
             echo "<script>alert('konfirmasi Gagal')</script>";
             echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
@@ -501,32 +504,45 @@ function broadcast()
   $sql_no = "SELECT id_chat FROM donatur";
   $query_no = mysqli_query($con, $sql_no);
   $no = 1;
-  $data_chat = [];
-  while ($data = mysqli_fetch_array($query_no, MYSQLI_BOTH)) {
-    $chatId =  $data['id_chat'];
-    array_push($data_chat, $chatId);
-  }
   define('BOT_TOKENS', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
-  foreach ($data_chat as $value) {
-  define('CHAT_IDS',$value);
+  $id_teles = [];
+  foreach($query_no as $item){
+  echo $item['id_chat'];
+  array_push($id_teles, $item['id_chat']);
   }
-   function kirimTelegrams($pesan) {
-    // global $con;
-    // $query = "SELECT a.id AS don, a.nama, a.id_chat, c.nmProgram, b.id FROM donatur a, transaksi b, program c WHERE b.idDonatur=a.id AND b.idProgram=c.id AND b.id='$id'";
-    // $sql = mysqli_query($con, $query);
+  // var_dump($id_teles);
+   function kirimTelegrams($pesan, $ar) {
       $pesan = json_encode($pesan);
-      
-      $API = "https://api.telegram.org/bot".BOT_TOKENS."/sendmessage?chat_id=".CHAT_IDS."&text=$pesan";
+      $c = [];
+      foreach ($ar as $value) {
+        $API = "https://api.telegram.org/bot".BOT_TOKENS."/sendmessage?chat_id=".$value."&text=$pesan";
+        array_push($c, $API);
+      }
+
+      var_dump($c);
       
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-      curl_setopt($ch, CURLOPT_URL, $API);
-      $result = curl_exec($ch);
-      curl_close($ch);
-      return $result;
+      for ($i=0; $i < count($c) ; $i++) { 
+        curl_setopt($ch, CURLOPT_URL, $c[$i]);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+      }
   }
    
-  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih");
+  kirimTelegrams("Halo Para Donatur yang terhormat. Peluangku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
 
+}
+
+function coba()
+{
+  global $con;
+  $sql_no = "SELECT id_chat FROM donatur";
+  $query_no = mysqli_query($con, $sql_no);
+  $no = 1;
+  foreach($query_no as $item){
+    echo $item['id_chat'];
+   }
 }
