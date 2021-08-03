@@ -2,12 +2,16 @@
   include_once("__DIR__ .  ../../../../koneksi.php");
 
   switch ($_GET['level']) {
-    case 'perseorangan':
+    case 'lembaga':
       switch ($_GET['tipe']) {
         case 'program':
           $a = $_GET['idUser'];
           $query = "SELECT * FROM program where idLembaga=$a AND `status`='A' ";
           break;
+
+        default:
+        echo '<script> alert("AK") </script>';
+        break;
         }
         
       }
@@ -53,7 +57,7 @@
                           <td><?php echo $value['kdProgram']; ?></td>
                           <td><?php echo $value['nmProgram']; ?></td>
                           <td><?php echo date("d-m-Y", strtotime($value['tgl_masuk'])); ?></td>
-                          <td><a href="?level=perseorangan&page=rekapDonasi&idKode=<?php echo $value['id'] ?>" class="btn btn-primary btn-sm">Detail Donasi</a></td>
+                          <td><a href="?page=rekapDonasi&idKode=<?php echo $value['id'] ?>" class="btn btn-primary btn-sm">Detail Donasi</a></td>
                         </tr>
                       <?php
                       $no++;

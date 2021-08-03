@@ -189,7 +189,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <li class="sidebar-title">Menu Lain</li>
 
                   <li class="sidebar-item ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="?page=rekaps&level=lembaga&tipe=program&idUser=<?php echo $_SESSION["ses_id"] ?>" class='sidebar-link'>
                       <i class="bi bi-stack"></i>
                       <span>Administrasi Donasi</span>
                     </a>
@@ -219,6 +219,14 @@ if (isset($_SESSION['ses_username']) == "") {
         $hal = $_GET['page'];
 
         switch ($hal) {
+          case 'rekaps':
+            include "rekap/rekap_view.php";
+            break;
+
+          case 'rekapDonasi':
+              include "rekap/rekap_donasi.php";
+              break; 
+
           case 'beranda':
             include "beranda.php";
             break;

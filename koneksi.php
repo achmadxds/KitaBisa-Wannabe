@@ -229,7 +229,7 @@ function SelectDataProgram($data_id)
 {
   global $con;
 
-  $query = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='$data_id' AND a.idLevel='2') ";
+  $query = "SELECT a.id, a.kdProgram, b.nama,a.nmProgram, a.keterangan, a.donasi, a.status FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P' or a.status='A') AND (a.idLembaga='$data_id' AND a.idLevel='2') ";
   $sql = mysqli_query($con, $query);
 
   return $sql;
@@ -494,8 +494,8 @@ function broadcast()
     $query_arsip = mysqli_query($con, $sql_arsip);
 
         if ($query_arsip) {
-            // echo "<script>alert('Konfirmasi Berhasil')</script>";
-            // echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+            echo "<script>alert('Konfirmasi Berhasil')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
         }else{
             echo "<script>alert('konfirmasi Gagal')</script>";
             echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";

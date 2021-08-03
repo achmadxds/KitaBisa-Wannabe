@@ -135,19 +135,11 @@
 
                       <li class="sidebar-title">Menu Lain</li>
 
-                      <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                      <li class="sidebar-item ">
+                        <a href="?level=perseorangan&page=rekapProgram&tipe=program&idUser=<?php echo $_SESSION["ses_id"] ?>" class='sidebar-link'>
                           <i class="bi bi-stack"></i>
                           <span>Laporan Administrasi</span>
                         </a>
-                        <ul class="submenu ">
-                          <li class="submenu-item ">
-                            <a href="?level=perseorangan&page=rekapProgram&tipe=program&idUser=<?php echo $_SESSION["ses_id"] ?>">Data Program</a>
-                          </li>
-                          <li class="submenu-item ">
-                            <a href="?level=perseorangan&page=rekapProgram&tipe=donasi&idUser=<?php echo $_SESSION["ses_id"] ?>">Data Donasi</a>
-                          </li>
-                        </ul>
                       </li>
 
                     
@@ -230,6 +222,10 @@
 
                   case 'rekapProgram':
                     include "perseorangan/rekap/rekap_view.php";
+                    break;
+
+                  case 'rekapDonasi':
+                    include "perseorangan/rekap/rekap_donasi.php";
                     break;
                 }
                 break;

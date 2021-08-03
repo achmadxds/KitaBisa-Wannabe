@@ -1,17 +1,13 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
 
-  switch ($_GET['level']) {
-    case 'perseorangan':
-      switch ($_GET['tipe']) {
-        case 'program':
-          $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga=$a AND `status`='A' ";
-          break;
-        }
-        
-      }
-      $sql = mysqli_query($con, $query);
+  if(!$_GET['idKode']) {
+    echo "<meta http-equiv='refresh' content='0; url=?level=perseorangan&page=rekapProgram&tipe=program&idUser= '".$_SESSION["ses_id"]."' '>";
+  } else {
+    $a = $_GET['idKode'];
+    $query = "SELECT b.*, a.nominal, a.tanggal FROM transaksi a, donatur b where a.idProgram=$a AND a.idDonatur=b.id AND a.status='K' ";
+    $sql = mysqli_query($con, $query);
+  }
 ?>
 
 <div id="main">
@@ -27,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              Program Terdaftar
+              Donatur dari Program
             </div>
             <div class="card-body">
               <table class="table table-striped" id="program212">
@@ -35,10 +31,10 @@
                   <center>
                     <tr>
                       <th>No</th>
-                      <th>Kode</th>
-                      <th>Nama Program</th>
-                      <th>Tanggal Pengajuan</th>
-                      <th>Aksi</th>
+                      <th>Nama Danatur</th>
+                      <th>Nominal</th>
+                      <th>Nomor HP</th>
+                      <th>Tanggal</th>
                     </tr>
                   </center>
                 </thead>
@@ -50,10 +46,10 @@
                       ?>
                         <tr>
                           <td><?php echo $no; ?></td>
-                          <td><?php echo $value['kdProgram']; ?></td>
-                          <td><?php echo $value['nmProgram']; ?></td>
-                          <td><?php echo date("d-m-Y", strtotime($value['tgl_masuk'])); ?></td>
-                          <td><a href="?level=perseorangan&page=rekapDonasi&idKode=<?php echo $value['id'] ?>" class="btn btn-primary btn-sm">Detail Donasi</a></td>
+                          <td><?php echo $value['nama']; ?></td>
+                          <td><?php echo $value['nominal']; ?></td>
+                          <td><?php echo $value['no_hp'] ?></td>
+                          <td><?php echo $value['tanggal'] ?></td>
                         </tr>
                       <?php
                       $no++;
@@ -76,8 +72,8 @@
     scrollY: 350,
     "columns": [
       { "width": "10%" },
-      { "width": "15%" },
-      { "width": "40%" },
+      { "width": "35%" },
+      { "width": "20%" },
       { "width": "20%" },
       { "width": "15%" }
     ]

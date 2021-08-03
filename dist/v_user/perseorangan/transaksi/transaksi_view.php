@@ -25,7 +25,8 @@
                       <th>Nama Program</th>
                       <th>ID Donatur</th>
                       <th>Donasi</th>
-                      <th></th>
+                      <th>Status</th>
+                      <th>Aksi</th>
                     </tr>
                   </center>
                 </thead>
@@ -78,7 +79,5 @@
 
 <script>
   // console.log($('#program1'))
-  $('#table99').DataTable({
-    scrollY: 350,
-  });
+  $('#table99').DataTable();
 </script>
