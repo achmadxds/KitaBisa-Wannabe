@@ -34,14 +34,14 @@
                     <tr>
                       <td><b><?php echo $value['nmProgram'] ?></b></td>
                       <td><b><?php echo $value['nominal'] ?></b></td>
-                      <td><b><?php echo $value['nmLembaga'] ?></b></td>
-                      <!-- <?php
-                        if($value['nmLembaga'] == null) {
-                          echo "<td><b> Perseorangan </b></td>";
+                      <td><b><?php echo $value['idLevel'] ?></b></td>
+                      <?php
+                        if($value['idLevel'] == 1) {
+                          echo "<td><b> Lembaga </b></td>";
                         } else {
-                          echo "<td><b> '".$value['nmLembaga']."' </b></td>";
+                          echo "<td><b> Perseorangan </b></td>";
                         }
-                      ?> -->
+                      ?>
                       <td><b><?php echo $value['tanggal'] ?></b></td>
                       <td><a href="" class="btn btn-primary">LIHAT</a></td>
                     </tr>
