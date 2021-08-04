@@ -69,7 +69,7 @@
       <!-- <img class="masthead-avatar mb-5" src="images/donasi.png" alt="..." /> -->
       <!-- Masthead Heading-->
       <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang</h1>
-      <h1 class="masthead-heading text-uppercase mb-0">Portal Donasi Yayasan Kabupaten Kudus</h1>
+      <h1 class="masthead-heading text-uppercase mb-0">Portal Donasi Peduliku</h1>
       <!-- Icon Divider-->
       <div class="divider-custom divider-light">
         <div class="divider-custom-line"></div>
@@ -77,7 +77,8 @@
         <div class="divider-custom-line"></div>
       </div>
       <!-- Masthead Subheading-->
-      <p class="masthead-subheading font-weight-light mb-0">Bantu Saudara Kita untuk meringankan beban mereka</p>
+      <br>
+      <p class="masthead-subheading font-weight-light mb-0">satu kepedulian berjuta kebahagian</p>
     </div>
   </header>
   <!-- Portfolio Section-->
@@ -102,7 +103,7 @@
         foreach ($a as $key => $value) {
         ?>
           <div class="col-md-6 col-lg-4 mb-5">
-            <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" . $value['tgl_akhir'] ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                 <div class="portfolio-item-caption-content text-center text-white">
                   <h2><?php echo $value['nmProgram'] ?></h2>
@@ -132,7 +133,7 @@
       <div class="row">
         <div class="col-lg-4 ms-auto">
           <p class="lead">
-          <h3><b>Donasi Individu</b></h3>
+          <h3><b>Donasi Perseorangan</b></h3>
           <ul>
             <li></i> KTP</li>
             <li></i> NPWP (Bila ada)</li>
@@ -186,7 +187,7 @@
                 <div class="row pb-1">
                   
                     <label for=""><b>Nama Program</b></label>
-                    <textarea style="resize: none;" style="text-align: center;"  id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
+                    <textarea style="resize: none; text-align:center; font-weight:bold"  id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
                   
                 </div>
                 <div class="row pb-1">
@@ -211,13 +212,13 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                
+                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
+									</div>
+                  <button class="btn btn-danger" href="#!" data-bs-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
                 </button>
-                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
-									</div>
-                
               </div>
             </div>
           </div>
@@ -276,6 +277,7 @@
     $('#ketP').val(data[1])
     $('#tujP').val('Rp. ' + data[2])
     $('#pimpP').val()
+    // $('#tglendP').val(data[3])
     $('#tglendP').val(data[3])
     $('#ntujP').val()
   }
