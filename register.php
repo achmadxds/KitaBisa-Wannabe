@@ -69,7 +69,7 @@ if (isset($_POST['btnDaftarPer'])) {
 														<label class="control-label">No Handphone </label>
 														<input type="text" class="form-control" placeholder="Masukkan No HP" name="txtNohp" required="">
 														<br>
-														<label class="control-label">ID Chat Telegeram </label>
+														<label class="control-label">ID Chat Telegram </label>
 														<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat" required="">
 													</div>
 													<div class="col-6">
@@ -85,7 +85,11 @@ if (isset($_POST['btnDaftarPer'])) {
 														<br>
 														<label class="control-label">Alamat </label>
 														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat" required="">
+														<br>
 													</div>
+													
+													<span style="text-align: left;"><b>*</b> Untuk ID Chat Telegram  
+													silahkan cek <br>melalui bot telegram<code> @StrukturBot</code></span>
 												</div>
 											</div>
 

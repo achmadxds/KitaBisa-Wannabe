@@ -31,7 +31,7 @@ if (isset($_POST['btnReg'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portal Donasi-Ku</title>
+	<title>Portal Peduli-Ku</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@ if (isset($_POST['btnReg'])) {
 								<div class="card-body">
 									<center>
 										<font face="Trebuchet MS"><b>REGISTRASI PERSEORANGAN <BR>
-												PORTAL DONASI-KU</b></font><br>
+												PORTAL PEDULI-KU</b></font><br>
 										<br><br>
 
 										<form action="" method="post" enctype="multipart/form-data">
