@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2021 pada 02.28
+-- Waktu pembuatan: 04 Agu 2021 pada 16.36
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -33,6 +33,13 @@ CREATE TABLE `dana` (
   `jumlah` bigint(20) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT 'Pilih 1 & 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `dana`
+--
+
+INSERT INTO `dana` (`id`, `idProgram`, `jumlah`, `status`) VALUES
+(9, 25, 60000, 1);
 
 -- --------------------------------------------------------
 
@@ -198,7 +205,7 @@ CREATE TABLE `user` (
   `nama` varchar(40) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
-  `level` enum('admin','perseorangan','L-kasie','L-seksie','donatur') NOT NULL,
+  `level` enum('admin','perseorangan','donatur','L-pimpinan','L-admin') NOT NULL,
   `idDaftar` int(11) NOT NULL DEFAULT 0,
   `status` enum('Aktif','Nonaktif') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='komen';
@@ -211,8 +218,8 @@ INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `
 (8, 'Administrator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
 (9, 'Febriansyah', 'ian', 'ian', 'donatur', 2, 'Aktif'),
 (10, 'Ali Zuhdi', 'ali', 'ali', 'perseorangan', 14, 'Aktif'),
-(11, 'Riani Putri', 'riani', 'riani', 'L-kasie', 2, 'Aktif'),
-(12, 'Lania Widiastuti', 'lania', 'lania', 'L-seksie', 2, 'Aktif'),
+(11, 'Riani Putri', 'riani', 'riani', 'L-pimpinan', 2, 'Aktif'),
+(12, 'Lania Widiastuti', 'lania', 'lania', 'L-admin', 2, 'Aktif'),
 (14, 'rina', 'rina', 'rina', 'donatur', 3, 'Aktif'),
 (15, 'Ali Firdaus', 'alif', 'alif', 'perseorangan', 4, 'Aktif');
 
@@ -276,7 +283,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `dana`
 --
 ALTER TABLE `dana`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `donatur`
