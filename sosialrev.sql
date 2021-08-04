@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jul 2021 pada 04.27
+-- Waktu pembuatan: 04 Agu 2021 pada 02.28
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sosial`
+-- Database: `sosialrev`
 --
 
 -- --------------------------------------------------------
@@ -34,16 +34,6 @@ CREATE TABLE `dana` (
   `status` int(11) NOT NULL COMMENT 'Pilih 1 & 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `dana`
---
-
-INSERT INTO `dana` (`id`, `idProgram`, `jumlah`, `status`) VALUES
-(5, 13, 60000, 1),
-(6, 13, 60000, 1),
-(7, 13, 60000, 1),
-(8, 13, 60000, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -57,7 +47,7 @@ CREATE TABLE `donatur` (
   `jekel` enum('P','L') DEFAULT NULL,
   `alamat` varchar(200) DEFAULT NULL,
   `no_hp` varchar(14) DEFAULT NULL,
-  `id_chat` int(10) DEFAULT NULL,
+  `id_chat` bigint(20) DEFAULT NULL,
   `status` enum('Aktif','Nonaktif') NOT NULL,
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -67,7 +57,9 @@ CREATE TABLE `donatur` (
 --
 
 INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
-(1, 9999, 'Riani Widiastuti', 'P', 'Ds. Golantepus RT 01 RW 04', '08980695197', 111678, 'Aktif', '2021-07-24');
+(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 1625733126, 'Aktif', '2021-08-01'),
+(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 545425663, 'Aktif', '2021-08-01'),
+(4, 610951, 'Ali Firdaus', 'L', 'Ds. Mlati Kidul RT 01 RW 04 Kec. Kota Kudus', '08980695197', 1715197608, 'Aktif', '2021-08-03');
 
 -- --------------------------------------------------------
 
@@ -79,7 +71,6 @@ CREATE TABLE `lembaga` (
   `id` int(11) NOT NULL,
   `kdLembaga` varchar(10) NOT NULL,
   `nmLembaga` varchar(60) NOT NULL,
-  `idJenis` int(2) NOT NULL,
   `alamat` varchar(200) NOT NULL,
   `nmPimpinan` varchar(40) NOT NULL,
   `berkas` text DEFAULT NULL,
@@ -92,8 +83,9 @@ CREATE TABLE `lembaga` (
 -- Dumping data untuk tabel `lembaga`
 --
 
-INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `idJenis`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
-(1, 'LMB001', 'Yayasan Pelita Hati', 6, 'Ds. Mlati Norowito RT 01 RW 04 Kec. Kota Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '011897657', '2021-07-24');
+INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
+(2, 'LMB001', 'Yayasan Pita Kuning', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pita Kuning.zip', '0898767234', '056785421', '2021-08-01'),
+(3, 'LMB002', 'Yayasan Pelita Hati', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', 'H. Nooryanto', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '1234895', '2021-08-01');
 
 -- --------------------------------------------------------
 
@@ -103,20 +95,18 @@ INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `idJenis`, `alamat`, `nmP
 
 CREATE TABLE `mst_jenis` (
   `id` int(11) NOT NULL,
-  `nama` varchar(45) NOT NULL,
-  `jenis` int(2) NOT NULL
+  `nama` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mst_jenis`
 --
 
-INSERT INTO `mst_jenis` (`id`, `nama`, `jenis`) VALUES
-(2, 'Bencana', 1),
-(3, 'Yatim', 1),
-(4, 'Lansia', 1),
-(5, 'Perseorangan', 0),
-(6, 'Sosial', 1);
+INSERT INTO `mst_jenis` (`id`, `nama`) VALUES
+(8, 'Sosial Hukum'),
+(9, 'Kesehatan'),
+(10, 'Yatim'),
+(11, 'Lingkungan');
 
 -- --------------------------------------------------------
 
@@ -130,7 +120,6 @@ CREATE TABLE `perseorangan` (
   `nama` varchar(70) NOT NULL,
   `jekel` enum('P','L') NOT NULL,
   `alamat` varchar(300) NOT NULL,
-  `idJenis` int(2) NOT NULL,
   `berkas` text NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `no_rek` varchar(30) NOT NULL,
@@ -141,11 +130,8 @@ CREATE TABLE `perseorangan` (
 -- Dumping data untuk tabel `perseorangan`
 --
 
-INSERT INTO `perseorangan` (`id`, `kdPerseorangan`, `nama`, `jekel`, `alamat`, `idJenis`, `berkas`, `no_hp`, `no_rek`, `tgl_daftar`) VALUES
-(7, 'DPM001', 'rsdf', 'P', 'kjdfn', 5, 'a', '9048590845', '9340348', '2021-07-28'),
-(11, 'DPM002', 'rsdf', 'P', 'kjdfn', 5, 'a', '9048590845', '9340348', '2021-07-28'),
-(12, 'DPM003', 'rsdf', 'P', 'kjdfn', 5, 'Perseorangan_rsdf.zip', '9048590845', '9340348', '2021-07-28'),
-(13, 'DPM004', 'Ali', 'L', 'Desa Panjunan', 5, 'Perseorangan_Ali.zip', '08980695197', '0006576788', '2021-07-29');
+INSERT INTO `perseorangan` (`id`, `kdPerseorangan`, `nama`, `jekel`, `alamat`, `berkas`, `no_hp`, `no_rek`, `tgl_daftar`) VALUES
+(14, 'DPM001', 'Ali Zuhdi', 'L', 'Ds. Ploso', 'Perseorangan_Ali Zuhdi.zip', '08980695197', '0006576788', '2021-08-01');
 
 -- --------------------------------------------------------
 
@@ -158,6 +144,7 @@ CREATE TABLE `program` (
   `kdProgram` varchar(20) NOT NULL,
   `nmProgram` varchar(75) NOT NULL,
   `idLembaga` int(11) DEFAULT NULL,
+  `idJenis` int(11) DEFAULT NULL,
   `gambar` varchar(300) DEFAULT NULL,
   `keterangan` varchar(200) DEFAULT NULL,
   `donasi` varchar(50) NOT NULL,
@@ -171,11 +158,10 @@ CREATE TABLE `program` (
 -- Dumping data untuk tabel `program`
 --
 
-INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
-(13, 'PLDN13', 'Bagi Bagi Sembako', 1, 'Photo_PLDN13.jpg', 'Lokasi Sekitar Kudus', '600000', 'P', NULL, NULL, 1),
-(19, 'PLDN14', 'Pembangunan Gedung Yatama', 1, 'Photo_PLDN14.png', 'Pembangunan Gedung yatama yayasan pelita hati', '90000000', 'P', '2021-07-29', NULL, 1),
-(20, 'PLDN20', 'Bantuan Banjir Bandang', 13, 'Photo_PLDN20.png', 'Banjir bandang menimpa di daerah kudus bagian selatan. Mari bantu saudara kita yang terkena musibah', '5000000', 'P', '2021-07-29', '2021-08-07', 2),
-(21, 'PLDN21', 'Donasi Oksigen & Masker Covid-19', 13, 'Photo_PLDN21.png', 'Coba coba', '2000000', 'T', '2021-07-29', '2021-08-07', 2);
+INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `idJenis`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
+(25, 'PLDN01', 'Donasi Oksigen & Masker Covid19', 2, 9, 'Photo_PLDN01.jpg', 'Diajukan', '8000000', 'A', '2021-08-01', '2021-08-04', 1),
+(26, 'PLDN02', 'Vitamin A', 2, 9, 'Photo_PLDN01.png', 'Kesehatan', '600000', 'P', '2021-08-02', '2021-08-07', 1),
+(27, 'PLDN03', 'Donasi Oksigen Covid-19', 14, 9, 'Photo_PLDN03_perseorangan.png', 'Akan dilakukan', '700000', 'P', '2021-08-03', '2021-08-12', 2);
 
 -- --------------------------------------------------------
 
@@ -197,12 +183,9 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `idProgram`, `idDonatur`, `nominal`, `tanggal`, `status`) VALUES
-(8, 13, 1, 60000, '0000-00-00', 'K'),
-(10, 10, 1, 1000, '2021-07-28', 'T'),
-(11, 16, 1, 30000, '2021-07-28', 'K'),
-(12, 19, 1, 5000000, '2021-07-29', 'T'),
-(13, 19, 1, 5000000, '2021-07-29', 'T'),
-(14, 20, 1, 300000, '2021-07-29', 'K');
+(17, 25, 2, 60000, '2021-08-01', 'K'),
+(18, 26, 3, 50000, '2021-08-03', 'K'),
+(19, 27, 2, 60000, '2021-08-03', 'K');
 
 -- --------------------------------------------------------
 
@@ -225,12 +208,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `status`) VALUES
-(1, 'Administator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
-(2, 'Riani', 'riani', 'riani', 'L-kasie', 1, 'Aktif'),
-(3, 'Febrian', 'febrian', 'febrian', 'donatur', 1, 'Aktif'),
-(4, 'Febrian', 'rian', 'rian', 'L-seksie', 1, 'Aktif'),
-(5, 'Yudha Aris', 'yudha', 'yudha', 'perseorangan', 12, 'Aktif'),
-(6, 'Ali Firdaus', 'ali', 'ali', 'perseorangan', 13, 'Aktif');
+(8, 'Administrator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
+(9, 'Febriansyah', 'ian', 'ian', 'donatur', 2, 'Aktif'),
+(10, 'Ali Zuhdi', 'ali', 'ali', 'perseorangan', 14, 'Aktif'),
+(11, 'Riani Putri', 'riani', 'riani', 'L-kasie', 2, 'Aktif'),
+(12, 'Lania Widiastuti', 'lania', 'lania', 'L-seksie', 2, 'Aktif'),
+(14, 'rina', 'rina', 'rina', 'donatur', 3, 'Aktif'),
+(15, 'Ali Firdaus', 'alif', 'alif', 'perseorangan', 4, 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -298,43 +282,43 @@ ALTER TABLE `dana`
 -- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `lembaga`
 --
 ALTER TABLE `lembaga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mst_jenis`
 --
 ALTER TABLE `mst_jenis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `perseorangan`
 --
 ALTER TABLE `perseorangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -30,7 +30,11 @@
 </style>
 
 <body id="page-top">
+
   <header class="bg-primary text-white text-center pb-4">
+  <a href="index.php" style="text-align: left;">
+    <img border="0" alt="Peduli-ku" src="images/landing.png" width="300px" height="80px">
+    </a>
     <h1 class="text-uppercase pt-5">List Program</h1>
     <div class="text-center">
     </div>
@@ -99,28 +103,35 @@
                 </div>
                 <div class="row pb-2">
                   <div class="col-6">
-                    <label for=""><b>Nama Program</b></label>
-                    <!-- <input type="text" class="form-control" id="namaP" readonly /> -->
+                  <label for=""><b>Nama Program</b></label>
                     <textarea style="resize: none;" id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
                     <br>
-                    <label for=""><b>Keterangan</b></label>
+                    <!-- <label for=""><b>Keterangan</b></label>
                     <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
-                    <label for=""><b>Tujuan Donasi</b></label>
+                    <br> -->
+                    <label for=""><b>Donasi Sebesar</b></label>
                     <input type="text" class="form-control" id="tujP" readonly />
                   </div>
                   <div class="col-6">
-                    <label for=""><b>Atas Nama</b></label>
+
+                    <!-- <label for=""><b>Atas Nama</b></label> -->
                     <!-- <input type="text" class="form-control" id="pimpP" readonly /> -->
-                    <textarea style="resize: none;" id="pimpP" cols="30" rows="2" class="form-control" readonly></textarea>
+                    <!-- <textarea style="resize: none;" id="pimpP" cols="30" rows="2" class="form-control" readonly></textarea> -->
+                    <label for=""><b>Keterangan</b></label>
+                    <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
                     <br>
                     <label for=""><b>Tanggal Berakhir</b></label>
-                    <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
-                    <label for=""><b>Donasi Terkumpul</b></label>
-                    <input type="text" class="form-control" id="ntujP" readonly />
+                    <input type="text" class="form-control" id="tglendP" readonly />
+                    <!-- <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea> -->
+                    <!-- <br> -->
+                    <!-- <label for=""><b>Donasi Terkumpul</b></label>
+                    <input type="text" class="form-control" id="ntujP" readonly /> -->
                   </div>
                 </div>
+                <div class="modal-footer">
+                
+                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
+									</div>
                 <button class="btn btn-primary mt-3" href="#!" data-bs-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window

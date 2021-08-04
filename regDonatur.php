@@ -10,7 +10,7 @@ if (isset($_POST['btnReg'])) {
                     '" . $_POST['txtNama'] . "',
                     '" . $_POST['txtUsername'] . "',
                     '" . $_POST['txtPassword'] . "',
-										'perseorangan',
+										'donatur',
 										'".$data_cek['id']."',
                     'Nonaktif')";
 	$query_simpan = mysqli_query($con, $sql_simpan);

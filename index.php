@@ -188,24 +188,32 @@
                     <label for=""><b>Nama Program</b></label>
                     <textarea style="resize: none;" id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
                     <br>
-                    <label for=""><b>Keterangan</b></label>
+                    <!-- <label for=""><b>Keterangan</b></label>
                     <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
-                    <label for=""><b>Tujuan Donasi</b></label>
+                    <br> -->
+                    <label for=""><b>Donasi Sebesar</b></label>
                     <input type="text" class="form-control" id="tujP" readonly />
                   </div>
                   <div class="col-6">
-                    <label for=""><b>Atas Nama</b></label>
+
+                    <!-- <label for=""><b>Atas Nama</b></label> -->
                     <!-- <input type="text" class="form-control" id="pimpP" readonly /> -->
-                    <textarea style="resize: none;" id="pimpP" cols="30" rows="2" class="form-control" readonly></textarea>
+                    <!-- <textarea style="resize: none;" id="pimpP" cols="30" rows="2" class="form-control" readonly></textarea> -->
+                    <label for=""><b>Keterangan</b></label>
+                    <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
                     <br>
                     <label for=""><b>Tanggal Berakhir</b></label>
-                    <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
-                    <label for=""><b>Donasi Terkumpul</b></label>
-                    <input type="text" class="form-control" id="ntujP" readonly />
+                    <input type="text" class="form-control" id="tglendP" readonly />
+                    <!-- <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea> -->
+                    <!-- <br> -->
+                    <!-- <label for=""><b>Donasi Terkumpul</b></label>
+                    <input type="text" class="form-control" id="ntujP" readonly /> -->
                   </div>
                 </div>
+                <div class="modal-footer">
+                
+                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
+									</div>
                 <button class="btn btn-primary mt-3" href="#!" data-bs-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
@@ -225,15 +233,15 @@
         <div class="modal-body">
           <div class="row justify-content-center text-center">
             <!-- Portfolio Item 1-->
-            <div class="col-md-6 col-lg-7 mb-2 mt-3">
+            <div class="col-md-4 col-lg-5 mb-2 mt-3">
               <div class="portfolio-item mx-auto">
                 <a href="register.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="Donatur" />
+                  <img class="img-fluid" src="images/donasi.png" alt="Donatur" />
                 </a>
                 <h4>Donatur</h4>
                 <br>
                 <a href="perseorangan.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="Perseorangan" />
+                  <img class="img-fluid" src="images/donasi.png" alt="Perseorangan" />
                 </a>
                 <h4>PERSEORANGAN</h4>
               </div>
