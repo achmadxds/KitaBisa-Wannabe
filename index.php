@@ -102,7 +102,6 @@
         $a = ShowProgramPublish();
 
         foreach ($a as $key => $value) {
-          var_dump($value);
           $presentase = ($value['jumlah'] / $value['donasi']) * 100;
           $makeRounded = round($presentase, 2).'%';
           ?>
@@ -116,11 +115,13 @@
                 <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
               </div>
                 <div class="mt-3">
-                  <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?></b></p>
-                  <div class="progress" style="background-color: wheat;">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                  <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?> </b></p>
+                  <div class="progress" style="background-color: wheat; width: 85%; display: inline-block;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                      <p style="color:black;">.</p>
                     </div>
                   </div>
+                  <p style="display: inline-block;"><?php echo $makeRounded ?></p>
                 </div>
             </div>
           <?php
