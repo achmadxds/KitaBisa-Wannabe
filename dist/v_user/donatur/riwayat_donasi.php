@@ -9,6 +9,9 @@
 
   <div class="page-heading">
     <h3>Riwayat Donasi</h3>
+    <?php
+    echo $idPengguna;
+    ?>
   </div>
   <div class="page-content">
     <section class="row">
@@ -21,6 +24,7 @@
                   <th>Nama Program</th>
                   <th>Nominal Donasi</th>
                   <th>Lembaga</th>
+                  <th>Status</th>
                   <th>Tanggal</th>
                   
                 </tr>
@@ -28,7 +32,7 @@
             </thead>
             <tbody>
               <?php
-                $a = RecordTransaction();
+                $a = RecordTransaction($idPengguna);
                 foreach ($a as $key => $value) {
                   ?>
                     <tr>
@@ -39,6 +43,13 @@
                           echo "<td><b> Lembaga </b></td>";
                         } else {
                           echo "<td><b> Perseorangan </b></td>";
+                        }
+                      ?>
+                      <?php
+                        if($value['status'] == 'K') {
+                          echo "<td><b> Terkonfirmasi </b></td>";
+                        } else {
+                          echo "<td><b> Tangguhkan </b></td>";
                         }
                       ?>
                       <td><b><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></b></td>

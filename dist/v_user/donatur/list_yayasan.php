@@ -33,7 +33,7 @@
                     <tr>
                       <td><b><?php echo $value['nmLembaga'] ?></b></td>
                       <td><b><?php echo $value['nmPimpinan'] ?></b></td>
-                      <td><a href="#" class="btn btn-primary" onclick="duh(this)" data-id="<?php echo $value['nmLembaga'] . '~' .$value['alamat'] . '~' .$value['no_rek'] . '~' .$value['nmPimpinan'] . '~' .$value['no_hp'] . '~' .$value['tgl'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">LIHAT</a></td>
+                      <td><a href="#" class="btn btn-primary" onclick="duh(this)" data-id="<?php echo $value['nmLembaga'] . '~' .$value['alamat'] . '~' .$value['no_rek'] . '~' .$value['nmPimpinan'] . '~' .$value['no_hp'] . '~' . date("d-M-Y", strtotime($value['tgl'])) ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">LIHAT</a></td>
                     </tr>
                   <?php
                 }
@@ -70,7 +70,7 @@
             <label for=""><b>Nomor Telepon</b></label>
             <textarea style="resize: none;" id="telpL" cols="30" rows="2" class="form-control" readonly></textarea>
             <br>
-            <label for=""><b>Tanggal</b></label>
+            <label for=""><b>Bergabung Sejak</b></label>
             <input type="text" class="form-control" id="tglL" readonly />
           </div>
         </div>

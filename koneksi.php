@@ -101,8 +101,16 @@ function InserTransaksi()
 
   $sql = "INSERT INTO `transaksi`(`idProgram`, `idDonatur`, `nominal`, `status`, `tanggal`) VALUES 
     ('" . $_POST['idProgramDonasi'] . "','" . $_POST['idDonaturDonasi'] . "','" . $_POST['dnProgramDonasi'] . "','T', now())";
+  $query_insert = mysqli_query($con,$sql) or die (mysqli_connect_error());
+		
+if($query_insert) {
+  echo "<script>alert('Simpan Berhasil')</script>";
+  echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
 
-  mysqli_query($con, $sql);
+}else{
+echo "<script>alert('Simpan Gagal')</script>";
+  echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
+}
 }
 
 function RecordTransaction()
@@ -110,7 +118,8 @@ function RecordTransaction()
   global $con;
 
   $idUser = $_SESSION["ses_id"];
-  $sql ='SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
+  $k = "K";
+  $sql ='SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id  AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
 
   $query = mysqli_query($con, $sql);
 

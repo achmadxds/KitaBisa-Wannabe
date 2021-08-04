@@ -4,6 +4,6 @@
   if(isset($_POST['btnSimpanDonasi'])) {
     InserTransaksi();
 
-    header('location: ?level=donatur&page=prog');
+    header('location: ?level=donatur&page=prog&an=1');
   }
 ?>
