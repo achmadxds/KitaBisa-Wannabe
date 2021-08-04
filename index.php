@@ -103,7 +103,7 @@
         foreach ($a as $key => $value) {
         ?>
           <div class="col-md-6 col-lg-4 mb-5">
-            <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>"  onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                 <div class="portfolio-item-caption-content text-center text-white">
                   <h2><?php echo $value['nmProgram'] ?></h2>
@@ -204,6 +204,9 @@
                     
                     <label for=""><b>Tanggal Berakhir</b></label>
                     <input type="text" class="form-control" id="tglendP" readonly />
+
+                    <label for=""><b>Donasi</b></label>
+                    <input type="text" class="form-control" id="jml" readonly />
                     <!-- <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea> -->
                     <!-- <br> -->
                     <!-- <label for=""><b>Donasi Terkumpul</b></label>
@@ -277,8 +280,8 @@
     $('#ketP').val(data[1])
     $('#tujP').val('Rp. ' + data[2])
     $('#pimpP').val()
-    // $('#tglendP').val(data[3])
-    $('#tglendP').val(data[3])
+    $('#jml').val(data[3])
+    $('#tglendP').val(data[4])
     $('#ntujP').val()
   }
 </script>

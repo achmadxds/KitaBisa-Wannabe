@@ -141,8 +141,8 @@ function ShowProgramPublish()
 {
   global $con;
 
-  $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
-  // SELECT a.*, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P"
+  // $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
+  $sql ='SELECT a.*, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P"';
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -251,7 +251,8 @@ function GetDataProgramByID($id)
 {
   global $con;
 
-  $query    = "SELECT * FROM program WHERE id='$id'";
+  // $query    = "SELECT * FROM program WHERE id='$id'";
+  $query    = "SELECT a.*, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = 'P' AND a.id='$id'";
   // SELECT a.*, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P" AND a.id='27'
   $sql      = mysqli_query($con, $query);
   $sql_slice = mysqli_fetch_array($sql, MYSQLI_BOTH);
@@ -426,8 +427,9 @@ function GetProgramByJenis($jenis)
 {
   global $con;
 
-  $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' AND `status`="P" ORDER BY tgl_masuk';
-  // SELECT a.*, b.nominal, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`idJenis`='9' AND a.id='27' AND a.`status`="P" ORDER BY a.tgl_masuk
+  // $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' AND `status`="P" ORDER BY tgl_masuk';
+  // $query =  'SELECT a.*, b.nominal, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`idJenis`='9' AND a.id='27' AND a.`status`="P" ORDER BY a.tgl_masuk';
+ $query =  'SELECT a.*, b.nominal, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`idJenis`='.$jenis.' AND a.`status`="P" ORDER BY a.tgl_masuk';
   $sql = mysqli_query($con, $query);
 
   return $sql;
