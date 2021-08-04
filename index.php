@@ -183,41 +183,41 @@
                   <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                   <div class="divider-custom-line"></div>
                 </div>
-                <div class="row pb-2">
-                  <div class="col-6">
+                <div class="row pb-1">
+                  
                     <label for=""><b>Nama Program</b></label>
-                    <textarea style="resize: none;" id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
-                    <!-- <label for=""><b>Keterangan</b></label>
+                    <textarea style="resize: none;" style="text-align: center;"  id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
+                  
+                </div>
+                <div class="row pb-1">
+                <label for=""><b>Keterangan</b></label>
                     <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br> -->
-                    <label for=""><b>Donasi Sebesar</b></label>
+                    
+                </div>
+                <div class="row pb-2">
+                <div class="col-6">
+                <label for=""><b>Donasi Sebesar</b></label>
                     <input type="text" class="form-control" id="tujP" readonly />
-                  </div>
-                  <div class="col-6">
-
-                    <!-- <label for=""><b>Atas Nama</b></label> -->
-                    <!-- <input type="text" class="form-control" id="pimpP" readonly /> -->
-                    <!-- <textarea style="resize: none;" id="pimpP" cols="30" rows="2" class="form-control" readonly></textarea> -->
-                    <label for=""><b>Keterangan</b></label>
-                    <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    <br>
+                </div>
+                <div class="col-6">
+                    
                     <label for=""><b>Tanggal Berakhir</b></label>
                     <input type="text" class="form-control" id="tglendP" readonly />
                     <!-- <textarea style="resize: none;" id="tglendP" cols="30" rows="2" class="form-control" readonly></textarea> -->
                     <!-- <br> -->
                     <!-- <label for=""><b>Donasi Terkumpul</b></label>
                     <input type="text" class="form-control" id="ntujP" readonly /> -->
-                  </div>
+                    <br>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                
-                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
-									</div>
-                <button class="btn btn-primary mt-3" href="#!" data-bs-dismiss="modal">
+                <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
                 </button>
+                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
+									</div>
+                
               </div>
             </div>
           </div>
