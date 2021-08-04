@@ -39,7 +39,7 @@ include_once("../../koneksi.php");
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, b.id as boom, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idlevel='1'";
+                  $sql_tampil = "SELECT a.id, b.id as boom, a.nominal ,b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   // $sql_tampil = "SELECT a.id, b.id as boom, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
@@ -62,7 +62,7 @@ include_once("../../koneksi.php");
                         <?php
                         } elseif ($data_status == 'L-seksie') {
                         ?>
-                        <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap Dana</a>
+                        <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap</a>
                         <?php
                         } else {
                         ?>

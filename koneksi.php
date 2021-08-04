@@ -125,7 +125,7 @@ function insertKelolaDana($a, $b)
   $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) 
             VALUES (' . $a . ',' . $b . ', ' . $c . ') ';
 
-  mysqli_query($con, $sql);
+  mysqli_query($con, $sql) or die();
 }
 
 function ShowProgramPublish()
