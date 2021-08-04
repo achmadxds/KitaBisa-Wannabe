@@ -137,9 +137,8 @@
                   <select name="txtLevel" class="form-control">
                     <option value="">- Level User -</option>
                     <option value="admin">Super Admin</option>
-                    <option value="L-kasie">Ketua Sie.</option>
-                    <option value="L-seksie">Sekretaris Sie.</option>
-                    <option value="K-lembaga">Ketua Lembaga</option>
+                    <option value="L-pimpinan">Pimpinan Lembaga.</option>
+                    <option value="L-admin">Admin Lembaga</option>
                   </select>
                 </div>
 

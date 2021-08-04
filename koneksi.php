@@ -33,11 +33,11 @@ function LoginUser()
         echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
         break;
 
-      case 'L-kasie':
+      case 'L-pimpinan':
         echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
         break;
 
-      case 'L-seksie':
+      case 'L-admin':
         echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
         break;
 

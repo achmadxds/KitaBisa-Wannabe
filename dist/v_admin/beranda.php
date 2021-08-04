@@ -153,7 +153,7 @@
             break;
             ?>
             <?php
-            case 'L-kasie' && 'L-seksie':
+            case 'L-pimpinan' && 'L-admin':
             ?>
              <div class="page-content">
                 <section class="row">
@@ -207,11 +207,11 @@
                                                     ?>
                                                 </h6>
                                                 <?php
-                                                    if ($data_status == 'L-kasie') {
+                                                    if ($data_status == 'L-pimpinan') {
                                                     ?>
                                                     
                                                     <?php
-                                                    } elseif ($data_status == 'L-seksie') {
+                                                    } elseif ($data_status == 'L-admin') {
                                                     ?>
                                                     <a href="?page=transaksi" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                                                     <?php

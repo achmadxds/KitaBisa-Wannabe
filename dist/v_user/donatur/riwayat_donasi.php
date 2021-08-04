@@ -22,7 +22,7 @@
                   <th>Nominal Donasi</th>
                   <th>Lembaga</th>
                   <th>Tanggal</th>
-                  <th>Aksi</th>
+                  
                 </tr>
               </center>
             </thead>
@@ -34,7 +34,6 @@
                     <tr>
                       <td><b><?php echo $value['nmProgram'] ?></b></td>
                       <td><b><?php echo $value['nominal'] ?></b></td>
-                      <td><b><?php echo $value['idLevel'] ?></b></td>
                       <?php
                         if($value['idLevel'] == 1) {
                           echo "<td><b> Lembaga </b></td>";
@@ -42,8 +41,8 @@
                           echo "<td><b> Perseorangan </b></td>";
                         }
                       ?>
-                      <td><b><?php echo $value['tanggal'] ?></b></td>
-                      <td><a href="" class="btn btn-primary">LIHAT</a></td>
+                      <td><b><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></b></td>
+                      
                     </tr>
                   <?php
                 }

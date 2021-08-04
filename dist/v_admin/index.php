@@ -125,7 +125,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <?php
                 break;
 
-              case 'L-kasie':
+              case 'L-pimpinan':
                 ?>
                   <li class="sidebar-item ">
                     <a href="?page=prog" class='sidebar-link'>
@@ -162,7 +162,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <?php
                 break;
 
-              case 'L-seksie':
+              case 'L-admin':
                 ?>
                   <li class="sidebar-item ">
                     <a href="?page=prog" class='sidebar-link'>

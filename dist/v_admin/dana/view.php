@@ -56,11 +56,11 @@ include_once("../../koneksi.php");
 
                       <td>
                       <?php
-                        if ($data_status == 'L-kasie') {
+                        if ($data_status == 'L-pimpinan') {
                         ?>
                          
                         <?php
-                        } elseif ($data_status == 'L-seksie') {
+                        } elseif ($data_status == 'L-admin') {
                         ?>
                         <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap</a>
                         <?php

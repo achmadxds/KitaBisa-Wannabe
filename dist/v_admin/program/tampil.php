@@ -41,11 +41,11 @@ if ($datakode) {
           <div class="card">
             <div class="card-header">
             <?php
-                        if ($data_status == 'L-kasie') {
+                        if ($data_status == 'L-pimpinan') {
                         ?>
                          
                         <?php
-                        } elseif ($data_status == 'L-seksie') {
+                        } elseif ($data_status == 'L-admin') {
                         ?>
                           <a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary btn-sm">Ajukan Program</a>
                         <?php
@@ -112,11 +112,11 @@ if ($datakode) {
 
                     <td>
                     <?php
-                        if ($data_status == 'L-kasie') {
+                        if ($data_status == 'L-pimpinan') {
                         ?>
                           <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
                         <?php
-                        } elseif ($data_status == 'L-seksie') {
+                        } elseif ($data_status == 'L-admin') {
                         ?>
                         <a href="?page=progDet&kode=<?php echo $data['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
                         <a href="?page=progAksi&kode=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
