@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
@@ -101,18 +102,28 @@
         $a = ShowProgramPublish();
 
         foreach ($a as $key => $value) {
-        ?>
-          <div class="col-md-6 col-lg-4 mb-5">
-            <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>"  onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h2><?php echo $value['nmProgram'] ?></h2>
+          var_dump($value);
+          $presentase = ($value['jumlah'] / $value['donasi']) * 100;
+          $makeRounded = round($presentase, 2).'%';
+          ?>
+            <div class="col-md-6 col-lg-4 mb-5">
+              <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <div class="portfolio-item-caption-content text-center text-white">
+                    <h2><?php echo $value['nmProgram'] ?></h2>
+                  </div>
                 </div>
+                <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
               </div>
-              <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
+                <div class="mt-3">
+                  <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?></b></p>
+                  <div class="progress" style="background-color: wheat;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                    </div>
+                  </div>
+                </div>
             </div>
-          </div>
-        <?php
+          <?php
         }
         ?>
       </div>
@@ -185,23 +196,23 @@
                   <div class="divider-custom-line"></div>
                 </div>
                 <div class="row pb-1">
-                  
-                    <label for=""><b>Nama Program</b></label>
-                    <textarea style="resize: none; text-align:center; font-weight:bold"  id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
-                  
+
+                  <label for=""><b>Nama Program</b></label>
+                  <textarea style="resize: none; text-align:center; font-weight:bold" id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
+
                 </div>
                 <div class="row pb-1">
-                <label for=""><b>Keterangan</b></label>
-                    <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
-                    
+                  <label for=""><b>Keterangan</b></label>
+                  <textarea style="resize: none;" id="ketP" cols="30" rows="2" class="form-control" readonly></textarea>
+
                 </div>
                 <div class="row pb-2">
-                <div class="col-6">
-                <label for=""><b>Donasi Sebesar</b></label>
+                  <div class="col-6">
+                    <label for=""><b>Donasi Sebesar</b></label>
                     <input type="text" class="form-control" id="tujP" readonly />
-                </div>
-                <div class="col-6">
-                    
+                  </div>
+                  <div class="col-6">
+
                     <label for=""><b>Tanggal Berakhir</b></label>
                     <input type="text" class="form-control" id="tglendP" readonly />
 
@@ -212,13 +223,13 @@
                     <!-- <label for=""><b>Donasi Terkumpul</b></label>
                     <input type="text" class="form-control" id="ntujP" readonly /> -->
                     <br>
-                    </div>
+                  </div>
                 </div>
                 <div class="modal-footer">
-                
-                <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
-									</div>
-                  <button class="btn btn-danger" href="#!" data-bs-dismiss="modal">
+
+                  <button onclick="location.href='login.php'" class="btn btn-primary">Donasi</button>
+                </div>
+                <button class="btn btn-danger" href="#!" data-bs-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
                 </button>
