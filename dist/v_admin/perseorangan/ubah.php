@@ -30,9 +30,6 @@ include_once("../koneksi.php");
 
         <input type="hidden" class="form-control"  name="txtId" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
             value="<?php echo $data_cek['id']; ?>" required="" readonly="">
-
-            <?php echo $data_cek['id']; ?>
-
         <div class="form-group">
             <label class="col-sm-2 control-label">Kode Perseorangan </label>
             <div class="col-sm-8">

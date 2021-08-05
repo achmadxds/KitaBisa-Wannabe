@@ -74,10 +74,9 @@ include_once("koneksi.php");
         <div class="col-sm-8">
             <select name="txtLevel" class="form-control" required>
             <option value="<?php echo $data_cek['level']; ?>"> - Level -</option>
-            <option value="0">Super Admin</option>
-            <option value="1">Ketua Sie.</option>
-            <option value="2">Sekretaris Sie.</option>
-            <option value="3">Ketua Lembaga</option>
+            <option value="admin">Super Admin</option>
+            <option value="L-pimpinan">Pimpinan Lembaga</option>
+            <option value="L-admin">Admin Lembaga</option>
             </select>
             </div>
         </div>
