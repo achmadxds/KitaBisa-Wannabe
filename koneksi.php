@@ -117,7 +117,14 @@ function UpdateJumlahDonasi()
 {
   global $con;
   // UPDATE `program` SET `jumlah`='[value-9]' WHERE `id`=1
-  $sql = "SELECT * FROM `program` WHERE `id`";
+  $query = "SELECT `jumlah` FROM `program` WHERE `id`='".$_POST['idProgramDonasi']."' ";
+  $sql = mysqli_query($con, $query);
+  $row = mysqli_fetch_row($sql);
+
+  $newValue = $row[0] + $_POST['dnProgramDonasi'];
+
+  $query1 = "UPDATE `program` SET `jumlah`=$newValue WHERE `id`='".$_POST['idProgramDonasi']."' ";
+  mysqli_query($con, $query1);
 }
 
 function RecordTransaction()
@@ -149,7 +156,7 @@ function ShowProgramPublish()
   global $con;
 
   // $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
-  $sql ='SELECT a.* , SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P" OR (b.nominal IS NULL)';
+  $sql ='SELECT * FROM program WHERE `status` = "P" ';
   $query = mysqli_query($con, $sql);
 
   return $query;
