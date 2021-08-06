@@ -34,7 +34,7 @@
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.idLembaga, c.nama  FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='$data_id' AND b.idLevel='1'";
+                  $sql_tampil = "SELECT a.id, a.nominal, a.status, b.kdProgram, b.nmProgram, b.idLembaga, c.nama, a.idProgram, a.nominal  FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='$data_id' AND b.idLevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
                   while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
@@ -49,7 +49,7 @@
                         <?php
                           if ($data['status'] == 'T') {
                             ?>
-                              <a href="?page=confirm&kode=<?php echo $data['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                              <a href="?page=confirm&kode=<?php echo $data['id']; ?>&idProgram=<?php echo $data['idProgram'] ?>&postVal=<?php echo $data['nominal'] ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
                             <?php
                           } else {
                             ?>

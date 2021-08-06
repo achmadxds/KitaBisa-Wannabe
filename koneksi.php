@@ -113,17 +113,17 @@ function InserTransaksi()
   }
 }
 
-function UpdateJumlahDonasi()
+function UpdateJumlahDonasi($a, $b)
 {
   global $con;
   // UPDATE `program` SET `jumlah`='[value-9]' WHERE `id`=1
-  $query = "SELECT `jumlah` FROM `program` WHERE `id`='".$_POST['idProgramDonasi']."' ";
+  $query = "SELECT `jumlah` FROM `program` WHERE `id`=$a ";
   $sql = mysqli_query($con, $query);
   $row = mysqli_fetch_row($sql);
 
-  $newValue = $row[0] + $_POST['dnProgramDonasi'];
-
-  $query1 = "UPDATE `program` SET `jumlah`=$newValue WHERE `id`='".$_POST['idProgramDonasi']."' ";
+  $newValue = $row[0] + intval($b);
+  var_dump($newValue);
+  $query1 = "UPDATE `program` SET `jumlah`=$newValue WHERE `id`=$a ";
   mysqli_query($con, $query1);
 }
 
@@ -145,17 +145,15 @@ function insertKelolaDana($a, $b)
 {
   global $con;
   $c = 1;
-  $sql = 'INSERT INTO `dana`(`idProgram`, `jumlah`, `status`) 
+  $sql = 'INSERT INTO `dana` (`idProgram`, `jumlah`, `status`) 
             VALUES (' . $a . ',' . $b . ', ' . $c . ') ';
 
-  mysqli_query($con, $sql) or die();
+  mysqli_query($con, $sql) or mysqli_error($con);
 }
 
 function ShowProgramPublish()
 {
   global $con;
-
-  // $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
   $sql ='SELECT * FROM program WHERE `status` = "P" ';
   $query = mysqli_query($con, $sql);
 
@@ -368,7 +366,8 @@ function DetailProgram($id)
 {
   global $con;
 
-  $query = "SELECT a.id, a.kdProgram, b.kdPerseorangan, b.nama, a.nmProgram, a.gambar, a.keterangan, a.donasi, a.status, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='" . $_SESSION["ses_id"] . "' AND a.idLevel='2') AND a.id='$id'";
+  // $query = "SELECT a.id, a.kdProgram, b.kdPerseorangan, b.nama, a.nmProgram, a.gambar, a.keterangan, a.donasi, a.status, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P') AND (a.idLembaga='" . $_SESSION["ses_id"] . "' AND a.idLevel='2') AND a.id='$id'";
+  $query = "SELECT a.id, a.kdProgram, b.kdPerseorangan, b.nama, a.nmProgram, a.gambar, a.keterangan, a.donasi, a.status, a.idLevel FROM program a, perseorangan b WHERE a.idLembaga=b.id  AND (a.status='T' or a.status='P' or a.status='A') AND (a.idLembaga='" . $_SESSION["ses_id"] . "' AND a.idLevel='2') AND a.id='$id'";
   $sql = mysqli_query($con, $query);
   $sql_slice = mysqli_fetch_array($sql, MYSQLI_BOTH);
 
@@ -379,7 +378,7 @@ function SelectDataTransaksiDonasi()
 {
   global $con;
 
-  $query = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
+  $query = "SELECT a.id, b.kdProgram, b.nmProgram, a.idDonatur, a.nominal, a.status, a.idProgram, c.nama FROM transaksi a, program b, donatur c WHERE a.idProgram=b.id AND a.idDonatur=c.id AND b.idLembaga='" . $_SESSION["ses_id"] . "' AND b.idLevel='2'";
   $sql = mysqli_query($con, $query);
 
   return $sql;
@@ -421,7 +420,7 @@ function SelectDataDana($id)
 {
   global $con;
 
-  $query = "SELECT a.id, b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$id' AND b.idLevel='1'";
+  $query = "SELECT *, donasi - jumlah as kurang FROM program where `status`='A' AND idLembaga=$id AND idLevel=2 ";
   $sql = mysqli_query($con, $query);
 
   return $sql;
@@ -476,7 +475,7 @@ function sendTransaksi()
     $query_cek = mysqli_query($con, $sql_cek);
     $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
   }
-  define('BOT_TOKEN', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  define('BOT_TOKEN', '1902991671:AAHMWBcZCQOv-VNZDr1gu8-zpf-6BRx5V50');
   define('CHAT_ID',$data_cek['id_chat']);
    
   function kirimTelegram($pesan) {
@@ -529,17 +528,18 @@ function broadcast()
             echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
         }
   }
+
   global $con;
   $sql_no = "SELECT id_chat FROM donatur";
   $query_no = mysqli_query($con, $sql_no);
   $no = 1;
   define('BOT_TOKENS', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
   $id_teles = [];
   foreach($query_no as $item){
-  echo $item['id_chat'];
-  array_push($id_teles, $item['id_chat']);
+    array_push($id_teles, $item['id_chat']);
   }
-  // var_dump($id_teles);
+
    function kirimTelegrams($pesan, $ar) {
       $pesan = json_encode($pesan);
       $c = [];
@@ -548,30 +548,16 @@ function broadcast()
         array_push($c, $API);
       }
 
-      var_dump($c);
-      
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-      for ($i=0; $i < count($c) ; $i++) { 
-        curl_setopt($ch, CURLOPT_URL, $c[$i]);
-        $result = curl_exec($ch);
+      foreach ($c as $value) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        // var_dump($value);
+        curl_setopt($ch, CURLOPT_URL, $value);
+        curl_exec($ch);
         curl_close($ch);
-        return $result;
       }
   }
    
   kirimTelegrams("Halo Para Donatur yang terhormat. Peduliku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
-
-}
-
-function coba()
-{
-  global $con;
-  $sql_no = "SELECT id_chat FROM donatur";
-  $query_no = mysqli_query($con, $sql_no);
-  $no = 1;
-  foreach($query_no as $item){
-    echo $item['id_chat'];
-   }
 }

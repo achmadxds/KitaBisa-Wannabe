@@ -39,7 +39,7 @@ include_once("../../koneksi.php");
 
                   <?php
 
-                  $sql_tampil = "SELECT a.id, b.id as boom, a.nominal ,b.kdProgram, b.nmProgram, b.donasi , SUM(a.nominal) AS Total, b.donasi - SUM(a.nominal) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idlevel='1'";
+                  $sql_tampil = "SELECT a.id, b.id as boom, a.nominal ,b.kdProgram, b.nmProgram, b.donasi , b.jumlah,  (b.donasi - b.jumlah) AS Tidak  FROM transaksi a, program b WHERE a.idProgram=b.id AND a.status='K' AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   // $sql_tampil = "SELECT a.id, b.id as boom, a.nominal, a.status, b.kdProgram, b.nmProgram, b.donasi, b.idLembaga FROM transaksi a, program b WHERE a.idProgram=b.id AND b.idLembaga='$data_id' AND b.idlevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
                   $no = 1;
@@ -50,7 +50,7 @@ include_once("../../koneksi.php");
                       <td><?php echo $data['kdProgram']; ?></td>
                       <td><?php echo $data['nmProgram']; ?></td>
                       <td>Rp. <?php echo $data['donasi']; ?></td>
-                      <td>Rp. <?php echo $data['Total']; ?></td>
+                      <td>Rp. <?php echo $data['jumlah']; ?></td>
                       <td>Rp. <?php echo $data['Tidak']; ?></td>
                       <td> Terkonfirmasi </td>
 

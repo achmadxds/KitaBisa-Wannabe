@@ -88,7 +88,7 @@
                 
                 switch ($_GET['tj']) {
                     case 'program':
-                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='P' AND idLevel='2'";
+                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='A' AND idLevel='2'";
                         $query_tampil = mysqli_query($con, $sql_tampil);
                         while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
                             ?>
@@ -142,12 +142,7 @@
 					<br><br><br>
 					<div style=text-align:center;><b>Kudus, <?php echo date("d-m-Y"); ?></b><br></div>
 					<br>
-					<center>Pimpinan <?php echo $data['nmProgram'] ?>
-						<br><br><br><br>
-						<u><b>Arif Syaifudin, ST</b></u><br>
-						Pembina Tingkat I<br>
-						NIP : 0123456789
-					</center>
+					
 				</td>
 			</tr>
 		</tbody>

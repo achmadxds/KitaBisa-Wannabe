@@ -40,7 +40,7 @@
                           <td><?php echo $no; ?></td>
                           <td><?php echo $value['kdProgram']; ?></td>
                           <td><?php echo $value['nmProgram']; ?></td>
-                          <td><?php echo $value['idDonatur']; ?></td>
+                          <td><?php echo $value['nama']; ?></td>
                           <td><?php echo $value['nominal']; ?></td>
                           <td>
                             <?php
@@ -55,7 +55,7 @@
                             <?php
                               if ($value['status'] == 'T') {
                               ?>
-                                <a href="?level=perseorangan&page=confirm&kode=<?php echo $value['id']; ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                                <a href="?level=perseorangan&page=confirm&kode=<?php echo $value['id']; ?>&idProgram=<?php echo $value['idProgram']  ?>&postVal=<?php echo $value['nominal'] ?>" class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
                               <?php
                               } else {
                                 echo '<a href="#" class="btn btn-success btn-sm">Success</a>'; 

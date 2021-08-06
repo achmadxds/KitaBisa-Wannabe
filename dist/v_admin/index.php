@@ -152,10 +152,6 @@ if (isset($_SESSION['ses_username']) == "") {
                       <li class="submenu-item ">
                         <a href="?page=reportProgram">Data Program</a>
                       </li>
-                      <li class="submenu-item ">
-                        <a href="?page=reportDana">Data Donasi</a>
-                      </li>
-                      
                     </ul>
                   </li>
                  
@@ -271,7 +267,7 @@ if (isset($_SESSION['ses_username']) == "") {
             include "program/arsip.php";
             break;
           case 'reportProgram' :
-            include "program/report.php";
+            include "rekap/rekap_view.php";
             break;
 
           case 'donatur':

@@ -153,7 +153,7 @@
             break;
             ?>
             <?php
-            case 'L-pimpinan' && 'L-admin':
+            case 'L-admin':
             ?>
              <div class="page-content">
                 <section class="row">

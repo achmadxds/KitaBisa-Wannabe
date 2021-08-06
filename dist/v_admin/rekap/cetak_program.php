@@ -118,7 +118,7 @@ include_once("../../koneksi.php");
                                     <td><?php echo $data['nama']; ?></td>
                                     <td><?php echo $data['nominal']; ?></td>
                                     <td><?php echo $data['no_hp']; ?></td>
-                                    <td><?php echo $data['tanggal']; ?></td>
+                                    <td><?php echo date("d-m-Y", strtotime($data['tanggal'])); ?></td>
                                 </tr>
                                 </center>
                             <?php
@@ -145,12 +145,7 @@ include_once("../../koneksi.php");
 					<br><br><br>
 					<div style=text-align:center;><b>Kudus, <?php echo date("d-m-Y"); ?></b><br></div>
 					<br>
-					<center>Pimpinan <?php echo $data['nmProgram'] ?>
-						<br><br><br><br>
-						<u><b>Arif Syaifudin, ST</b></u><br>
-						Pembina Tingkat I<br>
-						NIP : 0123456789
-					</center>
+					
 				</td>
 			</tr>
 		</tbody>

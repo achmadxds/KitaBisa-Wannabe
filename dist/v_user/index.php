@@ -228,6 +228,11 @@
                     include "perseorangan/rekap/rekap_view.php";
                     break;
 
+                  case 'rekapDana':
+                    include "perseorangan/dana/dana_rekap.php";
+                    // include "perseorangan/dana/dana_rekap.php";
+                    break;
+
                   case 'rekapDonasi':
                     include "perseorangan/rekap/rekap_donasi.php";
                     break;

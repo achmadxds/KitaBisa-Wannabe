@@ -16,35 +16,53 @@
               Kelola Dana
             </div>
             <div class="card-body">
-              <table class="table table-striped" id="table111">
-                <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Kode Program</th>
-                      <th>Nama Program</th>
-                      <th>Dana Target</th>
-                      <th>Dana Masuk</th>
-                      <th>Dana Tidak Tercapai</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    $data = SelectDataDana($_SESSION["ses_id"]);
-                    foreach ($data as $value) {
-                      ?>
-                        <tr>
-                          <td></td>
-                          <td><?php echo $value['kdProgram']; ?></td>
-                          <td><?php echo $value['nmProgram']; ?></td>
-                          <td><?php echo $value['donasi']; ?></td>
-                          <td><?php echo $value['Total']; ?></td>
-                          <td><?php echo $value['Tidak']; ?></td>
-                        </tr>
-                      <?php
-                    }
+              <?php
+                $data = SelectDataDana($_SESSION["ses_id"]);
+                $no = 1;
+              ?>
+
+              <?php
+                if(mysqli_num_rows($data) > 0) {
                   ?>
-                </tbody>
-              </table>
+                    <table class="table table-striped" id="table111">
+                      <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Kode Program</th>
+                            <th>Nama Program</th>
+                            <th>Dana Target</th>
+                            <th>Dana Masuk</th>
+                            <th>Dana Tidak Tercapai</th>
+                            <th>Aksi</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                          foreach ($data as $value) {
+                            ?>
+                              <tr>
+                                <td><?php echo $no; ?></td>
+                                <td><?php echo $value['kdProgram']; ?></td>
+                                <td><?php echo $value['nmProgram']; ?></td>
+                                <td><?php echo $value['donasi']; ?></td>
+                                <td><?php echo $value['jumlah']; ?></td>
+                                <td><?php echo $value['kurang']; ?></td>
+                                <td>
+                                <!-- ?level=perseorangan&page=dana&idKode=<?php echo $value['id'] ?>&jumlahs=<?php echo $value['jumlah'] ?> -->
+                                  <a href="?level=perseorangan&page=rekapDana&idKode=<?php echo $value['id'] ?>&jumlahs=<?php echo $value['jumlah'] ?>" class="btn btn-primary btn-sm">Rekap</a>
+                                </td>
+                              </tr>
+                            <?php
+                            $no++;
+                          }
+                        ?>
+                      </tbody>
+                    </table>
+                  <?php
+                } else {
+                  echo '<h1 class="text-center">BELUM ADA PROGRAM TERARSIP</h1>';
+                }
+              ?>
             </div>
           </div>
         </div>

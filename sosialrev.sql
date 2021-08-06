@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 06, 2021 at 08:59 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 06 Agu 2021 pada 18.01
+-- Versi server: 10.4.18-MariaDB
+-- Versi PHP: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sosialrev`
+-- Database: `sosial`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dana`
+-- Struktur dari tabel `dana`
 --
 
 CREATE TABLE `dana` (
@@ -37,7 +37,7 @@ CREATE TABLE `dana` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `donatur`
+-- Struktur dari tabel `donatur`
 --
 
 CREATE TABLE `donatur` (
@@ -52,19 +52,10 @@ CREATE TABLE `donatur` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `donatur`
---
-
-INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
-(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 1625733126, 'Aktif', '2021-08-01'),
-(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 545425663, 'Aktif', '2021-08-01'),
-(4, 610951, 'Ali Firdaus', 'L', 'Ds. Mlati Kidul RT 01 RW 04 Kec. Kota Kudus', '08980695197', 1715197608, 'Aktif', '2021-08-03');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lembaga`
+-- Struktur dari tabel `lembaga`
 --
 
 CREATE TABLE `lembaga` (
@@ -74,23 +65,16 @@ CREATE TABLE `lembaga` (
   `alamat` varchar(200) NOT NULL,
   `nmPimpinan` varchar(40) NOT NULL,
   `berkas` text DEFAULT NULL,
+  `foto` varchar(200) NOT NULL,
   `no_hp` varchar(14) NOT NULL,
   `no_rek` varchar(30) NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `lembaga`
---
-
-INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
-(2, 'LMB001', 'Yayasan Pita Kuning', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pita Kuning.zip', '0898767234', '056785421', '2021-08-01'),
-(3, 'LMB002', 'Yayasan Pelita Hati', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', 'H. Nooryanto', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '1234895', '2021-08-01');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mst_jenis`
+-- Struktur dari tabel `mst_jenis`
 --
 
 CREATE TABLE `mst_jenis` (
@@ -98,20 +82,10 @@ CREATE TABLE `mst_jenis` (
   `nama` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `mst_jenis`
---
-
-INSERT INTO `mst_jenis` (`id`, `nama`) VALUES
-(8, 'Sosial Hukum'),
-(9, 'Kesehatan'),
-(10, 'Yatim'),
-(11, 'Lingkungan');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perseorangan`
+-- Struktur dari tabel `perseorangan`
 --
 
 CREATE TABLE `perseorangan` (
@@ -126,17 +100,10 @@ CREATE TABLE `perseorangan` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `perseorangan`
---
-
-INSERT INTO `perseorangan` (`id`, `kdPerseorangan`, `nama`, `jekel`, `alamat`, `berkas`, `no_hp`, `no_rek`, `tgl_daftar`) VALUES
-(14, 'DPM001', 'Ali Zuhdi', 'L', 'Ds. Ploso', 'Perseorangan_Ali Zuhdi.zip', '08980695197', '0006576788', '2021-08-01');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `program`
+-- Struktur dari tabel `program`
 --
 
 CREATE TABLE `program` (
@@ -155,17 +122,10 @@ CREATE TABLE `program` (
   `idLevel` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `program`
---
-
-INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `idJenis`, `gambar`, `keterangan`, `donasi`, `jumlah`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
-(1, 'PLDN01', 'Bansos 2022', 14, 8, 'Photo_PLDN01_perseorangan.png', 'KAKAKA', '1000000', 0, 'P', '2021-08-06', '2021-08-09', 2);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -180,7 +140,7 @@ CREATE TABLE `transaksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -194,121 +154,115 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='komen';
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `status`) VALUES
-(8, 'Administrator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif'),
-(9, 'Febriansyah', 'ian', 'ian', 'donatur', 2, 'Aktif'),
-(10, 'Ali Zuhdi', 'ali', 'ali', 'perseorangan', 14, 'Aktif'),
-(11, 'Riani Putri', 'riani', 'riani', 'L-pimpinan', 2, 'Aktif'),
-(12, 'Lania Widiastuti', 'lania', 'lania', 'L-admin', 2, 'Aktif'),
-(14, 'rina', 'rina', 'rina', 'donatur', 3, 'Aktif'),
-(15, 'Ali Firdaus', 'alif', 'alif', 'perseorangan', 4, 'Aktif');
+(1, 'Administrator Sistem', 'admin', 'admin', 'admin', 0, 'Aktif');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dana`
+-- Indeks untuk tabel `dana`
 --
 ALTER TABLE `dana`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `donatur`
+-- Indeks untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lembaga`
+-- Indeks untuk tabel `lembaga`
 --
 ALTER TABLE `lembaga`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mst_jenis`
+-- Indeks untuk tabel `mst_jenis`
 --
 ALTER TABLE `mst_jenis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `perseorangan`
+-- Indeks untuk tabel `perseorangan`
 --
 ALTER TABLE `perseorangan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `program`
+-- Indeks untuk tabel `program`
 --
 ALTER TABLE `program`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `dana`
+-- AUTO_INCREMENT untuk tabel `dana`
 --
 ALTER TABLE `dana`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `donatur`
+-- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `lembaga`
+-- AUTO_INCREMENT untuk tabel `lembaga`
 --
 ALTER TABLE `lembaga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mst_jenis`
+-- AUTO_INCREMENT untuk tabel `mst_jenis`
 --
 ALTER TABLE `mst_jenis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `perseorangan`
+-- AUTO_INCREMENT untuk tabel `perseorangan`
 --
 ALTER TABLE `perseorangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `program`
+-- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

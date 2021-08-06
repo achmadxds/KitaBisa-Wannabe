@@ -54,7 +54,7 @@
                           <td><?php echo $value['nama']; ?></td>
                           <td><?php echo $value['nominal']; ?></td>
                           <td><?php echo $value['no_hp'] ?></td>
-                          <td><?php echo $value['tanggal'] ?></td>
+                          <td><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></td>
                         </tr>
                       <?php
                       $no++;

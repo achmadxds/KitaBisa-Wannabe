@@ -1,21 +1,21 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
 
-  switch ($_GET['level']) {
-    case 'lembaga':
-      switch ($_GET['tipe']) {
-        case 'program':
-          $a = $_GET['idUser'];
+  // switch ($_GET['level']) {
+  //   case 'lembaga':
+      // switch ($_GET['tipe']) {
+      //   case 'program':
+          // $a = $_GET['idUser'];
           $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='P' ";
-          break;
+          $sql = mysqli_query($con, $query);
+          // break;
 
-        default:
-        echo '<script> alert("AK") </script>';
-        break;
-        }
+        // default:
+        // echo '<script> alert("AK") </script>';
+        // break;
+        // }
         
-      }
-      $sql = mysqli_query($con, $query);
+      // }
 ?>
 
 <div id="main">

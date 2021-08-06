@@ -27,6 +27,7 @@ include_once("../../koneksi.php");
               <center>
                 <tr>
                   <th>No</th>
+                  <th>ID Program</th>
                   <th>Kode Program</th>
                   <th>Nama Program</th>
                   <th>Pengaju</th>
@@ -44,6 +45,7 @@ include_once("../../koneksi.php");
                 ?>
                   <tr>
                     <td><?php echo $no; ?></td>
+                    <td><?php echo $value['id']; ?></td>
                     <td><?php echo $value['kdProgram']; ?></td>
                     <td><?php echo $value['nmProgram']; ?></td>
                     <td>
@@ -70,10 +72,15 @@ include_once("../../koneksi.php");
                         <a href="?page=progDet&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
                         <a href="?page=progAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                       <?php
-                      } else {
+                      } elseif ($value['status'] == 'P') {
                       ?>
                         <a href="?page=progArchive&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-archive"></i></a>
                         <a href="?page=progDet&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                        <a href="?page=progAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
+                        <?php
+                      } else{
+                      ?>
+                      <a href="?page=progDet&kode=<?php echo $value['id']; ?>" class='btn btn-success btn-sm'><i class="fa fa-eye"></i></a>
                         <a href="?page=progAksi&kode=<?php echo $value['id']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></i></a>
                       <?php
                       }

@@ -54,7 +54,7 @@
                     <h6 class="text-muted font-semibold">Dana Masuk</h6>
 
                     <h6 class="font-extrabold mb-0"><?php
-                                                      $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.idLembaga AND b.idLevel='2' AND a.status ='T' AND b.idLembaga='$idPengguna'";
+                                                      $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.id  AND b.idLevel='2' AND a.status ='T' AND b.idLembaga='$idPengguna'";
                                                       $q_hit = mysqli_query($con, $sql_hitung);
                                                       while ($row = mysqli_fetch_array($q_hit)) {
                                                         echo  $row[0] . "";
