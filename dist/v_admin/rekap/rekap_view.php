@@ -6,7 +6,7 @@
       switch ($_GET['tipe']) {
         case 'program':
           $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga=$a AND `status`='A' ";
+          $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='P' ";
           break;
 
         default:
@@ -26,6 +26,8 @@
   </header>
 
   <div class="page-content">
+  <a href="rekap/cetak_program.php" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+  <br><br>
     <section class>
       <div class="row">
         <div class="col-12">
@@ -33,6 +35,7 @@
             <div class="card-header">
               Program Terdaftar
             </div>
+            
             <div class="card-body">
               <table class="table table-striped" id="program212">
                 <thead>

@@ -1,16 +1,17 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
 
-  switch ($_GET['level']) {
-    case 'perseorangan':
-      switch ($_GET['tipe']) {
-        case 'program':
-          $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga=$a AND `status`='P' ";
-          break;
-        }
+  // switch ($_GET['level']) {
+  //   case 'perseorangan':
+
+  //     switch ($_GET['tipe']) {
+  //       case 'program':
+  //         break;
+  //       }
         
-      }
+  //     }
+      
+      $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='P' ";
       $sql = mysqli_query($con, $query);
 ?>
 
