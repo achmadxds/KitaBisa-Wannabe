@@ -123,6 +123,11 @@ if ($datakode) {
 									</div>
 
 									<div class="form-group">
+										<label>Foto Profil</label>
+										<input type="file" class="form-control" name="txtFoto" />
+									</div>
+
+									<div class="form-group">
 										<label>No HP</label>
 										<input type="text" class="form-control" name="txtNoHp" />
 									</div>

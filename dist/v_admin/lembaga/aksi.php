@@ -3,12 +3,13 @@ include_once("koneksi.php");
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, alamat, nmPimpinan, berkas, no_hp, no_rek,tgl) VALUES (
+	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, alamat, nmPimpinan, berkas, foto,no_hp, no_rek,tgl) VALUES (
 					'" . $_POST['txtKdLembaga'] . "',
 					'" . $_POST['txtNmLembaga'] . "',
 					'" . $_POST['txtAlamat'] . "',
 					'" . $_POST['txtNmPimpinan'] . "',
 					'".uploadFiles()."',
+					'".Upload_Files()."',
 					'" . $_POST['txtNoHp'] . "',
 					'" . $_POST['txtRekening'] . "',
 					'$date')";
@@ -78,6 +79,28 @@ function uploadFiles()
 	} else {
 		return;
 	}
+}
+
+function Upload_Files()
+{
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg');
+  $nama = $_FILES['txtFoto']['name'];
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Photo_' . $_POST['txtNmLembaga'] .  "." . $ekstensi;
+  $ukuran  = $_FILES['txtFoto']['size'];
+  $file_tmp = $_FILES['txtFoto']['tmp_name'];
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      move_uploaded_file($file_tmp, __DIR__ . '/images/files/' . $namas);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
 }
 
 ?>
