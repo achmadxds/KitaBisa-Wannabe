@@ -18,6 +18,11 @@
   </header>
 
   <div class="page-content">
+  <?php
+
+  ?>
+  <a href="rekap/cetak_program.php?tj=donasi&aidi=<?php echo $_GET['idKode'] ?>" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+  <br><br>
     <section class>
       <div class="row">
         <div class="col-12">

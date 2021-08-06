@@ -56,32 +56,78 @@ include_once("../../koneksi.php");
 	</center>
 	<table border="1" style="width: 100%">
 		<thead>
-			<tr>
-				<th>No</th>
-				<th>Kode</th>
-				<th>Nama Program</th>
-				<th>Tanggal Pengajuan</th>
-				<th>Jumlah</th>
-			</tr>
+            <?php
+                switch ($_GET['tj']) {
+                    case 'program':
+                        ?>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama Program</th>
+                                <th>Tanggal Pengajuan</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        <?php
+                        break;
+                    
+                    case 'donasi':
+                        ?>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Nominal</th>
+                                <th>Nomor Hp</th>
+                                <th>Tanggal</th>
+                            </tr>
+                        <?php
+                        break;
+                }
+            ?>
 		</thead>
 		<tbody>
+            <?php
+                $a = $_GET['aidi'];
+			    $no = 1;
+                
+                switch ($_GET['tj']) {
+                    case 'program':
+                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='P' AND idLevel='1'";
+                        $query_tampil = mysqli_query($con, $sql_tampil);
+                        while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['kdProgram']; ?></td>
+                                    <td><?php echo $data['nmProgram']; ?></td>
+                                    <td><?php echo $data['tgl_masuk']; ?></td>
+                                    <td><?php echo $data['jumlah']; ?></td>
+                                </tr>
+                                </center>
+                            <?php
+                                $no++;
+                        }
+                        break;
+                    
+                    case 'donasi':
+                        $sql_tampil = "SELECT b.*, a.nominal, a.tanggal FROM transaksi a, donatur b where a.idProgram=$a AND a.idDonatur=b.id";
+                        $query_tampil = mysqli_query($con, $sql_tampil);
+                        while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                    <td><?php echo $data['nominal']; ?></td>
+                                    <td><?php echo $data['no_hp']; ?></td>
+                                    <td><?php echo $data['tanggal']; ?></td>
+                                </tr>
+                                </center>
+                            <?php
+                                $no++;
+                            }
+                        break;
+                }
+            ?>
 			<?php
-			$sql_tampil = "SELECT * FROM program where idLembaga='".$_GET['aidi']."' AND `status`='P' AND idLevel='1'";
-			$query_tampil = mysqli_query($con, $sql_tampil);
-			$no = 1;
-			while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
-			?>
-				<tr>
-					<td><?php echo $no; ?></td>
-					<td><?php echo $data['kdProgram']; ?></td>
-					<td><?php echo $data['nmProgram']; ?></td>
-					<td><?php echo $data['tgl_masuk']; ?></td>
-					<td><?php echo $data['jumlah']; ?></td>
-				</tr>
-				</center>
-			<?php
-				$no++;
-			}
 			?>
 
 		</tbody>

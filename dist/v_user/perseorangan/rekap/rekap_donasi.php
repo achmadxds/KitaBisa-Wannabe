@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              Donatur dari Program
+              <a href="perseorangan/rekap/rekap_download.php?tj=donasi&aidi=<?php echo $_GET['idKode'] ?>" class="btn btn-primary btn-sm">Download</a>
             </div>
             <div class="card-body">
               <table class="table table-striped" id="program212">

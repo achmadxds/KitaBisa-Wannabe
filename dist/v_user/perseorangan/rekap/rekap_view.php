@@ -1,17 +1,17 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
 
-  // switch ($_GET['level']) {
-  //   case 'perseorangan':
+  switch ($_GET['level']) {
+    case 'perseorangan':
 
-  //     switch ($_GET['tipe']) {
-  //       case 'program':
-  //         break;
-  //       }
+      switch ($_GET['tipe']) {
+        case 'program':
+          $query = "SELECT * FROM program where idLembaga=$idPengguna AND `status`='P' ";
+          break;
+        }
         
-  //     }
+      }
       
-      $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='P' ";
       $sql = mysqli_query($con, $query);
 ?>
 
@@ -28,8 +28,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              Program Terdaftar
-              <a href="perseorangan/rekap/rekap_download.php?tipe=program" class="btn btn-primary btn-sm">Download</a>
+              <a href="perseorangan/rekap/rekap_download.php?tj=program&aidi=<?php echo $idPengguna ?>" class="btn btn-primary btn-sm">Download</a>
             </div>
             <div class="card-body">
               <table class="table table-striped" id="program212">

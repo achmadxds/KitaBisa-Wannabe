@@ -1,27 +1,161 @@
-<?php
-  
-?>
+<?php include_once("__DIR__ .  ../../../../../koneksi.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download <?php echo $_GET['tipe'] ?></title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+	<title></title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="css/sb-admin.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body style=color:black;>
+
+	<table border="0" cellspacing="0" cellpadding="0">
+		<thead>
+
+		</thead>
+		<tbody>
+			<tr>
+				<td style=width:150px;>
+					<center>
+						<img src="../../../../images/donasi.png" width="110" height="110">
+					</center>
+				</td>
+				<td style=width:1066px;>
+					<center>
+						SISTEM INFORMASI<br>
+						<b>PORTAL DONASI PEDULIKU</b><br>
+						Ds. Panjunan Lor Kecamatan Kota <br> Kabupaten Kudus, Jawa Tengah 59361<br>
+						Email : pedulikudus@gmail.com <br>
+						<!-- Website : kecamatangembong.patikab.go.id<br> -->
+					</center>
+				</td>
+				<td style=width:150px;>
+					<center>
+
+					</center>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr>
+	<br>
+	<center>
+		<h3>Laporan Program Diajukan</h3>
+	</center>
+	<table border="1" style="width: 100%">
+		<thead>
+            <?php
+                switch ($_GET['tj']) {
+                    case 'program':
+                        ?>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama Program</th>
+                                <th>Tanggal Pengajuan</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        <?php
+                        break;
+                    
+                    case 'donasi':
+                        ?>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Nominal</th>
+                                <th>Nomor Hp</th>
+                                <th>Tanggal</th>
+                            </tr>
+                        <?php
+                        break;
+                }
+            ?>
+		</thead>
+		<tbody>
+            <?php
+                $a = $_GET['aidi'];
+			    			$no = 1;
+                
+                switch ($_GET['tj']) {
+                    case 'program':
+                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='P' AND idLevel='2'";
+                        $query_tampil = mysqli_query($con, $sql_tampil);
+                        while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['kdProgram']; ?></td>
+                                    <td><?php echo $data['nmProgram']; ?></td>
+                                    <td><?php echo $data['tgl_masuk']; ?></td>
+                                    <td><?php echo $data['jumlah']; ?></td>
+                                </tr>
+                                </center>
+                            <?php
+                                $no++;
+                        }
+                        break;
+                    
+                    case 'donasi':
+                        $sql_tampil = "SELECT b.*, a.nominal, a.tanggal FROM transaksi a, donatur b where a.idProgram=$a AND a.idDonatur=b.id";
+                        $query_tampil = mysqli_query($con, $sql_tampil);
+                        while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                    <td><?php echo $data['nominal']; ?></td>
+                                    <td><?php echo $data['no_hp']; ?></td>
+                                    <td><?php echo $data['tanggal']; ?></td>
+                                </tr>
+                                </center>
+                            <?php
+                                $no++;
+                            }
+                        break;
+                }
+            ?>
+			<?php
+			?>
+
+		</tbody>
+	</table>
+
+	<br>
+	<table border="0" cellspacing="0" cellpadding="0">
+		<thead>
+
+		</thead>
+		<tbody>
+			<tr>
+				<td style=width:1040px;></td>
+				<td style=width:330px;>
+					<br><br><br>
+					<div style=text-align:center;><b>Kudus, <?php echo date("d-m-Y"); ?></b><br></div>
+					<br>
+					<center>Pimpinan <?php echo $data['nmProgram'] ?>
+						<br><br><br><br>
+						<u><b>Arif Syaifudin, ST</b></u><br>
+						Pembina Tingkat I<br>
+						NIP : 0123456789
+					</center>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
+	<script>
+		window.print();
+	</script>
 
 </body>
 
