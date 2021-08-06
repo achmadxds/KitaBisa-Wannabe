@@ -350,6 +350,9 @@ if (isset($_SESSION['ses_username']) == "") {
           case 'usrUbah':
             include "user/ubah.php";
             break;
+          case 'usrKonfirm' :
+            include "user/confirm.php";
+            break;
           case 'usrAksi':
             include "user/aksi.php";
             break;

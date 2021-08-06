@@ -199,7 +199,7 @@
                                                 <h6 class="text-muted font-semibold">Dana Masuk</h6>
                                                 <h6 class="font-extrabold mb-0">
                                                 <?php
-                                                    $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.idLembaga AND b.idLevel='1' AND a.status ='T' AND b.idLembaga='$data_id'";
+                                                    $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.id AND b.idLevel='1' AND a.status ='T' AND b.idLembaga='$data_id'";
                                                     $q_hit= mysqli_query($con, $sql_hitung);
                                                     while($row = mysqli_fetch_array($q_hit)) {
                                                         echo  $row[0]."";
@@ -228,6 +228,39 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                    <p>
+                                      <center>
+                                      <br> <font face="Trebuchet MS"><b> Selamat Datang Di </b></font>
+                                      <br> <font face="Trebuchet MS"><b> Portal Donasi Peduliku </b></font>
+                                      <br> <br><br>
+                                      <img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
+                                      </center>
+                                  </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                        </div>
+                       
+                    </div>
+
+                </section>
+            </div>
+            <?php
+            default :
+            ?>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="row">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">

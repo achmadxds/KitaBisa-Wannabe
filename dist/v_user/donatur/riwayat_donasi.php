@@ -43,10 +43,10 @@
                         }
                       ?>
                       <?php
-                        if($value['status'] == 'K') {
-                          echo "<td><b> Terkonfirmasi </b></td>";
-                        } else {
+                        if($value['status'] == 'T') {
                           echo "<td><b> Tangguhkan </b></td>";
+                        } else {
+                          echo "<td><b> Terkonfirmasi </b></td>";
                         }
                       ?>
                       <td><b><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></b></td>

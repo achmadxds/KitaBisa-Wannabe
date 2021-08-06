@@ -133,7 +133,8 @@ function RecordTransaction()
 
   $idUser = $_SESSION["ses_id"];
   $k = "K";
-  $sql ='SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id  AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
+  $sql ='SELECT a.*, b.nmProgram, b.gambar, b.idLevel from transaksi a, program b WHERE a.idProgram=b.id AND a.idDonatur =' . $idUser . '';
+  // SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id  AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
 
   $query = mysqli_query($con, $sql);
 

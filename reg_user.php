@@ -10,7 +10,7 @@ if (isset($_POST['btnReg'])) {
                     '" . $_POST['txtNama'] . "',
                     '" . $_POST['txtUsername'] . "',
                     '" . $_POST['txtPassword'] . "',
-										'" . $_POST['txtJenis'] . "',
+										'perseorangan',
 										'".$data_cek['id']."',
                     'Nonaktif')";
 	$query_simpan = mysqli_query($con, $sql_simpan);
@@ -83,14 +83,14 @@ if (isset($_POST['btnReg'])) {
 													<input type="password" class="form-control" placeholder="Password" name="txtPassword" required="" />
 												</div>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label class="col-sm-5 control-label">User Sebagai </label>
 												<select name="txtJenis" class="form-control">
 														<option value="">- User -</option>
 														<option value="perseorangan">Perseorangan</option>
 														<option value="donatur">Donatur</option>
 													</select>
-											</div>
+											</div> -->
 											<br>
 											<div class="form-group col-sm-5">
 												<!-- <button class="form-control btn btn-primary" name="btnDaftarPers">Daftar</button> -->

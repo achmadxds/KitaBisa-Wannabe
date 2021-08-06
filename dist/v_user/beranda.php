@@ -35,7 +35,7 @@
                         echo  $row[0] . "";
                       }
                       ?></h6>
-                    <a href="?page=prog" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="?level=perseorangan&page=program" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                                                         echo  $row[0] . "";
                                                       }
                                                     ?></h6>
-                    <a href="#" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="?level=perseorangan&page=transaksi" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
               </div>

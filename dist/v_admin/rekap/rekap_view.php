@@ -6,7 +6,7 @@
       // switch ($_GET['tipe']) {
       //   case 'program':
           // $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='P' ";
+          $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' ";
           $sql = mysqli_query($con, $query);
           // break;
 
