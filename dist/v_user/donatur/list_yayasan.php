@@ -33,7 +33,7 @@
                     <tr>
                       <td><b><?php echo $value['nmLembaga'] ?></b></td>
                       <td><b><?php echo $value['nmPimpinan'] ?></b></td>
-                      <td><a href="#" class="btn btn-primary" onclick="duh(this)" data-id="<?php echo $value['nmLembaga'] . '~' .$value['alamat'] . '~' .$value['no_rek'] . '~' .$value['nmPimpinan'] . '~' .$value['no_hp'] . '~' . date("d-M-Y", strtotime($value['tgl'])) ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">LIHAT</a></td>
+                      <td><a href="#" class="btn btn-primary" onclick="duh(this)" data-id="<?php echo $value['nmLembaga'] . '~' .$value['alamat'] . '~' .$value['no_rek'] . '~' .$value['nmPimpinan'] . '~' .$value['foto'] . '~' .$value['no_hp'] . '~' . date("d-M-Y", strtotime($value['tgl'])) ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">LIHAT</a></td>
                     </tr>
                   <?php
                 }
@@ -52,7 +52,12 @@
       <div class="modal-body">
         <h3 class="text-center">Detail Yayasan</h3>
         <hr>
+        <center>
+          <img class="img-fluid" src="__DIR__ . ../../../../images/files/Photo_Yayasan Pelita Hati Ku.jpg" alt="..." style="width: 150px; height: 150px"/>
+          <br><br>
+        </center>
         <div class="row pb-2">
+            <br>
           <div class="col-6">
             <label for=""><b>Nama Lembaga</b></label>
             <input type="text" class="form-control" id="namaL" readonly />
@@ -98,6 +103,7 @@
     $('#rekL').val(data[2])
     $('#pimpL').val(data[3])
     $('#telpL').val(data[4])
-    $('#tglL').val(data[5])
+    $('#gbr').val(data[5])
+    $('#tglL').val(data[6])
   }
 </script>
