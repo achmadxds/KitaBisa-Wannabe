@@ -74,7 +74,7 @@ include_once("../../koneksi.php");
             <td><?php echo $no; ?></td>
             <td><?php echo $data['kdProgram']; ?></td>
             <td><?php echo $data['nmProgram']; ?></td>
-            <td><?php echo $data['tgl_masuk']; ?></td>
+            <td><?php echo date("d-M-Y", strtotime($data['tgl_masuk'])); ?></td>
             <td><?php echo $data['jumlah']; ?></td>
         </tr>
         </center>
