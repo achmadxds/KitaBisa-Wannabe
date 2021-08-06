@@ -28,6 +28,7 @@
           <div class="card">
             <div class="card-header">
               Program Terdaftar
+              <a href="perseorangan/rekap/rekap_download.php?tipe=program" class="btn btn-primary btn-sm">Download</a>
             </div>
             <div class="card-body">
               <table class="table table-striped" id="program212">

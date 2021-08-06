@@ -92,6 +92,7 @@
     $('#kdProgramDonasi').val($(param).data('kd'))
     $('#nmProgramDonasi').val($(param).data('nm'))
     $('#idProgramDonasi').val($(param).data('id'))
+    console.log($(param).data('id'))
     $('#no_rek').val($(param).data('so'))
     $('#hatasNama').val($(param).data('si'))
     // $(param).data('so')

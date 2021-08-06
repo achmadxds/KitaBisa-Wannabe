@@ -103,14 +103,21 @@ function InserTransaksi()
     ('" . $_POST['idProgramDonasi'] . "','" . $_POST['idDonaturDonasi'] . "','" . $_POST['dnProgramDonasi'] . "','T', now())";
   $query_insert = mysqli_query($con,$sql) or die (mysqli_connect_error());
 		
-if($query_insert) {
-  echo "<script>alert('Simpan Berhasil')</script>";
-  echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
+  if($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
 
-}else{
-echo "<script>alert('Simpan Gagal')</script>";
-  echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
+  }else{
+  echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
+  }
 }
+
+function UpdateJumlahDonasi()
+{
+  global $con;
+  // UPDATE `program` SET `jumlah`='[value-9]' WHERE `id`=1
+  $sql = "SELECT * FROM `program` WHERE `id`";
 }
 
 function RecordTransaction()

@@ -2,7 +2,8 @@
   include_once("../../koneksi.php");
 
   if(isset($_POST['btnSimpanDonasi'])) {
-    InserTransaksi();
+    // InserTransaksi();
+    
 
     header('location: ?level=donatur&page=prog&an=1');
   }
