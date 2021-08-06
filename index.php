@@ -106,7 +106,7 @@
           $makeRounded = round($presentase, 2).'%';
           ?>
             <div class="col-md-6 col-lg-4 mb-5">
-              <div class="portfolio-item mx-auto" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+              <div class="portfolio-item mx-auto" style="width: 250px; height: 250px;" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                   <div class="portfolio-item-caption-content text-center text-white">
                     <h2><?php echo $value['nmProgram'] ?></h2>
