@@ -149,7 +149,7 @@ function ShowProgramPublish()
   global $con;
 
   // $sql = 'SELECT * FROM `program` WHERE `status` = "P" ';
-  $sql ='SELECT a.*, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P"';
+  $sql ='SELECT a.* , SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`status` = "P" OR (b.nominal IS NULL)';
   $query = mysqli_query($con, $sql);
 
   return $query;
