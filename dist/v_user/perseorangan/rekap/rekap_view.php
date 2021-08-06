@@ -6,7 +6,7 @@
       switch ($_GET['tipe']) {
         case 'program':
           $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga=$a AND `status`='A' ";
+          $query = "SELECT * FROM program where idLembaga=$a AND `status`='P' ";
           break;
         }
         

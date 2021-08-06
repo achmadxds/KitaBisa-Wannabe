@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2021 pada 16.36
+-- Waktu pembuatan: 06 Agu 2021 pada 08.48
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -34,13 +34,6 @@ CREATE TABLE `dana` (
   `status` int(11) NOT NULL COMMENT 'Pilih 1 & 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `dana`
---
-
-INSERT INTO `dana` (`id`, `idProgram`, `jumlah`, `status`) VALUES
-(9, 25, 60000, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -59,15 +52,6 @@ CREATE TABLE `donatur` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `donatur`
---
-
-INSERT INTO `donatur` (`id`, `kdDonatur`, `nama`, `jekel`, `alamat`, `no_hp`, `id_chat`, `status`, `tgl_daftar`) VALUES
-(2, 6105, 'Febriansyah', 'L', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', '08980695197', 1625733126, 'Aktif', '2021-08-01'),
-(3, 2147483647, 'Rina', 'P', 'Ds. Dersalam RT 01 RW 06 Kec Bae', '08980695197', 545425663, 'Aktif', '2021-08-01'),
-(4, 610951, 'Ali Firdaus', 'L', 'Ds. Mlati Kidul RT 01 RW 04 Kec. Kota Kudus', '08980695197', 1715197608, 'Aktif', '2021-08-03');
-
 -- --------------------------------------------------------
 
 --
@@ -81,18 +65,11 @@ CREATE TABLE `lembaga` (
   `alamat` varchar(200) NOT NULL,
   `nmPimpinan` varchar(40) NOT NULL,
   `berkas` text DEFAULT NULL,
+  `foto` varchar(200) DEFAULT NULL,
   `no_hp` varchar(14) NOT NULL,
   `no_rek` varchar(30) NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `lembaga`
---
-
-INSERT INTO `lembaga` (`id`, `kdLembaga`, `nmLembaga`, `alamat`, `nmPimpinan`, `berkas`, `no_hp`, `no_rek`, `tgl`) VALUES
-(2, 'LMB001', 'Yayasan Pita Kuning', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae Kudus', 'Hj. Nuryanti', 'Lembaga_Yayasan Pita Kuning.zip', '0898767234', '056785421', '2021-08-01'),
-(3, 'LMB002', 'Yayasan Pelita Hati', 'Ds. Dersalam RT 01 RW 08 Kecamatan Bae', 'H. Nooryanto', 'Lembaga_Yayasan Pelita Hati.zip', '0898767234', '1234895', '2021-08-01');
 
 -- --------------------------------------------------------
 
@@ -133,13 +110,6 @@ CREATE TABLE `perseorangan` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `perseorangan`
---
-
-INSERT INTO `perseorangan` (`id`, `kdPerseorangan`, `nama`, `jekel`, `alamat`, `berkas`, `no_hp`, `no_rek`, `tgl_daftar`) VALUES
-(14, 'DPM001', 'Ali Zuhdi', 'L', 'Ds. Ploso', 'Perseorangan_Ali Zuhdi.zip', '08980695197', '0006576788', '2021-08-01');
-
 -- --------------------------------------------------------
 
 --
@@ -155,20 +125,12 @@ CREATE TABLE `program` (
   `gambar` varchar(300) DEFAULT NULL,
   `keterangan` varchar(200) DEFAULT NULL,
   `donasi` varchar(50) NOT NULL,
+  `jumlah` bigint(20) NOT NULL DEFAULT 0,
   `status` enum('T','P','A') DEFAULT NULL,
   `tgl_masuk` date DEFAULT NULL,
   `tgl_akhir` date DEFAULT NULL,
   `idLevel` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `program`
---
-
-INSERT INTO `program` (`id`, `kdProgram`, `nmProgram`, `idLembaga`, `idJenis`, `gambar`, `keterangan`, `donasi`, `status`, `tgl_masuk`, `tgl_akhir`, `idLevel`) VALUES
-(25, 'PLDN01', 'Donasi Oksigen & Masker Covid19', 2, 9, 'Photo_PLDN01.jpg', 'Diajukan', '8000000', 'A', '2021-08-01', '2021-08-04', 1),
-(26, 'PLDN02', 'Vitamin A', 2, 9, 'Photo_PLDN01.png', 'Kesehatan', '600000', 'P', '2021-08-02', '2021-08-07', 1),
-(27, 'PLDN03', 'Donasi Oksigen Covid-19', 14, 9, 'Photo_PLDN03_perseorangan.png', 'Akan dilakukan', '700000', 'P', '2021-08-03', '2021-08-12', 2);
 
 -- --------------------------------------------------------
 
@@ -184,15 +146,6 @@ CREATE TABLE `transaksi` (
   `tanggal` date NOT NULL,
   `status` enum('K','T') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`id`, `idProgram`, `idDonatur`, `nominal`, `tanggal`, `status`) VALUES
-(17, 25, 2, 60000, '2021-08-01', 'K'),
-(18, 26, 3, 50000, '2021-08-03', 'K'),
-(19, 27, 2, 60000, '2021-08-03', 'K');
 
 -- --------------------------------------------------------
 
@@ -221,7 +174,7 @@ INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `idDaftar`, `
 (11, 'Riani Putri', 'riani', 'riani', 'L-pimpinan', 2, 'Aktif'),
 (12, 'Lania Widiastuti', 'lania', 'lania', 'L-admin', 2, 'Aktif'),
 (14, 'rina', 'rina', 'rina', 'donatur', 3, 'Aktif'),
-(15, 'Ali Firdaus', 'alif', 'alif', 'perseorangan', 4, 'Aktif');
+(15, 'Ali Firdaus', 'alif', 'alif', 'donatur', 4, 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -283,19 +236,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `dana`
 --
 ALTER TABLE `dana`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `lembaga`
 --
 ALTER TABLE `lembaga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `mst_jenis`
@@ -307,19 +260,19 @@ ALTER TABLE `mst_jenis`
 -- AUTO_INCREMENT untuk tabel `perseorangan`
 --
 ALTER TABLE `perseorangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
