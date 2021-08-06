@@ -11,11 +11,11 @@ if ($datakode) {
   // membuat variabel baru untuk mengambil kode mulai dari 3
   $nilaikode = $datakode[0];
   // menjadikan $nilaikode ( int )
-  $kode = (int) $nilaikode;
+  $kode = (int) filter_var($nilaikode, FILTER_SANITIZE_NUMBER_INT);
   // setiap $kode di tambah 1
-  $kode = $kode + 1;
+  $kodes = $kode + 1;
 
-  $hasilkode = "PLDN" . str_pad($kode, 2, "0", STR_PAD_LEFT);
+  $hasilkode = "PLDN" . str_pad($kodes, 2, "0", STR_PAD_LEFT);
 } else {
   $hasilkode = "PLDN01";
 }
@@ -75,10 +75,6 @@ if ($datakode) {
                   <?php
                   $sql_otoarsip = "UPDATE program SET status='A' WHERE tgl_akhir=curdate()";
                   $query_oto = mysqli_query($con, $sql_otoarsip);
-
-                  ?>
-
-                  <?php
 
                   $sql_tampil = "SELECT a.id, a.kdProgram, a.nmProgram, b.nmLembaga, a.keterangan, a.donasi, a.status FROM program a, lembaga b WHERE a.idLembaga=b.id AND (a.status='T' or a.status='P' or a.status='A') AND a.idLembaga='$data_id' AND a.idLevel='1'";
                   $query_tampil = mysqli_query($con, $sql_tampil);
