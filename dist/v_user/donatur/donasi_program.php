@@ -22,8 +22,10 @@
                 $a = getProgamByUSERS($_GET['an']);
               }
               foreach ($a as $key => $value) {
+                $presentase = ($value['jumlah'] / $value['donasi']) * 100;
+                $makeRounded = round($presentase, 2).'%';
               ?>
-                <div class="col-4">
+                <div class="col-5">
                   <div class="card">
                     <a href="#" data-bs-toggle="modal" onclick="Clicked(this)" data-bs-target="#myModal" data-kd="<?php echo $value['kode'] ?>" data-nm="<?php echo $value['nmProgram'] ?>" data-id="<?php echo $value['id'] ?>" data-so="<?php echo $value['no_rek'] ?>" data-si="<?php echo $value['namaAtas'] ?>" >
                       <div class="card-body"> 
@@ -31,6 +33,15 @@
                         <img src="__DIR__ . /../../../images/files/<?php echo $value['gambar'] ?>" alt="" width="100%" height="150px">
                       </div>
                     </a>
+                  </div>
+                  <div>
+                    <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?> </b></p>
+                    <div class="progress" style="background-color: whitesmoke; width: 85%; display: inline-block;">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                        <p style="color:black;">.</p>
+                      </div>
+                    </div>
+                    <p style="display: inline-block;"><?php echo $makeRounded ?></p>
                   </div>
                 </div>
               <?php

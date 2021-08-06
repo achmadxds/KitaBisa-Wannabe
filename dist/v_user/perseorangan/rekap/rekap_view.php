@@ -38,6 +38,7 @@
                       <th>No</th>
                       <th>Kode</th>
                       <th>Nama Program</th>
+                      <th>Jumlah Terkumpul</th>
                       <th>Tanggal Pengajuan</th>
                       <th>Aksi</th>
                     </tr>
@@ -53,6 +54,7 @@
                           <td><?php echo $no; ?></td>
                           <td><?php echo $value['kdProgram']; ?></td>
                           <td><?php echo $value['nmProgram']; ?></td>
+                          <td>Rp. <?php echo $value['jumlah'] ?></td>
                           <td><?php echo date("d-m-Y", strtotime($value['tgl_masuk'])); ?></td>
                           <td><a href="?level=perseorangan&page=rekapDonasi&idKode=<?php echo $value['id'] ?>" class="btn btn-primary btn-sm">Detail Donasi</a></td>
                         </tr>
@@ -78,7 +80,8 @@
     "columns": [
       { "width": "10%" },
       { "width": "15%" },
-      { "width": "40%" },
+      { "width": "20%" },
+      { "width": "20%" },
       { "width": "20%" },
       { "width": "15%" }
     ]

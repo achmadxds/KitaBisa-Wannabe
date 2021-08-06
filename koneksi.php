@@ -443,7 +443,7 @@ function GetProgramByJenis($jenis)
 
   // $query = 'SELECT * FROM `program` WHERE `idJenis`='.$jenis.' AND `status`="P" ORDER BY tgl_masuk';
   // $query =  'SELECT a.*, b.nominal, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`idJenis`='9' AND a.id='27' AND a.`status`="P" ORDER BY a.tgl_masuk';
- $query =  'SELECT a.*, b.nominal, SUM(b.nominal) AS jumlah FROM program a, transaksi b WHERE b.idProgram=a.id AND a.`idJenis`='.$jenis.' AND a.`status`="P" ORDER BY a.tgl_masuk';
+ $query =  'SELECT a.* FROM program a WHERE `idJenis`='.$jenis.' AND `status`="P" ORDER BY tgl_masuk';
   $sql = mysqli_query($con, $query);
 
   return $sql;
@@ -500,11 +500,11 @@ function getProgamByUSERS($param)
 
   switch ($param) {
     case 1:
-      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nmLembaga as namaAtas, b.no_rek, a.gambar FROM program a, lembaga b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nmLembaga as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, lembaga b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
       break;
     
     case 2:
-      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nama as namaAtas, b.no_rek, a.gambar FROM program a, perseorangan b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nama as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, perseorangan b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
       break;
   }
 

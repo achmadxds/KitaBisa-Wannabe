@@ -66,30 +66,37 @@
         if (isset($_GET['kode'])) {
           $a = GetProgramByJenis($_GET['kode']);
         }
-        foreach ($a as $key => $value) {
-          $presentase = ($value['jumlah'] / $value['donasi']) * 100;
-          $makeRounded = round($presentase, 2).'%';
-        ?>
-          <div class="col-md-6 col-lg-4 mb-5">
-            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1" onclick="hah(this)" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h2><?php echo $value['nmProgram'] ?></h2>
+
+        $c = mysqli_num_rows($a);
+
+        if(mysqli_num_rows($a) > 0) {
+          foreach ($a as $key => $value) {
+            $presentase = ($value['jumlah'] / $value['donasi']) * 100;
+            $makeRounded = round($presentase, 2).'%';
+            ?>
+              <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1" onclick="hah(this)" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>">
+                  <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white">
+                      <h2><?php echo $value['nmProgram'] ?></h2>
+                    </div>
+                  </div>
+                  <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
+                </div>
+                <div class="mt-3">
+                  <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?> </b></p>
+                  <div class="progress" style="background-color: wheat; width: 85%; display: inline-block;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                      <p style="color:black;">.</p>
+                    </div>
+                  </div>
+                  <p style="display: inline-block;"><?php echo $makeRounded ?></p>
                 </div>
               </div>
-              <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
-            </div>
-            <div class="mt-3">
-              <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?> </b></p>
-              <div class="progress" style="background-color: wheat; width: 85%; display: inline-block;">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
-                  <p style="color:black;">.</p>
-                </div>
-              </div>
-              <p style="display: inline-block;"><?php echo $makeRounded ?></p>
-            </div>
-          </div>
-        <?php
+            <?php
+          }
+        } else {
+          echo '<h1 class="text-center"> HALALAMAN INI KOSONG </h1>';
         }
         ?>
       </div>

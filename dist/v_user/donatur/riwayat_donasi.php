@@ -9,9 +9,6 @@
 
   <div class="page-heading">
     <h3>Riwayat Donasi</h3>
-    <?php
-    echo $idPengguna;
-    ?>
   </div>
   <div class="page-content">
     <section class="row">
