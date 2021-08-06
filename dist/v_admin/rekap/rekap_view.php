@@ -26,7 +26,7 @@
   </header>
 
   <div class="page-content">
-  <a href="rekap/cetak_program.php" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+  <a href="rekap/cetak_program.php?aidi=<?php echo $_SESSION['sess_id'] ?>" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
   <br><br>
     <section class>
       <div class="row">
