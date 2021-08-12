@@ -500,11 +500,11 @@ function getProgamByUSERS($param)
 
   switch ($param) {
     case 1:
-      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nmLembaga as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, lembaga b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nmLembaga as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, lembaga b WHERE b.id=a.idLembaga AND status='P' AND a.idLevel='1' ORDER BY `tgl_masuk` DESC";
       break;
     
     case 2:
-      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nama as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, perseorangan b WHERE b.id=a.idLembaga AND status='P' ORDER BY `tgl_masuk` DESC";
+      $query = "SELECT a.kdProgram as kode, a.nmProgram, a.id, b.nama as namaAtas, b.no_rek, a.gambar, a.jumlah, a.donasi FROM program a, perseorangan b WHERE b.id=a.idLembaga AND status='P' AND a.idLevel='2'  ORDER BY `tgl_masuk` DESC";
       break;
   }
 

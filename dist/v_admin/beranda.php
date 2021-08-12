@@ -10,7 +10,33 @@
 
             <div class="page-heading">
                 <h3>Beranda</h3>
-                
+            <h5>Halo, <?php  echo $data_nama?> (
+                <?php
+
+                switch ($data_status) {
+                    case 'L-pimpinan':
+                    echo 'Pimpinan Lembaga';
+                    break;
+                    
+                    case 'L-admin':
+                    echo 'Admin Lembaga';
+                    break;
+
+                    case 'donatur':
+                    echo 'Donatur';
+                    break;
+                    
+                    case 'perseorangan':
+                    echo 'Donasi Perseorangan';
+                    break;
+
+                    default:
+                    # code...
+                    break;
+                }
+
+                ?>
+                )</h5>
             </div>
             <?php
               switch ($data_status) {

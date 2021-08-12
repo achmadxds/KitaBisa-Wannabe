@@ -91,7 +91,7 @@ include_once("../../koneksi.php");
                 
                 switch ($_GET['tj']) {
                     case 'program':
-                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='P' AND idLevel='1'";
+                        $sql_tampil = "SELECT * FROM program where idLembaga=$a AND `status`='A' AND idLevel='1'";
                         $query_tampil = mysqli_query($con, $sql_tampil);
                         while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
                             ?>
