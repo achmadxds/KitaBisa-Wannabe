@@ -58,7 +58,7 @@
                             <?php
                           } else {
                             ?>
-                              <a href="#" data-id="<?php echo $value['id'] ?>" onclick="getID(this)" class="btn btn-warning btn-sm text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Menunggu</b></a>
+                              <a href="#" data-id="<?php echo $value['id'] ?>" onclick="getID(this)" class="btn btn-warning btn-sm text-dark" data-bs-toggle="modal" data-bs-target="#exampleModals"><b>Menunggu</b></a>
                             <?php
                           }
                         ?>
@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <form action="?level=donatur&page=aksiTambah" method="post" enctype="multipart/form-data">
@@ -83,7 +83,7 @@
           <h3>Upload Bukti Transfer</h3>
           <hr>
           <input type="file" name="invoicesz" class="form-control">
-          <input type="text" name="xcvb" id="xcvb">
+          <input type="hidden" name="xcvb" id="xcvb">
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" name="updateBuktiTransfer">Simpan</button>

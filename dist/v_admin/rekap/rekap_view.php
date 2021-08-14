@@ -1,21 +1,11 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
-
-  // switch ($_GET['level']) {
-  //   case 'lembaga':
-      // switch ($_GET['tipe']) {
-      //   case 'program':
-          // $a = $_GET['idUser'];
-          $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' ";
-          $sql = mysqli_query($con, $query);
-          // break;
-
-        // default:
-        // echo '<script> alert("AK") </script>';
-        // break;
-        // }
-        
-      // }
+  if($_GET['page'] == 'filterYears') {
+    $_POST['selectYears'] == 0000 ? die("<meta http-equiv='refresh' content='0;url=?page=rekaps&level=lembaga&tipe=program&idUser=".$_SESSION["ses_id"]."'>") : $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' AND YEAR(tgl_masuk) = '".$_POST['selectYears']."' " ;
+  } else {
+    $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' ";
+  }
+  $sql = mysqli_query($con, $query);
 ?>
 
 <div id="main">
@@ -26,7 +16,24 @@
   </header>
 
   <div class="page-content">
-  <a href="rekap/cetak_program.php?tj=program&aidi=<?php echo $_SESSION['ses_id'] ?>" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+  <a href="rekap/cetak_program.php?tj=program&aidi=<?php echo $_SESSION['ses_id'] ?>&years=<?php echo $_POST['selectYears'] ?>" class="btn btn-primary" target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+
+  <span style="float: right;" id="">
+    <form action="?page=filterYears" method="post" enctype="multipart/form-data">
+      <select name="selectYears" id="" class="btn btn-warning text-dark">
+        <option value="0000">~ PILIH ~</option>
+        <?php
+          for ($i=0; $i < 10; $i++) { 
+            ?>
+              <option value="<?php echo '2020'+$i ?>"><?php echo '2020'+$i ?></option>
+            <?php
+          }
+        ?>
+      </select>
+      <button type="submit" class="btn btn-primary">PILIH</button>
+    </form>
+  </span>
+    <!-- <a href="?page=rekaps&level=lembaga&tipe=program&idUser=<?php echo $_SESSION["ses_id"] ?>&years=2020" class="btn btn-secondary">PILIH</a> -->
   <br><br>
     <section class>
       <div class="row">

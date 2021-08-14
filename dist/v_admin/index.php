@@ -283,11 +283,17 @@ if (isset($_SESSION['ses_username']) == "") {
           case 'lembaga':
             include "lembaga/tampil.php";
             break;
+
           case 'lembUbah':
             include "lembaga/ubah.php";
             break;
+
           case 'lembAksi':
             include "lembaga/aksi.php";
+            break;
+
+          case 'filterYears':
+            include "rekap/rekap_view.php";
             break;
 
           case 'prsg':

@@ -31,7 +31,7 @@ include_once("../../koneksi.php");
                       <th>Dana Terkumpul</th>
                       <th>Tidak Terkumpul</th>
                       <th>Status</th>
-                      <th></th>
+                      <th>Aksi</th>
                     </tr>
                   </center>
                 </thead>
@@ -52,7 +52,7 @@ include_once("../../koneksi.php");
                       <td>Rp. <?php echo $data['donasi']; ?></td>
                       <td>Rp. <?php echo $data['jumlah']; ?></td>
                       <td>Rp. <?php echo $data['kurang']; ?></td>
-                      <td> Terkonfirmasi </td>
+                      <td><a href="javascript:void(0)" class="btn btn-success">Terkonfirmasi</a></td>
 
                       <td>
                       <?php
@@ -62,7 +62,7 @@ include_once("../../koneksi.php");
                         <?php
                         } elseif ($data_status == 'O-admin') {
                         ?>
-                        <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-success btn-sm">Rekap</a>
+                         <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-primary"><b>Rekap</b></a>
                         <?php
                         } else {
                         ?>
