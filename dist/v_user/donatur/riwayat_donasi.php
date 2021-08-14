@@ -78,12 +78,12 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="?level=donatur&page=aksiTambah" method="post">
+      <form action="?level=donatur&page=aksiTambah" method="post" enctype="multipart/form-data">
         <div class="modal-body text-center">
           <h3>Upload Bukti Transfer</h3>
           <hr>
-          <input type="file" name="invoices" class="form-control">
-          <input type="hidden" name="xcvb" id="xcvb">
+          <input type="file" name="invoicesz" class="form-control">
+          <input type="text" name="xcvb" id="xcvb">
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" name="updateBuktiTransfer">Simpan</button>

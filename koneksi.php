@@ -278,11 +278,11 @@ function GetDataProgramByID($id)
   return $sql_slice;
 }
 
-function UpdateBuktiTransfer()
+function UpdateBuktiTransfer($c)
 {
   global $con;
 
-  $query = "UPDATE `transaksi` SET `bukti_transfer`='".Upload_Invoice('invoices')."'x WHERE `id`='".$_POST['xcvb']."' ";
+  $query = "UPDATE `transaksi` SET `bukti_transfer`='".$c."' WHERE `id`='".$_POST['xcvb']."' ";
   $sql      = mysqli_query($con, $query);
 
   if($sql) {
@@ -305,8 +305,6 @@ function Upload_Invoice($a)
 {
   $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
   $nama = $_FILES[$a]['name'];
-
-  var_dump($nama);
   $x = explode('.', $nama);
   $ekstensi = strtolower(end($x));
   $namas = 'Photo_Invoice_' . $_POST['xcvb'] . "." . $ekstensi;
