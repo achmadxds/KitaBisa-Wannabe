@@ -14,12 +14,12 @@
                 <?php
 
                 switch ($data_status) {
-                    case 'L-pimpinan':
-                    echo 'Pimpinan Lembaga';
+                    case 'O-pimpinan':
+                    echo 'Pimpinan Organisasi';
                     break;
                     
-                    case 'L-admin':
-                    echo 'Admin Lembaga';
+                    case 'O-admin':
+                    echo 'Admin Organisasi';
                     break;
 
                     case 'donatur':
@@ -179,7 +179,7 @@
             break;
             ?>
             <?php
-            case 'L-admin':
+            case 'O-admin':
             ?>
              <div class="page-content">
                 <section class="row">

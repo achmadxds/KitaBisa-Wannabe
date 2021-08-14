@@ -121,9 +121,9 @@
                 </div>
 
                 <div class="form-group">
-										<label>Lembaga</label>
+										<label>Organisasi</label>
 										<select name="txtIdDaftar" class="form-control">
-											<option value="">- Lembaga -</option>
+											<option value="">- Organisasi -</option>
 											<?php
 											$p = mysqli_query($con, "select id , nmLembaga from lembaga") or die(mysqli_error($con));
 											while ($datap = mysqli_fetch_array($p)) {
@@ -137,8 +137,8 @@
                   <select name="txtLevel" class="form-control">
                     <option value="">- Level User -</option>
                     <option value="admin">Super Admin</option>
-                    <option value="L-pimpinan">Pimpinan Lembaga.</option>
-                    <option value="L-admin">Admin Lembaga</option>
+                    <option value="O-pimpinan">Organisasi Lembaga.</option>
+                    <option value="O-admin">Organisasi Lembaga</option>
                   </select>
                 </div>
 

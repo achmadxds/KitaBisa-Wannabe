@@ -57,7 +57,9 @@
               ?>
             </div>
           </div>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li>
+          <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li> -->
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="register.php">Donatur</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="perseorangan.php">Perseorangan</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.php">Login</a></li>
         </ul>
       </div>
@@ -243,13 +245,13 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="row justify-content-center text-center">
+          <div class="row justify-content-center text-center"> -->
             <!-- Portfolio Item 1-->
-            <div class="col-md-4 col-lg-5 mb-2 mt-3">
+            <!-- <div class="col-md-4 col-lg-5 mb-2 mt-3">
               <div class="portfolio-item mx-auto">
                 <a href="register.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                   <img class="img-fluid" src="images/donasi.png" alt="Donatur" />
@@ -266,7 +268,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
