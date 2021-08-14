@@ -31,8 +31,9 @@
                             <th>Kode Program</th>
                             <th>Nama Program</th>
                             <th>Dana Target</th>
-                            <th>Dana Masuk</th>
-                            <th>Dana Tidak Tercapai</th>
+                            <th>Dana Terkumpul</th>
+                            <th>Tidak Terkumpul</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                           </tr>
                       </thead>
@@ -47,9 +48,10 @@
                                 <td><?php echo $value['donasi']; ?></td>
                                 <td><?php echo $value['jumlah']; ?></td>
                                 <td><?php echo $value['kurang']; ?></td>
+                                <td><a href="javascript:void(0)" class="btn btn-success">Terkonfirmasi</a></td>
                                 <td>
                                 <!-- ?level=perseorangan&page=dana&idKode=<?php echo $value['id'] ?>&jumlahs=<?php echo $value['jumlah'] ?> -->
-                                  <a href="?level=perseorangan&page=rekapDana&idKode=<?php echo $value['id'] ?>&jumlahs=<?php echo $value['jumlah'] ?>" class="btn btn-primary btn-sm">Rekap</a>
+                                  <a href="?level=perseorangan&page=rekapDana&idKode=<?php echo $value['id'] ?>&jumlahs=<?php echo $value['jumlah'] ?>" class="btn btn-primary">Rekap</a>
                                 </td>
                               </tr>
                             <?php

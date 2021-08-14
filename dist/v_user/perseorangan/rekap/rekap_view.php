@@ -1,18 +1,12 @@
 <?php
   include_once("__DIR__ .  ../../../../koneksi.php");
 
-  switch ($_GET['level']) {
-    case 'perseorangan':
-
-      switch ($_GET['tipe']) {
-        case 'program':
-          $query = "SELECT * FROM program where idLembaga=$idPengguna AND `status`='A' ";
-          break;
-        }
-        
-      }
-      
-      $sql = mysqli_query($con, $query);
+  if($_GET['page'] == 'filterYears') {
+    $_POST['selectYears'] == 0000 ? die("<meta http-equiv='refresh' content='0;url=?level=perseorangan&page=rekapProgram&tipe=program&idUser=".$_SESSION["ses_id"]."'>") : $query = "SELECT * FROM program where idLembaga=".$_SESSION["ses_id"]." AND `status`='A' AND YEAR(tgl_masuk) = '".$_POST['selectYears']."' " ;
+  } else {
+    $query = "SELECT * FROM program where idLembaga=".$_SESSION["ses_id"]." AND `status`='A' ";
+  }
+  $sql = mysqli_query($con, $query);
 ?>
 
 <div id="main">
@@ -28,7 +22,22 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a href="perseorangan/rekap/rekap_download.php?tj=program&aidi=<?php echo $idPengguna ?>" class="btn btn-primary btn-sm">Download</a>
+              <a href="perseorangan/rekap/rekap_download.php?tj=program&aidi=<?php echo $idPengguna ?>&years=<?php echo $_POST['selectYears'] ?>" class="btn btn-primary" target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+              <span style="float: right;" id="">
+                <form action="?level=perseorangan&page=filterYears" method="post" enctype="multipart/form-data">
+                  <select name="selectYears" id="" class="btn btn-warning text-dark">
+                    <option value="0000">~ PILIH ~</option>
+                    <?php
+                      for ($i=0; $i < 10; $i++) { 
+                        ?>
+                          <option value="<?php echo '2020'+$i ?>"><?php echo '2020'+$i ?></option>
+                        <?php
+                      }
+                    ?>
+                  </select>
+                  <button type="submit" class="btn btn-primary">PILIH</button>
+                </form>
+              </span>
             </div>
             <div class="card-body">
               <table class="table table-striped" id="program212">

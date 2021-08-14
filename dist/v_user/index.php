@@ -196,6 +196,10 @@
                     include "beranda.php";
                     break;
 
+                  case 'filterYears':
+                    include "perseorangan/rekap/rekap_view.php";
+                    break;
+
                   case 'program':
                     include "perseorangan/program/program_view.php";
                     break;
