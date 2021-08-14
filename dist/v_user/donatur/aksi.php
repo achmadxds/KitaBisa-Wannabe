@@ -5,7 +5,7 @@
     InserTransaksi();
   } 
 
-  if(isset($_POST['updateBuktiTransfer'])) {
-    UpdateBuktiTransfer();
+  else if(isset($_POST['updateBuktiTransfer'])) {
+    UpdateBuktiTransfer(Upload_Invoice('invoicesz'));
   }
 ?>
