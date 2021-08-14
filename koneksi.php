@@ -33,11 +33,11 @@ function LoginUser()
         echo "<meta http-equiv='refresh' content='0; url=dist/v_user/index.php'>";
         break;
 
-      case 'L-pimpinan':
+      case 'O-pimpinan':
         echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
         break;
 
-      case 'L-admin':
+      case 'O-admin':
         echo "<meta http-equiv='refresh' content='0; url=dist/v_admin/index.php'>";
         break;
 
@@ -104,11 +104,19 @@ function InserTransaksi()
   $query_insert = mysqli_query($con,$sql) or die (mysqli_connect_error());
 		
   if($query_insert) {
-    echo "<script>alert('Simpan Berhasil')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
+    echo '<script> 
+    swal({
+      title: "Berhasil Melakukan Donasi",
+      text: "Silahkan Masuk ke Halaman Riwayat Donasi dan Unggah Bukti Transfer",
+      icon: "success"
+    })
+    .then((done) => {
+      window.location = "index.php?level=donatur&page=riwayat";
+    }); 
+    </script>';
 
   }else{
-  echo "<script>alert('Simpan Gagal')</script>";
+    echo "<script>alert('Simpan Gagal')</script>";
     echo "<meta http-equiv='refresh' content='0; url=index.php?level=donatur&page=prog&an=1'>";
   }
 }
@@ -133,14 +141,13 @@ function RecordTransaction()
 
   $idUser = $_SESSION["ses_id"];
   $k = "K";
-  $sql ='SELECT a.*, b.nmProgram, b.gambar, b.idLevel from transaksi a, program b WHERE a.idProgram=b.id AND a.idDonatur =' . $idUser . '';
+  $sql ='SELECT a.*, b.nmProgram, b.gambar, b.idLevel, a.bukti_transfer from transaksi a, program b WHERE a.idProgram=b.id AND a.idDonatur =' . $idUser . '';
   // SELECT a.*, c.nmProgram, c.idLevel, c.idLembaga FROM transaksi a, donatur b, program c WHERE a.idDonatur=b.id AND a.idProgram=c.id  AND a.idDonatur=' . $idUser . ' AND (c.idLembaga IN (SELECT id FROM lembaga) OR (SELECT id FROM perseorangan))';
 
   $query = mysqli_query($con, $sql);
 
   return $query;
 }
-
 
 function insertKelolaDana($a, $b)
 {
@@ -258,8 +265,6 @@ function SelectDataProgram($data_id)
   return $sql;
 }
 
-
-
 function GetDataProgramByID($id)
 {
   global $con;
@@ -271,6 +276,53 @@ function GetDataProgramByID($id)
   $sql_slice = mysqli_fetch_array($sql, MYSQLI_BOTH);
 
   return $sql_slice;
+}
+
+function UpdateBuktiTransfer()
+{
+  global $con;
+
+  $query = "UPDATE `transaksi` SET `bukti_transfer`='".Upload_Invoice('invoices')."'x WHERE `id`='".$_POST['xcvb']."' ";
+  $sql      = mysqli_query($con, $query);
+
+  if($sql) {
+    echo '<script> 
+    swal({
+      title: "Berhasil Upload Bukti Transfer",
+      text: "Terimakasih Sudah Mau Berdonasi",
+      icon: "success"
+    })
+    .then((done) => {
+      window.location = "index.php?level=donatur&page=riwayat";
+    }); 
+    </script>';
+  } else {
+    echo '<script type="text/javascript"> alert("gagal") </script>';
+  }
+}
+
+function Upload_Invoice($a)
+{
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$a]['name'];
+
+  var_dump($nama);
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Photo_Invoice_' . $_POST['xcvb'] . "." . $ekstensi;
+  $ukuran  = $_FILES[$a]['size'];
+  $file_tmp = $_FILES[$a]['tmp_name'];
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      move_uploaded_file($file_tmp, __DIR__ . '/images/invoice/' . $namas);
+      return $namas;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
 function Upload_Files($namePost, $codePost, $jenist)
