@@ -3,7 +3,7 @@
   if($_GET['page'] == 'filterYears') {
     $_POST['selectYears'] == 0000 ? die("<meta http-equiv='refresh' content='0;url=?page=rekaps&level=lembaga&tipe=program&idUser=".$_SESSION["ses_id"]."'>") : $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' AND YEAR(tgl_masuk) = '".$_POST['selectYears']."' " ;
   } else {
-    $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' ";
+    $query = "SELECT * FROM program where idLembaga='$data_id' AND `status`='A' AND idLevel='1'";
   }
   $sql = mysqli_query($con, $query);
 ?>

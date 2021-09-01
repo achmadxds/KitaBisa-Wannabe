@@ -62,7 +62,7 @@ include_once("../../koneksi.php");
                         <?php
                         } elseif ($data_status == 'O-admin') {
                         ?>
-                         <a href="?page=rekapDana&idKode=<?php echo $data['boom']; ?>&jumlahs=<?php echo $data['nominal']; ?>" class="btn btn-primary"><b>Rekap</b></a>
+                         <a href="?page=rekapDana&idKode=<?php echo $data['id']; ?>&jumlahs=<?php echo $data['jumlah']; ?>" class="btn btn-primary"><b>Rekap</b></a>
                         <?php
                         } else {
                         ?>

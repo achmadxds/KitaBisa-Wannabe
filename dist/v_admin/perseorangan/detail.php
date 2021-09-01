@@ -31,9 +31,9 @@ include_once("../koneksi.php");
 												<li class="active">
 													<a href="#popular10" data-bs-toggle="tab" class="text-center"><i class="fa fa-tags"></i> Detail Surat</a>
 												</li>&nbsp;
-												<!-- <li>
+												<li>
 													<a href="#recent10" data-bs-toggle="tab" class="text-center"><i class="fa fa-envelope"></i> File Berkas</a>
-												</li> -->
+												</li>
 											</ul>
 										</div>
 										<div class="tab-content">

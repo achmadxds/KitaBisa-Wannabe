@@ -1,8 +1,13 @@
 <?php
 error_reporting(0);
 include_once("../../koneksi.php");
-?>
+if(isset($_GET['aidi'])){
+	$sql_cek = "SELECT * FROM lembaga WHERE id='".$_GET['aidi']."'";
+	$query_cek = mysqli_query($con, $sql_cek);
+	$data_ceks = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
+}
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +42,7 @@ include_once("../../koneksi.php");
 						<b>PORTAL DONASI PEDULIKU</b><br>
 						Ds. Panjunan Lor Kecamatan Kota <br> Kabupaten Kudus, Jawa Tengah 59361<br>
 						Email : pedulikudus@gmail.com <br>
-						<!-- Website : kecamatangembong.patikab.go.id<br> -->
+
 					</center>
 				</td>
 				<td style=width:150px;>
@@ -52,7 +57,19 @@ include_once("../../koneksi.php");
 	<hr>
 	<br>
 	<center>
-		<h3>Laporan Program Diajukan</h3>
+
+		Laporan Program Donasi <b>
+			<?php
+			if(isset($_GET['years']) != null){
+				echo $_GET['years'];
+			?>
+			<?php
+			}
+			?>
+		</b>
+	</center>
+	<center>
+		<h3><?php echo $data_ceks['nmLembaga']?></h3>
 	</center>
 	<table border="1" style="width: 100%">
 		<thead>
@@ -60,25 +77,28 @@ include_once("../../koneksi.php");
 			switch ($_GET['tj']) {
 				case 'program':
 			?>
-					<tr>
-						<th>No</th>
-						<th>Kode</th>
-						<th>Nama Program</th>
-						<th>Tanggal Pengajuan</th>
-						<th>Jumlah</th>
-					</tr>
-				<?php
+			<tr>
+				<th>No</th>
+				<th>Kode</th>
+				<th>Nama Program</th>
+				<th>Tanggal Awal</th>
+				<th>Tanggal Akhir</th>
+				<th>Donasi Target</th>
+				<th>Donasi Terkumpul</th>
+				<th>Donasi Tidak Terkumpul</th>
+			</tr>
+			<?php
 					break;
 
 				case 'donasi':
 				?>
-					<tr>
-						<th>No</th>
-						<th>Nama</th>
-						<th>Nominal</th>
-						<th>Nomor Hp</th>
-						<th>Tanggal</th>
-					</tr>
+			<tr>
+				<th>No</th>
+				<th>Tanggal</th>
+				<th>Nama</th>
+				<th>Nomor Hp</th>
+				<th>Nominal</th>
+			</tr>
 			<?php
 					break;
 			}
@@ -95,15 +115,18 @@ include_once("../../koneksi.php");
 					$query_tampil = mysqli_query($con, $sql_tampil);
 					while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
 					?>
-						<tr>
-							<td><?php echo $no; ?></td>
-							<td><?php echo $data['kdProgram']; ?></td>
-							<td><?php echo $data['nmProgram']; ?></td>
-							<td><?php echo $data['tgl_masuk']; ?></td>
-							<td><?php echo $data['jumlah']; ?></td>
-						</tr>
-						</center>
-					<?php
+			<tr>
+				<td align="center"><?php echo $no; ?></td>
+				<td align="center"><?php echo $data['kdProgram']; ?></td>
+				<td align="center"><?php echo $data['nmProgram']; ?></td>
+				<td align="center"><?php echo date("d-m-Y", strtotime($data['tgl_masuk'])); ?></td>
+				<td align="center"><?php echo date("d-m-Y", strtotime($data['tgl_akhir'])); ?></td>
+				<td align="center">Rp. <?php echo $data['donasi']; ?></td>
+				<td align="center">Rp. <?php echo $data['jumlah']; ?></td>
+				<td align="center">Rp. <?php echo $data['donasi'] - $data['jumlah']; ?></td>
+			</tr>
+			</center>
+			<?php
 						$no++;
 					}
 					break;
@@ -113,15 +136,15 @@ include_once("../../koneksi.php");
 					$query_tampil = mysqli_query($con, $sql_tampil);
 					while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
 					?>
-						<tr>
-							<td><?php echo $no; ?></td>
-							<td><?php echo $data['nama']; ?></td>
-							<td><?php echo $data['nominal']; ?></td>
-							<td><?php echo $data['no_hp']; ?></td>
-							<td><?php echo date("d-m-Y", strtotime($data['tanggal'])); ?></td>
-						</tr>
-						</center>
-					<?php
+			<tr>
+				<td><?php echo $no; ?></td>
+				<td><?php echo date("d-m-Y", strtotime($data['tanggal'])); ?></td>
+				<td><?php echo $data['nama']; ?></td>
+				<td><?php echo $data['no_hp']; ?></td>
+				<td><?php echo $data['nominal']; ?></td>
+			</tr>
+			</center>
+			<?php
 						$no++;
 					}
 					break;
@@ -139,13 +162,31 @@ include_once("../../koneksi.php");
 
 		</thead>
 		<tbody>
-			<tr>
-				<td style=width:1040px;></td>
-				<td style=width:330px;>
-					<br><br><br>
-					<div style=text-align:center;><b>Kudus, <?php echo date("d-m-Y"); ?></b><br></div>
-					<br>
+			<tr style=width:1066px;>
+				<p style="text-align:right;"> Tanggal Pembuatan Laporan : <?php echo date("d-m-Y") ?></p>
+			</tr>
+			<center>
 
+				Mengetahui & Menyetujui<br>
+				<br><br>
+			</center>
+
+			<tr>
+				<td style=width:1066px; align="center">
+					Pimpinan Organisasi <br>
+					<b><?php echo $data_ceks['nmLembaga'] ?></b>
+					<br><br><br><br><br>
+					<b><?php echo $data_ceks['nmPimpinan'] ?></b>
+				</td>
+
+				<td style=width:1066px; align="center">
+					CEO Peduliku <br><br>
+					<center>
+						<img src="../../../images/donasi.png" width="60" height="60">
+					</center><br>
+					<b>
+						Muhammad Ali
+					</b>
 				</td>
 			</tr>
 		</tbody>

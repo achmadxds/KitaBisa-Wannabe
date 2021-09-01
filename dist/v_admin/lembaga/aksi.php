@@ -3,7 +3,7 @@ include_once("koneksi.php");
 
 if (isset($_POST['btnSimpan'])) {
 	$date = date('Y-m-d');
-	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, alamat, nmPimpinan, berkas, foto,no_hp, no_rek,tgl) VALUES (
+	$sql_insert = "INSERT INTO lembaga (kdLembaga, nmLembaga, alamat, nmPimpinan, berkas, foto, no_hp, no_rek, tgl) VALUES (
 					'" . $_POST['txtKdLembaga'] . "',
 					'" . $_POST['txtNmLembaga'] . "',
 					'" . $_POST['txtAlamat'] . "',

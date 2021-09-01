@@ -36,7 +36,7 @@
                   <center>
                     <tr>
                       <th>No</th>
-                      <th>Nama Danatur</th>
+                      <th>Nama Danaturs</th>
                       <th>Nominal</th>
                       <th>Nomor HP</th>
                       <th>Tanggal</th>
