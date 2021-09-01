@@ -526,7 +526,8 @@ function sendTransaksi()
     $query_cek = mysqli_query($con, $sql_cek);
     $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
   }
-  define('BOT_TOKEN', '1902991671:AAHMWBcZCQOv-VNZDr1gu8-zpf-6BRx5V50');
+  define('BOT_TOKEN', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  // define('BOT_TOKEN', '1811466064:AAH4pmI6uuFclmbY4kgx6qyelHKCD6hBSPs');
   define('CHAT_ID',$data_cek['id_chat']);
    
   function kirimTelegram($pesan) {

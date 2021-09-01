@@ -13,8 +13,10 @@
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <!-- Core theme CSS (includes Bootstrap)-->
@@ -36,14 +38,17 @@
     <div class="container">
       <img class="masthead-avatar mb-5" src="images/landing.png" width="300px" height="80px" alt="..." />
       <!-- Peduli-ku -->
-      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <div class="dropdown">
-            <li class="nav-item mx-0 mx-lg-1" data-bs-toggle="dropdown"><a href="javascript:void(0)" class="nav-link py-3 px-0 px-lg-3 rounded">Program</a></li>
+            <li class="nav-item mx-0 mx-lg-1" data-bs-toggle="dropdown"><a href="javascript:void(0)"
+                class="nav-link py-3 px-0 px-lg-3 rounded">Program</a></li>
             <div class="dropdown-menu">
               <?php
               include_once('koneksi.php');
@@ -51,16 +56,19 @@
 
               foreach ($dt as $key => $value) {
               ?>
-                <a class="dropdown-item" href="<?php echo "indexByJenis.php?kode=" . $value['id'] ?>"><?php echo $value['nama'] ?></a>
+              <a class="dropdown-item"
+                href="<?php echo "indexByJenis.php?kode=" . $value['id'] ?>"><?php echo $value['nama'] ?></a>
               <?php
               }
               ?>
             </div>
           </div>
-          <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li> -->
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="register.php">Donatur</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="perseorangan.php">Perseorangan</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.php">Login</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal"
+              data-bs-target="#exampleModal" href="javascript:void(0)">Daftar</a></li>
+          <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="register.php">Donatur</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="perseorangan.php">Perseorangan</a></li> -->
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.php">Login</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -107,26 +115,30 @@
           $presentase = ($value['jumlah'] / $value['donasi']) * 100;
           $makeRounded = round($presentase, 2).'%';
           ?>
-            <div class="col-md-6 col-lg-4 mb-5">
-              <div class="portfolio-item mx-auto" style="width: 250px; height: 250px;" data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>" onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <div class="portfolio-item-caption-content text-center text-white">
-                    <h2><?php echo $value['nmProgram'] ?></h2>
-                  </div>
-                </div>
-                <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="portfolio-item mx-auto" style="width: 250px; height: 250px;"
+            data-id="<?php echo $value['nmProgram'] . "~" . $value['keterangan'] . "~" . $value['donasi'] . "~" .  $value['jumlah'] . "~" . date("d-M-Y", strtotime($value['tgl_akhir'])) ?>"
+            onclick="clicked(this)" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <h2><?php echo $value['nmProgram'] ?></h2>
               </div>
-                <div class="mt-3">
-                  <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?> </b></p>
-                  <div class="progress" style="background-color: wheat; width: 85%; display: inline-block;">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
-                      <p style="color:black;">.</p>
-                    </div>
-                  </div>
-                  <p style="display: inline-block;"><?php echo $makeRounded ?></p>
-                </div>
             </div>
-          <?php
+            <img class="img-fluid" src="images/files/<?php echo $value['gambar'] ?>" alt="..." />
+          </div>
+          <div class="mt-3">
+            <p class=""><b>Donasi Terkumpul : Rp. <?php echo $value['jumlah'] ?> Dari Rp. <?php echo $value['donasi']?>
+              </b></p>
+            <div class="progress" style="background-color: wheat; width: 85%; display: inline-block;">
+              <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $makeRounded ?>" aria-valuemin="0"
+                aria-valuemax="100" style="width:<?php echo $makeRounded ?>; background-color: black;">
+                <p style="color:black;">.</p>
+              </div>
+            </div>
+            <p style="display: inline-block;"><?php echo $makeRounded ?></p>
+          </div>
+        </div>
+        <?php
         }
         ?>
       </div>
@@ -147,34 +159,34 @@
       <div class="row">
         <div class="col-lg-4 ms-auto">
           <p class="lead">
-          <h3><b>Donasi Perseorangan</b></h3>
-          <ul>
-            <li></i> KTP</li>
-            <li></i> NPWP (Bila ada)</li>
-            <li></i> Nomor Rekening Penerima</li>
-            <li></i> Akte Kelahiran / Kartu Keluarga (apabila penerima manfaat adalah anak)</li>
-            <li></i> Rekam Medis (dibutuhkan apabila penggalangan dana kesehatan)</li>
-            <li></i> Nomor Telepon selular aktif</li>
-            <li></i> Foto diri sambil memegang KTP</li>
-          </ul>
+            <h3><b>Donasi Perseorangan</b></h3>
+            <ul>
+              <li></i> KTP</li>
+              <li></i> NPWP (Bila ada)</li>
+              <li></i> Nomor Rekening Penerima</li>
+              <li></i> Akte Kelahiran / Kartu Keluarga (apabila penerima manfaat adalah anak)</li>
+              <li></i> Rekam Medis (dibutuhkan apabila penggalangan dana kesehatan)</li>
+              <li></i> Nomor Telepon selular aktif</li>
+              <li></i> Foto diri sambil memegang KTP</li>
+            </ul>
           </p>
         </div>
         <div class="col-lg-4 me-auto">
           <p class="lead">
-          <h3><b>Donasi Lembaga</b></h3>
-          <ul>
-            <li></i> Akta Pendirian Organisasi</li>
-            <li></i> SK Kemenkumham</li>
-            <li></i> NPWP Badan</li>
-            <li></i> KTP Penanggung Jawab</li>
-            <li></i> Nomor Rekening atas nama badan</li>
-            <li></i> Tanda Daftar Yayasan</li>
-            <li></i> Surat Keterangan Domisili</li>
-            <li></i> Struktur Organisasi</li>
-            <li></i> Izin Khusus (Bila Ada)</li>
-            <li></i> Foto diri penanggung jawab dengan memegang KTP</li>
-            <li></i> Surat Kuasa (apabila penanggung jawab bukan ketua Yayasan)</li>
-          </ul>
+            <h3><b>Donasi Lembaga</b></h3>
+            <ul>
+              <li></i> Akta Pendirian Organisasi</li>
+              <li></i> SK Kemenkumham</li>
+              <li></i> NPWP Badan</li>
+              <li></i> KTP Penanggung Jawab</li>
+              <li></i> Nomor Rekening atas nama badan</li>
+              <li></i> Tanda Daftar Yayasan</li>
+              <li></i> Surat Keterangan Domisili</li>
+              <li></i> Struktur Organisasi</li>
+              <li></i> Izin Khusus (Bila Ada)</li>
+              <li></i> Foto diri penanggung jawab dengan memegang KTP</li>
+              <li></i> Surat Kuasa (apabila penanggung jawab bukan ketua Yayasan)</li>
+            </ul>
           </p>
         </div>
       </div>
@@ -201,7 +213,8 @@
                 <div class="row pb-1">
 
                   <label for=""><b>Nama Program</b></label>
-                  <textarea style="resize: none; text-align:center; font-weight:bold" id="namaP" cols="30" rows="2" class="form-control" readonly></textarea>
+                  <textarea style="resize: none; text-align:center; font-weight:bold" id="namaP" cols="30" rows="2"
+                    class="form-control" readonly></textarea>
 
                 </div>
                 <div class="row pb-1">
@@ -245,23 +258,25 @@
   </div>
 
   <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="row justify-content-center text-center"> -->
-            <!-- Portfolio Item 1-->
-            <!-- <div class="col-md-4 col-lg-5 mb-2 mt-3">
+          <div class="row justify-content-center  text-center">
+            <div class="col-md-8 ">
               <div class="portfolio-item mx-auto">
-                <a href="register.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="images/donasi.png" alt="Donatur" />
+                <a href="perseorangan.php"
+                  class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="images/donasi.png" alt="Perseorangan" height="100px" width="100px" />
                 </a>
-                <h4>Donatur</h4>
+                <h5>Daftar Sebagai Penggalang Dana</h5>
                 <br>
-                <a href="perseorangan.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <img class="img-fluid" src="images/donasi.png" alt="Perseorangan" />
+                <a href="register.php"
+                  class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <img class="img-fluid" src="images/donasi.png" alt="Donatur" height="100px" width="100px" />
                 </a>
-                <h4>PERSEORANGAN</h4>
+                <h5>Daftar Sebagai Donatur</h5>
               </div>
             </div>
           </div>
@@ -269,6 +284,31 @@
       </div>
     </div>
   </div> -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row justify-content-center">
+            <div class="col-md-12 ">
+              <div class="portfolio-item mx-auto">
+                <br>
+                <a href="perseorangan.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-60 w-60">
+                  <h5>Daftar Sebagai Penggalang Dana</h5>
+                </a>
+                <br>
+                <br>
+                <a href="register.php" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                  <h5>Daftar Sebagai Donatur</h5>
+                </a>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->

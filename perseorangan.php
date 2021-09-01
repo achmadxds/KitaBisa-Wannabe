@@ -77,7 +77,8 @@ include_once("koneksi.php");
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<link rel="stylesheet" href="dist/assets/css/bootstrap.css">
 
 	<link rel="stylesheet" href="dist/assets/vendors/iconly/bold.css">
@@ -100,43 +101,60 @@ include_once("koneksi.php");
 
 								<div class="card-body">
 									<center>
-										<font face="Trebuchet MS"><b>REGISTRASI PERSEORANGAN <BR>
+										<font face="Trebuchet MS"><b>REGISTRASI PENGGALANGAN DANA <BR>
 												PORTAL DONASI-KU</b></font><br>
 										<br><br>
 										<form action="" method="post" enctype="multipart/form-data">
 											<div class="col-lg-12">
 												<div class="row">
 													<div class="col-6">
-														<label class="control-label">Kode Anda </label>
-														<input type="text" class="form-control" name="txtKd" value="<?php echo $hasilkode; ?>" readonly />
+														<label class="control-label">
+															<font face="Trebuchet MS">Kode Anda </font>
+														</label>
+														<input type="text" class="form-control" name="txtKd" value="<?php echo $hasilkode; ?>"
+															readonly />
 														<br>
-														<label class="control-label">Nama </label>
+														<label class="control-label">
+															<font face="Trebuchet MS"> Nama </font>
+														</label>
 														<input type="text" class="form-control" placeholder="Nama" name="txtNm" autofocus />
 														<br>
-														<label class="col-sm-5 control-label">Berkas </label>
+														<label class="col-sm-5 control-label">
+															<font face="Trebuchet MS">Berkas </font>
+														</label>
 														<input type="file" class="form-control" placeholder="Pilih File PDF" name="txtBerkasu">
+														<br>
+														<code class="text-md-start">
+															<br>
+															*Persyaratan penggalangan dana <br>
+															ada di halaman utama website
+														</code>
 													</div>
 													<div class="col-6">
-														<label class="control-label">Jenis Kelamin</label>
+														<label class="control-label">
+															<font face="Trebuchet MS">Jenis Kelamin </font>
+														</label>
 														<select name="txtJekel" class="form-control">
 															<option value=""> - Jenis Kelamin -</option>
 															<option value="P">Perempuan</option>
 															<option value="L">Laki-Laki</option>
 														</select>
 														<br>
-														<label class="control-label">Alamat </label>
+														<label class="control-label">
+															<font face="Trebuchet MS">Alamat </font>
+														</label>
 														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat">
 														<br>
-														<label class="control-label">No Handphone </label>
+														<label class="control-label">
+															<font face="Trebuchet MS">No Handphone </font>
+														</label>
 														<input type="text" class="form-control" placeholder="Masukkan No Handphone" name="txtNohp">
+														<br>
+														<label class="control-label">
+															<font face="Trebuchet MS">No Rekening </font>
+														</label>
+														<input type="text" class="form-control" placeholder="Masukkan No Rekening" name="txtNoRek">
 													</div>
-												</div>
-											</div>
-											<br>
-											<div class="form-group col-sm-12">
-												<label class="col-sm-5 control-label">No Rekening </label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" placeholder="Masukkan No Rekening" name="txtNoRek">
 												</div>
 											</div>
 											<br>

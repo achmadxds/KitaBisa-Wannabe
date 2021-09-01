@@ -33,7 +33,8 @@ if (isset($_POST['btnDaftarPer'])) {
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<link rel="stylesheet" href="dist/assets/css/bootstrap.css">
 
 	<link rel="stylesheet" href="dist/assets/vendors/iconly/bold.css">
@@ -64,17 +65,21 @@ if (isset($_POST['btnDaftarPer'])) {
 												<div class="row">
 													<div class="col-6">
 														<label class="control-label">Kode Donatur </label>
-														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtKd" value="<?php echo (uniqid());	?>" readonly />
+														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtKd"
+															value="<?php echo (uniqid());	?>" readonly />
 														<br>
 														<label class="control-label">No Handphone </label>
-														<input type="text" class="form-control" placeholder="Masukkan No HP" name="txtNohp" required="">
+														<input type="text" class="form-control" placeholder="Masukkan No HP" name="txtNohp"
+															required="">
 														<br>
 														<label class="control-label">ID Chat Telegram </label>
-														<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat" required="">
+														<input type="text" class="form-control" placeholder="Masukkan ID Chat" name="txtIdChat"
+															required="">
 													</div>
 													<div class="col-6">
 														<label class="control-label">Nama </label>
-														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtNm" required autofocus />
+														<input type="text" class="form-control" placeholder="Nama Donatur" name="txtNm" required
+															autofocus />
 														<br>
 														<label class="control-label">Jenis Kelamin</label>
 														<select name="txtJekel" class="form-control" required>
@@ -84,12 +89,13 @@ if (isset($_POST['btnDaftarPer'])) {
 														</select>
 														<br>
 														<label class="control-label">Alamat </label>
-														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat" required="">
+														<input type="text" class="form-control" placeholder="Masukkan Alamat" name="txtAlamat"
+															required="">
 														<br>
 													</div>
-													
-													<span style="text-align: left;"><b>*</b> Untuk ID Chat Telegram  
-													silahkan cek <br>melalui bot telegram<code> @StrukturBot</code></span>
+
+													<span style="text-align: left;"><b>*</b>Untuk ID Chat Telegram silahkan cek <br>&nbsp;&nbsp;
+														melalui bot telegram<code> @StrukturBot</code></span>
 												</div>
 											</div>
 
