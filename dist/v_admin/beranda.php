@@ -180,107 +180,108 @@
             ?>
             <?php
             case 'O-admin':
-            ?>
-             <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-12">
-                        <div class="row">
-                            
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon blue">
-                                                    <i class="iconly-boldProfile"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Program</h6>
-                                                <h6 class="font-extrabold mb-0">
-                                                  <?php // menghitung
-                                                  $sql_hitung = "SELECT COUNT(id) from program where status ='P' AND idLembaga='$data_id' AND idLevel='1'";
-                                                  $q_hit= mysqli_query($con, $sql_hitung);
-                                                  while($row = mysqli_fetch_array($q_hit)) {
-                                                      echo  $row[0]."";
-                                                  }
-                                                  ?></h6>
-                                                  <a href="?page=prog" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div class="col-6 col-lg-3 col-md-7">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon red">
-                                                    <i class="iconly-boldBookmark"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Dana Masuk</h6>
-                                                <h6 class="font-extrabold mb-0">
-                                                <?php
-                                                    $sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.id AND b.idLevel='1' AND a.status ='T' AND b.idLembaga='$data_id'";
-                                                    $q_hit= mysqli_query($con, $sql_hitung);
-                                                    while($row = mysqli_fetch_array($q_hit)) {
-                                                        echo  $row[0]."";
-                                                    }
-                                                    ?>
-                                                </h6>
-                                                <?php
-                                                    if ($data_status == 'L-pimpinan') {
-                                                    ?>
-                                                    
-                                                    <?php
-                                                    } elseif ($data_status == 'L-admin') {
-                                                    ?>
-                                                    <a href="?page=transaksi" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                    
-                                                </td>
-                                                <?php
-                                                    } ?>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        
-                                    </div>
-                                    <div class="card-body">
-                                    <p>
-                                      <center>
-                                      <br> <font face="Trebuchet MS"><b> Selamat Datang Di </b></font>
-                                      <br> <font face="Trebuchet MS"><b> Portal Donasi Peduliku </b></font>
-                                      <br> <br><br>
-                                      <img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
-                                      </center>
-                                  </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                        </div>
-                       
-                    </div>
+							?>
+							<div class="page-content">
+									<section class="row">
+											<div class="col-12 col-lg-12">
+													<div class="row">
+															
+															<div class="col-6 col-lg-3 col-md-6">
+																	<div class="card">
+																			<div class="card-body px-3 py-4-5">
+																					<div class="row">
+																							<div class="col-md-4">
+																									<div class="stats-icon blue">
+																											<i class="iconly-boldProfile"></i>
+																									</div>
+																							</div>
+																							<div class="col-md-8">
+																									<h6 class="text-muted font-semibold">Program</h6>
+																									<h6 class="font-extrabold mb-0">
+																										<?php // menghitung
+																										$sql_hitung = "SELECT COUNT(id) from program where status ='P' AND idLembaga='$data_id' AND idLevel='1'";
+																										$q_hit= mysqli_query($con, $sql_hitung);
+																										while($row = mysqli_fetch_array($q_hit)) {
+																												echo  $row[0]."";
+																										}
+																										?></h6>
+																										<a href="?page=prog" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+																							</div>
+																					</div>
+																			</div>
+																	</div>
+															</div>
+														
+															<div class="col-6 col-lg-3 col-md-7">
+																	<div class="card">
+																			<div class="card-body px-3 py-4-5">
+																					<div class="row">
+																							<div class="col-md-4">
+																									<div class="stats-icon red">
+																											<i class="iconly-boldBookmark"></i>
+																									</div>
+																							</div>
+																							<div class="col-md-8">
+																									<h6 class="text-muted font-semibold">Dana Masuk</h6>
+																									<h6 class="font-extrabold mb-0">
+																									<?php
+																											$sql_hitung = "SELECT COUNT(a.id) from transaksi a, program b where a.idProgram=b.id AND b.idLevel='1' AND a.status ='T' AND b.idLembaga='$data_id'";
+																											$q_hit= mysqli_query($con, $sql_hitung);
+																											while($row = mysqli_fetch_array($q_hit)) {
+																													echo  $row[0]."";
+																											}
+																											?>
+																									</h6>
+																									<?php
+																											if ($data_status == 'L-pimpinan') {
+																											?>
+																											
+																											<?php
+																											} elseif ($data_status == 'L-admin') {
+																											?>
+																											<a href="?page=transaksi" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+																											<?php
+																											} else {
+																											?>
+																											
+																									</td>
+																									<?php
+																											} ?>
+																									
+																							</div>
+																					</div>
+																			</div>
+																	</div>
+															</div>
+													</div>
+													<div class="row">
+															<div class="col-12">
+																	<div class="card">
+																			<div class="card-header">
+																					
+																			</div>
+																			<div class="card-body">
+																			<p>
+																				<center>
+																				<br> <font face="Trebuchet MS"><b> Selamat Datang Di </b></font>
+																				<br> <font face="Trebuchet MS"><b> Portal Donasi Peduliku </b></font>
+																				<br> <br><br>
+																				<img src="../../images/landing.png" height="100px" width="350px;" align="center"/>
+																				</center>
+																		</p>
+																			</div>
+																	</div>
+															</div>
+													</div>
+													<div class="card">
+													</div>
+												
+											</div>
 
-                </section>
-            </div>
-            <?php
+									</section>
+							</div>
+							<?php
+							break;
             default :
             ?>
             <div class="page-content">
