@@ -7,6 +7,7 @@
     $a = $_GET['idKode'];
     $query = "SELECT b.*, a.nominal, a.tanggal FROM transaksi a, donatur b where a.idProgram=$a AND a.idDonatur=b.id";
     $sql = mysqli_query($con, $query);
+    
   }
 ?>
 
@@ -18,11 +19,12 @@
   </header>
 
   <div class="page-content">
-  <?php
+    <?php
 
   ?>
-  <a href="rekap/cetak_program.php?tj=donasi&aidi=<?php echo $_GET['idKode'] ?>" class="btn btn-primary "target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
-  <br><br>
+    <a href="rekap/cetak_program.php?tj=donasi&aidi=<?php echo $_GET['idKode'] ?>" class="btn btn-primary "
+      target="_blank"><i class="fa fa-fw fa-print"></i> Print</a>
+    <br><br>
     <section class>
       <div class="row">
         <div class="col-12">
@@ -36,7 +38,7 @@
                   <center>
                     <tr>
                       <th>No</th>
-                      <th>Nama Danaturs</th>
+                      <th>Nama Donatur</th>
                       <th>Nominal</th>
                       <th>Nomor HP</th>
                       <th>Tanggal</th>
@@ -49,14 +51,14 @@
                     $no = 1;
                     foreach ($sql as $value) {
                       ?>
-                        <tr>
-                          <td><?php echo $no; ?></td>
-                          <td><?php echo $value['nama']; ?></td>
-                          <td><?php echo $value['nominal']; ?></td>
-                          <td><?php echo $value['no_hp'] ?></td>
-                          <td><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></td>
-                        </tr>
-                      <?php
+                  <tr>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $value['nama']; ?></td>
+                    <td><?php echo $value['nominal']; ?></td>
+                    <td><?php echo $value['no_hp'] ?></td>
+                    <td><?php echo date("d-m-Y", strtotime($value['tanggal'])) ?></td>
+                  </tr>
+                  <?php
                       $no++;
                     }
                   ?>
@@ -75,12 +77,21 @@
   console.log($('#program90'))
   $('#program212').DataTable({
     scrollY: 350,
-    "columns": [
-      { "width": "10%" },
-      { "width": "35%" },
-      { "width": "20%" },
-      { "width": "20%" },
-      { "width": "15%" }
+    "columns": [{
+        "width": "10%"
+      },
+      {
+        "width": "35%"
+      },
+      {
+        "width": "20%"
+      },
+      {
+        "width": "20%"
+      },
+      {
+        "width": "15%"
+      }
     ]
   });
 </script>
