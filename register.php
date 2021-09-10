@@ -13,6 +13,7 @@ if (isset($_POST['btnDaftarPer'])) {
                     '$date')";
 	$query_simpan = mysqli_query($con, $sql_simpan);
 
+	
 	if ($query_simpan) {
 		echo "<script>alert('Tahap Selanjutnya')</script>";
 		echo "<meta http-equiv='refresh' content='0; url=regDonatur.php'>";
